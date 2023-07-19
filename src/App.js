@@ -1,8 +1,14 @@
+import { ThemeProvider } from 'styled-components';
+
+import theme from 'theme';
+
 function App() {
   return (
-    <div className="App">
-      Appy
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        Appy whhaaaat?
+      </div>
+    </ThemeProvider>
   );
 }
 
