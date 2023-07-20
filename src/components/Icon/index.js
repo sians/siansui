@@ -15,7 +15,7 @@ const Icon = ({
   className,
   color,
   isDisabled,
-  rotate,
+  rotateBy,
   verticalAlign
 }) => {
   const isLink = action ? true : false;
@@ -37,7 +37,7 @@ const Icon = ({
     isDisabled={isDisabled}
     onMouseEnter={() => setIsHover(true)}
     onMouseLeave={() => setIsHover(false)}
-    rotate={rotate}
+    rotateBy={rotateBy}
   >
     <IcomoonReact 
       iconSet={iconSet} 
