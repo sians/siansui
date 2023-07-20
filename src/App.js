@@ -1,18 +1,23 @@
-import { ThemeProvider } from 'styled-components';
+import { StyleSheetManager, ThemeProvider } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid'
 
 import Router from './router';
-
-import { ComponentIndex } from 'pages/Components';
 
 import theme from 'theme';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <Router />
-      </div>
-    </ThemeProvider>
+    <StyleSheetManager 
+      shouldForwardProp={(propName, elementToBeRendered) => {
+        return typeof elementToBeRendered === 'string' ? isPropValid(propName) : true;
+      }}
+    >
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <Router />
+        </div>
+      </ThemeProvider>
+    </StyleSheetManager>    
   );
 }
 
