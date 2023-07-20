@@ -4,6 +4,7 @@ import Icon from './Icon';
 import Logo from './Logo';
 import Link from './Link';
 import Sidebar from './Sidebar';
+import Typography from './Typography';
 
 export {
   Nav,
@@ -11,5 +12,6 @@ export {
   Icon,
   Logo,
   Link,
-  Sidebar
+  Sidebar,
+  Typography
 }

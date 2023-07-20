@@ -1,12 +1,14 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Row from './Row';
+import Col from './Col';
 
 import { Nav, Sidebar } from 'components';
-import { Page } from './styles';
+import { Page, Content } from './styles';
 
 const MAP = {
   row: <Row />,
+  col: <Col />
 }
 
 const Index = () => {
@@ -20,7 +22,9 @@ const Index = () => {
         <Sidebar />
         
         {params.name ? (
-          MAP[params.name]
+          <Content>
+            {MAP[params.name]}
+          </Content>
         ) : (
           <>
 

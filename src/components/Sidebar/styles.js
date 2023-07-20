@@ -9,10 +9,11 @@ export const Container = styled.div(props => {
   return {
     minWidth: width,
     maxWidth: width,
-    height: `calc(100vh - ${theme.navHeight})`,
+    height: `calc(100vh - ${theme.navHeight}px)`,
     borderRight: `1px solid ${theme.colors.grey}`,
     margin: theme.margin,
     overflowY: 'scroll',
+    position: 'fixed',
 
     'h4': {
       borderBottom: `1px solid ${theme.colors.grey}`,
