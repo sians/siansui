@@ -15,16 +15,23 @@ const Icon = ({
   className,
   color,
   isDisabled,
-  rotate
+  rotate,
+  verticalAlign
 }) => {
   const isLink = action ? true : false;
 
   const [isHover, setIsHover] = useState(false);
 
+  const handleAction = () => {
+    if (!isDisabled && action) {
+      action();
+    }
+  }
+
   return (
   <Container 
     maxWidth={maxWidth}
-    onClick={() => !isDisabled && action()}
+    onClick={() => handleAction()}
     isLink={isLink}
     className={className}
     isDisabled={isDisabled}
@@ -34,15 +41,17 @@ const Icon = ({
   >
     <IcomoonReact 
       iconSet={iconSet} 
+      size={maxWidth}
       title={name} 
       icon={name}
       color={
         isDisabled 
           ? theme.colors.midGrey
-          : isHover 
+          : isHover && isLink
             ? theme.colors.main 
-            : color
+            : color || theme.colors.black
       }
+      style={{verticalAlign: verticalAlign || 'super'}}
     />
   </Container>
 )}
