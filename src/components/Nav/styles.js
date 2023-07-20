@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div(props => {
   const { theme } = props;
 
+  const logoWidth = `calc(${theme.sidebarWidth}px - ${theme.sidebarPadding * 2}px)`
+
   return {
     height: theme.navHeight,
     boxShadow: "0px 2px 8px 0px rgba(42, 36, 50, 0.15)",
@@ -12,7 +14,7 @@ export const Container = styled.div(props => {
     fontSize: 14,
 
     '.logo-container': {
-      minWidth: theme.sidebarWidth,
+      minWidth: logoWidth,
       borderRight: `1px solid ${theme.colors.grey}`,
       margin: theme.margin
     },

@@ -14,7 +14,7 @@ export const Container = styled.div(props => {
       border: `1px solid ${theme.colors.midGrey}`,
       color: theme.colors.midGrey,
       padding: `0px ${theme.margin / 2}px`,
-      borderRadius: 4,
+      borderRadius: theme.borderRadius / 2,
       fontSize: 14,
       backgroundColor: `${theme.colors.midGrey}20`,
       transition: 'opacity 0.5s'

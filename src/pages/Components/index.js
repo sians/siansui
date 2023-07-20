@@ -2,7 +2,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import Row from './Row';
 
-import { Nav } from 'components';
+import { Nav, Sidebar } from 'components';
+import { Page } from './styles';
 
 const MAP = {
   row: <Row />,
@@ -13,14 +14,20 @@ const Index = () => {
 
   return (
     <>
-      {params.name ? (
-        MAP[params.name]
-      ) : (
-        <>
-          <Nav />
-          indexy
-        </>
-      )}
+      <Nav />
+
+      <Page>
+        <Sidebar />
+        
+        {params.name ? (
+          MAP[params.name]
+        ) : (
+          <>
+
+            indexy
+          </>
+        )}
+      </Page>
     </>
   )
 }
