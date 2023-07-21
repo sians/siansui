@@ -3,18 +3,36 @@ import { Typography, Link, Tables, Code } from 'components';
 import COPY from './COPY';
 import PROPS from './PROPS';
 
-const Col = () => {
+const Heading = () => {
   return (
     <>
       <header>
         <Typography.Heading 
-          text='Col'
+          text='Heading'
           size={1}
         />
 
         <Typography.Body>
           {COPY.description}
         </Typography.Body>
+
+        <ul>
+          <li>{COPY.htmlTags.h1}</li>
+          <li>{COPY.htmlTags.h2}</li>
+          <li>{COPY.htmlTags.h3}</li>
+          <li>{COPY.htmlTags.h4}</li>
+          <li>{COPY.htmlTags.h5}</li>
+          <li>{COPY.htmlTags.h6}</li>
+        </ul>
+          
+        {COPY.size.map(str => {
+          return (
+            <Typography.Body>
+              {str}
+            </Typography.Body>
+          )
+        })}
+
       </header>
 
       <section>
@@ -48,4 +66,4 @@ const Col = () => {
   )
 }
 
-export default Col;
+export default Heading;

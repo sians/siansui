@@ -2,13 +2,15 @@ import { useParams } from 'react-router-dom';
 
 import Row from './Row';
 import Col from './Col';
+import Heading from './Heading';
 
 import { Nav, Sidebar } from 'components';
 import { Page, Content } from './styles';
 
 const MAP = {
   row: <Row />,
-  col: <Col />
+  col: <Col />,
+  heading: <Heading />,
 }
 
 const Index = () => {
