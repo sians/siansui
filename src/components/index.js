@@ -5,6 +5,8 @@ import Logo from './Logo';
 import Link from './Link';
 import Sidebar from './Sidebar';
 import Typography from './Typography';
+import Tables from './Tables';
+import TypeString from './TypeString';
 
 export {
   Nav,
@@ -13,5 +15,7 @@ export {
   Logo,
   Link,
   Sidebar,
-  Typography
+  Typography,
+  Tables,
+  TypeString
 }

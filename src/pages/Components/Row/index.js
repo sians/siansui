@@ -1,4 +1,6 @@
-import { Typography, Link } from 'components';
+import { Typography, Link, Tables } from 'components';
+
+import PROPS from './PROPS';
 
 const Row = () => {
   return (
@@ -22,7 +24,7 @@ const Row = () => {
         />
 
         <Typography.Body>
-          {`Used with <Col> to help create flexible & responsive grid layouts.`}
+          Used with <Link url='/components/col' text={`<Col>`} /> to help create flexible & responsive grid layouts.
         </Typography.Body> 
       </section>
 
@@ -32,7 +34,7 @@ const Row = () => {
           size={3}
         />
 
-        tablleee
+        <Tables.PropTable data={PROPS}/>
       </section>      
 
       <section>

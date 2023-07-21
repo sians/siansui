@@ -1,5 +1,5 @@
-import camelToSnake from './camelToSnake';
+import convertCase from './convertCase';
 
 export {
-  camelToSnake
+  convertCase
 }

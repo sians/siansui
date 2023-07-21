@@ -28,7 +28,7 @@ const theme = {
 
     grey: '#D9D9D9',
     midGrey: '#BEB8C2',
-  }
+  },
 };
 
 export const GlobalStyles = createGlobalStyle(() => {

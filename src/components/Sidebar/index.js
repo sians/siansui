@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
-import { camelToSnake } from 'utils';
+import { convertCase } from 'utils';
 
 import LINK_GROUPS from './LINK_GROUPS';
 
@@ -18,8 +18,16 @@ const initialState = Object.keys(LINK_GROUPS).reduce((acc, curr) => {
 
 function reducer(state, action) {
   switch (action.type) {
+    case 'init': 
+      return {
+        ...initialState,
+        [action.groupName]: true
+      }    
     case 'toggle':
-      return { ...state, [action.groupName]: !state[action.groupName]};
+      return { 
+        ...state, 
+        [action.groupName]: !state[action.groupName]
+      };
     default:
       throw new Error();
   }
@@ -27,16 +35,36 @@ function reducer(state, action) {
 
 const Sidebar = () => {
   const params = useParams();
+  const location = useLocation();
   const [expandedState, dispatch] = useReducer(reducer, initialState);
 
   const toggleExpand = groupName => {
     dispatch({type: 'toggle', groupName});
   };
+  const initExpanded = groupName => {
+    dispatch({type: 'init', groupName})
+  }
   
-  useEffect(() => {
-    console.log(expandedState)
-  }, [expandedState])
+  // Expand Group with active components on init
+  const setCurrentGroup = () => {
+    const {pathname} = location;
+  
+    if (!pathname) return;
+  
+    const [, group, target] = pathname.split('/');
 
+    if (group === 'components' && target) {
+      const key = Object.keys(LINK_GROUPS).find(key => 
+        LINK_GROUPS[key].some(({text}) => text === convertCase('snake', 'pascal', target))
+      );
+  
+      if (key) initExpanded(key);
+    }
+  }
+
+  useEffect(() => {
+    setCurrentGroup()
+  }, [location?.pathname])
 
   return (
     <Container>
@@ -62,7 +90,7 @@ const Sidebar = () => {
 
               <ul>
                 {LINK_GROUPS[groupName].map(item => {
-                  const formattedName = camelToSnake(item.text);
+                  const formattedName = convertCase('camel', 'snake', item.text);
                   return (
                     <ListItem 
                       key={`sb-link-${formattedName}`}
