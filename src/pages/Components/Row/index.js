@@ -1,6 +1,7 @@
-import { Typography, Link, Tables } from 'components';
+import { Typography, Link, Tables, Code } from 'components';
 
 import PROPS from './PROPS';
+import CODE from './CODE';
 
 const Row = () => {
   return (
@@ -42,8 +43,7 @@ const Row = () => {
           text='Snippet'
           size={3}
         />
-
-        codddeezz
+        <Code code={CODE} language='javascript'/>
       </section>   
     </>
   )

@@ -7,6 +7,7 @@ import Sidebar from './Sidebar';
 import Typography from './Typography';
 import Tables from './Tables';
 import TypeString from './TypeString';
+import Code from './Code';
 
 export {
   Nav,
@@ -17,5 +18,6 @@ export {
   Sidebar,
   Typography,
   Tables,
-  TypeString
+  TypeString,
+  Code
 }
