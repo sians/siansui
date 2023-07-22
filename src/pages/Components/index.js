@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Row from './Row';
 import Col from './Col';
 import Heading from './Heading';
 
-import { Nav, Sidebar } from 'components';
+import { Nav, Sidebar, FooterNav } from 'components';
 import { Page, Content } from './styles';
 
 const MAP = {
@@ -16,16 +17,22 @@ const MAP = {
 const Index = () => {
   const params = useParams();
 
+  useEffect(() => {
+    document.getElementById("page").scroll(0,0)
+  }, [params?.name]);
+
   return (
     <>
       <Nav />
 
-      <Page>
+      <Page id='page'>
         <Sidebar />
         
         {params.name ? (
           <Content>
             {MAP[params.name]}
+
+            <FooterNav />
           </Content>
         ) : (
           <>

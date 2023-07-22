@@ -3,7 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 
 import { convertCase } from 'utils';
 
-import LINK_GROUPS from './LINK_GROUPS';
+import LINK_GROUPS from 'data/LINK_GROUPS';
 
 import { Link, Icon } from 'components';
 import { Container, ItemGroup, ListItem } from './styles';

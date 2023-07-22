@@ -8,6 +8,8 @@ import Typography from './Typography';
 import Tables from './Tables';
 import TypeString from './TypeString';
 import Code from './Code';
+import FooterNav from './FooterNav';
+import Layout from './Layout';
 
 export {
   Nav,
@@ -19,5 +21,7 @@ export {
   Typography,
   Tables,
   TypeString,
-  Code
+  Code,
+  FooterNav,
+  Layout
 }

@@ -11,6 +11,11 @@ export function camelToSnake(s){
   return s.replace(/[\w]([A-Z])/g, function(m) { return m[0] + "_" + m[1]; }).toLowerCase();
 }
 
+export function pascalToSnake(s){
+  return s.replace(/(.[A-Z])/g, function(m) { return m[0] + "_" + m[1]; }).toLowerCase();
+}
+
+
 export default function convertCase(sourceCase, targetCase, str){
   let output = str;
 
@@ -22,6 +27,9 @@ export default function convertCase(sourceCase, targetCase, str){
       case 'camel':
           if (targetCase === 'snake') output = camelToSnake(str);
           break;
+      case 'pascal':
+        if (targetCase === 'snake') output = pascalToSnake(str);
+        break;  
       default:
           throw new Error(`Invalid sourceCase ${sourceCase}`);
   }

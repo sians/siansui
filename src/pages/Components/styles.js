@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Page = styled.div(props => {
   const { theme } = props;
   return {
-    height: `calc(100vh - ${theme.navHeight}px)`,
+    height: `calc(100vh - ${theme.navHeight}px - ${theme.margin * 3}px)`,
     overflowY: 'scroll',
     position: 'relative',
     display: 'flex',
@@ -14,14 +14,15 @@ export const Page = styled.div(props => {
 export const Content = styled.article(props => {
   const { theme } = props;
 
-  const width = `calc(100vw - ${theme.sidebarWidth}px)`
+  const margin = theme.margin;
+  const width = `calc(100vw - ${theme.sidebarWidth}px - ${margin * 4}px)`
 
   return {
     paddingLeft: theme.sidebarWidth,
-    margin: `0px ${theme.margin * 2}px`,
+    margin: `0px ${margin * 2}px`,
     width: width,
     'section': {
-      margin: `${theme.margin * 3}px 0px`
+      margin: `${margin * 3}px 0px`
     }
   }
 })
