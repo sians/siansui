@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState, useMemo } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 import useHover from 'hooks/useHover';
 
@@ -14,7 +14,9 @@ import theme from 'theme';
 
 const FooterNav = ({ }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const params = useParams();
+  const pageName = useMemo(() => location?.pathname?.split('/')?.[1], [location?.pathname])
   const [nextComponentStr, setNextComponentStr] = useState(null);
   const [prevComponentStr, setPrevComponentStr] = useState(null);
 
@@ -26,9 +28,12 @@ const FooterNav = ({ }) => {
   }, [params.name])
 
   const handleSetData = () => {
-    if (params.name) {
-      const ordered = makeComponentOrder(params.name);
-      const pascalName = convertCase('snake', 'pascal', params.name);
+    const pageType = location?.pathname?.split('/')?.[1];
+    const targetStrType = { hooks: 'camel', components: 'pascal'};
+
+    if (params.name && pageType) {
+      const ordered = makeComponentOrder(pageType);
+      const pascalName = convertCase('snake', targetStrType[pageType], params.name);
       const currentIdx = ordered.indexOf(pascalName);
 
       if (currentIdx > 0) {
@@ -38,19 +43,20 @@ const FooterNav = ({ }) => {
       setNextComponentStr(ordered[currentIdx + 1]);
     }
   }
-  const makeComponentOrder = () => {
+  const makeComponentOrder = (pageType) => {
     const ordered = [];
-    Object.keys(LINK_GROUPS).forEach(key => {
-      LINK_GROUPS[key].forEach(link => ordered.push(link.text));
+    Object.keys(LINK_GROUPS[pageType]).forEach(key => {
+      LINK_GROUPS[pageType]?.[key].forEach(link => ordered.push(link.text));
     })
     
     return ordered;
   }
 
   const handleNavigation = (name) => {
-    const snakeName = convertCase('camel', 'snake', name);
-    console.log(snakeName);
-    navigate(`/components/${snakeName}`)
+    if (pageName) {
+      const snakeName = convertCase('camel', 'snake', name);
+      navigate(`/${pageName}/${snakeName}`)
+    }
   }
 
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useMemo } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
 import { convertCase } from 'utils';
@@ -12,15 +12,16 @@ import theme from 'theme';
 
 // TODO: refactor state logic to useSidebar hook?
 
-const initialState = Object.keys(LINK_GROUPS).reduce((acc, curr) => {
-  return {...acc, [curr]: false}
-}, {});
-
+const initializeState = (pageType) => {
+  return Object.keys(LINK_GROUPS[pageType]).reduce((acc, curr) => {
+    return {...acc, [curr]: false}
+  }, {});
+};
 function reducer(state, action) {
   switch (action.type) {
     case 'init': 
       return {
-        ...initialState,
+        ...action.initialState,
         [action.groupName]: true
       }    
     case 'toggle':
@@ -36,7 +37,8 @@ function reducer(state, action) {
 const Sidebar = () => {
   const params = useParams();
   const location = useLocation();
-  const [expandedState, dispatch] = useReducer(reducer, initialState);
+  const [expandedState, dispatch] = useReducer(reducer, initializeState(location?.pathname?.split('/')[1]));
+  const pageName = useMemo(() => location?.pathname?.split('/')?.[1], [location?.pathname]);
 
   const toggleExpand = groupName => {
     dispatch({type: 'toggle', groupName});
@@ -51,12 +53,14 @@ const Sidebar = () => {
   
     if (!pathname) return;
   
-    const [, group, target] = pathname.split('/');
+    const [, pageName, target] = pathname.split('/');
 
-    if (group === 'components' && target) {
-      const key = Object.keys(LINK_GROUPS).find(key => 
-        LINK_GROUPS[key].some(({text}) => text === convertCase('snake', 'pascal', target))
-      );
+    if (pageName && target) {
+      const targetStrTypes = { hooks: 'camel', components: 'pascal'};
+      const key = Object.keys(LINK_GROUPS[pageName]).find(key => {
+        const formattedTarget = convertCase('snake', targetStrTypes[pageName], target)
+        return LINK_GROUPS[pageName]?.[key].some(({text}) => text === formattedTarget)
+      });
   
       if (key) initExpanded(key);
     }
@@ -69,13 +73,13 @@ const Sidebar = () => {
   return (
     <Container>
       <ul>
-        {Object.keys(LINK_GROUPS).map(groupName => {
+        {Object.keys(LINK_GROUPS[pageName]).map(groupName => {
           return (
             <ItemGroup 
               key={`link-grp-${groupName}`}
               className={`link-grp-${groupName}`}
               isExpanded={expandedState[groupName]}
-              numItemsInGroup={LINK_GROUPS[groupName].length}
+              numItemsInGroup={LINK_GROUPS[pageName]?.[groupName].length}
             >
               <h4 onClick={() => toggleExpand(groupName)}>
                 {groupName}
@@ -89,7 +93,7 @@ const Sidebar = () => {
               </h4>
 
               <ul>
-                {LINK_GROUPS[groupName].map(item => {
+                {LINK_GROUPS[pageName]?.[groupName].map(item => {
                   const formattedName = convertCase('camel', 'snake', item.text);
                   return (
                     <ListItem 
