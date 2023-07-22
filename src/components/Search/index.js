@@ -21,7 +21,6 @@ const Search = ({
     if (query.length > 0) {
       setQuery('');
     } else {
-      console.log('why')
       setFocus(false);
     }
   }

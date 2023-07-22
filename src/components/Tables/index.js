@@ -1,7 +1,9 @@
 import PropTable from './PropTable';
+import HookReturnsTable from './HookReturnsTable';
 
 const tables = {
-  PropTable
+  PropTable,
+  HookReturnsTable
 }
 
 export default tables;
