@@ -3,6 +3,7 @@ import useFocus from 'hooks/useFocus';
 import useKeyPress from 'hooks/useKeyPress';
 
 import { Icon } from 'components';
+import Menu from './Menu';
 
 import { Input, Container } from './styles';
 
@@ -31,25 +32,30 @@ const Search = ({
   })
 
   return (
-    <Container isFocused={isFocused}>
-      <Icon 
-        name='search' 
-        color={theme.colors.midGrey}
-        maxWidth={12}
-      />
+    <>
+      <Container isFocused={isFocused}>
+        <Icon 
+          name='search' 
+          color={theme.colors.midGrey}
+          maxWidth={12}
+        />
 
-      <Input 
-        placeholder={placeholder}
-        ref={ref}
-        value={query}
-        onChange={(e) => handleInput(e)}
-      />
+        <Input 
+          placeholder={placeholder}
+          ref={ref}
+          value={query}
+          onChange={(e) => handleInput(e)}
+        />
 
-      <div className='hotkey'>
-        ⌘K
-      </div>      
+        <div className='hotkey'>
+          ⌘K
+        </div>      
 
-    </Container>
+        {isFocused && 
+          <Menu />      
+        }
+      </Container>
+    </>
   )
 }
 

@@ -43,6 +43,12 @@ const MAP = {
       fontSize: '1.1rem',
     })
   },
+  7: {
+    element: styled.h6({
+      ...BASE_STYLES,      
+      fontSize: '0.8rem',
+    })
+  },  
 }
 
 const Heading = ({ text, size, children }) => {

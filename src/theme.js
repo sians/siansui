@@ -17,7 +17,8 @@ const theme = {
   // colours 
   colors: {
     black: '#2A282C',
-    white: 'FDFBFF',
+    white: '#FDFBFF15',
+    trueWhite: '#FFF',
     
     main: '#B668FF',
     mainLighter: '#B668FF30',
@@ -27,8 +28,10 @@ const theme = {
     secondaryLighter: '#E5FC5960',
     secondaryDarker: '',
 
+    lightestGrey: '#d9d9d926',
     grey: '#D9D9D9',
     midGrey: '#BEB8C2',
+    darkerGrey: '#322f35db'
   },
 };
 
@@ -43,7 +46,8 @@ export const GlobalStyles = createGlobalStyle(() => {
       '-webkit-font-smoothing': 'antialiased',
       '-moz-osx-font-smoothing': 'grayscale',
       overflow: 'hidden',
-      color: theme.colors.black
+      color: theme.colors.black,
+      backgroundColor: theme.colors.white
     },
     'code': {
       fontFamily: "Red Hat Mono",
