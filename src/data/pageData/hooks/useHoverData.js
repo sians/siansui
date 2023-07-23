@@ -1,4 +1,3 @@
-import { Code, Link } from 'components';
 const codeSnippets = {
   1: `
 import { useRef, useState, useEffect } from 'react'
@@ -112,6 +111,10 @@ const sections = {
 const PAGE_DATA = {
   title: "useHover",
   sections: sections,
+  cardData: {
+    hookName: 'useHover',
+    description: 'Detects when a user hovers over a specific element in a React component.'
+  }
 }
 
 export default PAGE_DATA;

@@ -1,4 +1,3 @@
-import { Code, Link } from 'components';
 const codeSnippets = {
   1: `
     import { useRef, useState, useCallback } from 'react'
@@ -139,6 +138,10 @@ const sections = {
 const PAGE_DATA = {
   title: "useFocus",
   sections: sections,
+  cardData: {
+    hookName: 'useFocus',
+    description: 'The useFocus hook allows components to programmatically gain or lose focus in a React functional component.'
+  }
 }
 
 export default PAGE_DATA;

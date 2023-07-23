@@ -10,6 +10,7 @@ import TypeString from './TypeString';
 import Code from './Code';
 import FooterNav from './FooterNav';
 import Layout from './Layout';
+import Card from './Card';
 
 export {
   Nav,
@@ -23,5 +24,6 @@ export {
   TypeString,
   Code,
   FooterNav,
-  Layout
+  Layout,
+  Card
 }

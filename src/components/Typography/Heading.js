@@ -45,10 +45,10 @@ const MAP = {
   },
 }
 
-const Heading = ({ text, size }) => {
+const Heading = ({ text, size, children }) => {
   const Element = MAP[size].element;
   
-  return <Element>{text}</Element>;
+  return <Element>{children || text}</Element>;
 }
 
 export default Heading;
