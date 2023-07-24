@@ -14,6 +14,7 @@ export const Container = styled.div(props => {
     margin: theme.margin,
     overflowY: 'scroll',
     position: 'fixed',
+    zIndex: 3,
 
     'h4': {
       borderBottom: `1px solid ${theme.colors.grey}`,

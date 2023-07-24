@@ -8,6 +8,8 @@ import theme from 'theme';
 // ]
 
 const borderSize = 1;
+const maxHeight = 55;
+const maxFABHeight = 46;
 
 const BASE_HOVER = { cursor: 'pointer' }
 const BASE_STYLES = {
@@ -62,6 +64,27 @@ export const MAP = {
     }
   },  
 
+  floatingAction: {
+    styles: {
+      backgroundColor: theme.colors.white,
+      color: theme.colors.darkerGrey,
+      borderRadius: '50%',
+      boxShadow: theme.boxShadowDark,
+      height: maxFABHeight - borderSize * 2,
+      width: maxFABHeight - borderSize * 2,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    hover: {
+      ...BASE_HOVER,
+      backgroundColor: theme.colors.secondaryLighter,
+    },
+    fill: {
+      base: theme.colors.black,
+      hover: theme.colors.secondaryBrighter,
+    }
+  },    
+
   disabled: {
     styles: {
       color: `${theme.colors.black}50`,
@@ -73,7 +96,7 @@ export const MAP = {
 
 
 export const StyledButton = styled.button(props => {
-  const { variant } = props;
+  const { variant, buttonSize } = props;
   const buttonStyles = MAP[variant]?.styles;
   const hoverStyles = MAP[variant]?.hover;
 

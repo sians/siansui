@@ -11,11 +11,36 @@ const Button = ({
   className,
   isFullWidth,
   isDisabled,
-  startIconName,
-  endIconName
+  iconName,
+  iconPosition,
+  size
 }) => {
   const [ref, isHovered] = useHover();
-  const handleClick = () => onClick();  
+  const handleClick = () => onClick();
+
+  const buttonSize = size || 'small';
+  const sizeMap = {
+    small: {
+      icon: 14
+    },
+    medium: {
+      icon: 16
+    }
+  }
+
+  const icon = (position) => {
+    return iconName && 
+    <Icon 
+      name={iconName} 
+      fill={{
+        base: MAP[variant]?.fill.base,
+        hover: MAP[variant]?.fill.hover 
+      }}
+      size={sizeMap[buttonSize].icon}
+      isHovered={isHovered}
+      className={`icon ${position}`}
+    />
+  }
 
   return (
     <StyledButton
@@ -25,32 +50,14 @@ const Button = ({
       className={className}
       isFullWidth={isFullWidth}
       isDisabled={isDisabled}
+      buttonSize={buttonSize}
     >
-      {startIconName && 
-        <Icon 
-          name={startIconName} 
-          fill={{
-            base: MAP[variant]?.fill.base,
-            hover: MAP[variant]?.fill.hover 
-          }}
-          isHovered={isHovered}
-          className='icon start'
-        />
-      }
-
+      {iconPosition === 'start' && icon('start')}
+      
+      {iconName && !iconPosition && icon()}
       {text}
 
-      {endIconName && 
-        <Icon 
-          name={endIconName} 
-          fill={{
-            base: MAP[variant]?.fill.base,
-            hover: MAP[variant]?.fill.hover 
-          }}
-          isHovered={isHovered}
-          className='icon end'
-        />
-      }
+      {iconPosition === 'end' && icon('end')}
     </StyledButton>
   )
 }

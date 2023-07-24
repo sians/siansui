@@ -15,12 +15,19 @@ export const Content = styled.article(props => {
   const { theme } = props;
 
   const margin = theme.margin;
-  const width = `calc(100vw - ${theme.sidebarWidth}px - ${margin * 4}px)`
+  const width = `calc(100vw - ${theme.sidebarWidth}px - ${margin * 5}px)`
 
   return {
     paddingLeft: theme.sidebarWidth,
     margin: `0px ${margin * 2}px`,
     width: width,
+    position: 'relative',
+    '.floating-action-btn': {
+      position: 'absolute',
+      right: 0,
+      bottom: theme.navHeight + theme.margin * 2
+    },
+
     'section': {
       margin: `${margin * 3}px 0px`
     }

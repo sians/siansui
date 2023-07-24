@@ -3,7 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 
 import { convertCase } from 'utils';
 
-import { Typography, Nav, Sidebar, FooterNav, Widget } from 'components';
+import { Typography, Nav, Sidebar, FooterNav, Widget, Button } from 'components';
 
 import { Page, Content } from './styles';
 
@@ -24,6 +24,10 @@ const ComponentDetail = () => {
     document.getElementById("page")?.scroll(0,0)
   }, [params?.name]);
 
+  const handleFABClick = () => {
+    console.log('clickky whha')
+  }
+
   return (
     <>
       <Nav />
@@ -31,6 +35,14 @@ const ComponentDetail = () => {
       <Page id='page'>
         <Sidebar />
         <Content>
+          <div className='floating-action-btn'>
+            <Button 
+                variant='floatingAction'
+                iconName='bars'
+                onClick={() => handleFABClick()}
+              />
+          </div>
+
           {data && params.name && 
             <>
               <Typography.Heading 

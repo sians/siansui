@@ -8,6 +8,7 @@ const theme = {
   fontFamily: "Avenir",
   borderRadius: 8,
   boxShadowBig: `0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;`,
+  boxShadowDark: ` 0 6px 16px -8px #00000014, 0 9px 28px #00000014, 0 12px 48px 16px #0000000f;`,
 
   // dimensiony thingys
   sidebarWidth: 300,
@@ -27,6 +28,7 @@ const theme = {
 
     secondary: '#E5FC59',
     secondaryLighter: '#E5FC5960',
+    secondaryBrighter: '#61ad09',
     secondaryDarker: '',
 
     lightestGrey: '#d9d9d926',

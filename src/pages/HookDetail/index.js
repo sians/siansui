@@ -3,7 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 
 import { convertCase } from 'utils';
 
-import { Typography, Nav, Sidebar, FooterNav } from 'components';
+import { Typography, Nav, Sidebar, FooterNav, Button } from 'components';
 import SectionTypes from './SectionTypes';
 
 import { Page, Content } from './styles';
@@ -14,7 +14,6 @@ const HookDetail = () => {
   const params = useParams();
   const location = useLocation();
   const data = useMemo(() => {
-    
     if (location?.pathname) {
       const [,pageType, name] = location.pathname.split('/');
       return ALL_PAGE_DATA[pageType]?.[convertCase('snake', 'camel', name)]
@@ -25,6 +24,12 @@ const HookDetail = () => {
     document.getElementById("page")?.scroll(0,0)
   }, [params?.name]);
 
+  const handleFABClick = () => {
+    console.log('FLOAT A B')
+  }
+
+  console.log(data)
+
   return (
     <>
       <Nav />
@@ -32,6 +37,14 @@ const HookDetail = () => {
       <Page id='page'>
         <Sidebar />
         <Content>
+          <div className='floating-action-btn'>
+            <Button 
+                variant='floatingAction'
+                iconName='bars'
+                onClick={() => handleFABClick()}
+              />
+          </div>
+
           {data && params.name && 
             <>
               <Typography.Heading 
@@ -51,13 +64,13 @@ const HookDetail = () => {
                       />
                     }
 
-                    {section.text && <SectionTypes.Text data={section.text} sectionIdx={idx}/>}
+                    {/* {section.text && <SectionTypes.Text data={section.text} sectionIdx={idx}/>}
 
                     {section.tableData && <SectionTypes.ReturnsTable data={section.tableData}/>}
                     
                     {section.code && <SectionTypes.Snippet data={section.code} sectionIdx={idx}/>}
                     
-                    {section.links && <SectionTypes.Link data={section.links} sectionIdx={idx} />}
+                    {section.links && <SectionTypes.Link data={section.links} sectionIdx={idx} />} */}
                   </section>          
                 )
               })}
