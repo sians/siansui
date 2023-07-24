@@ -11,6 +11,7 @@ import Code from './Code';
 import FooterNav from './FooterNav';
 import Layout from './Layout';
 import Card from './Card';
+import Widget from './Widget';
 
 export {
   Nav,
@@ -25,5 +26,6 @@ export {
   Code,
   FooterNav,
   Layout,
-  Card
+  Card,
+  Widget
 }

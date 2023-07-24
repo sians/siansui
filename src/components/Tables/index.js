@@ -1,9 +1,13 @@
 import PropTable from './PropTable';
 import HookReturnsTable from './HookReturnsTable';
 
-const tables = {
-  PropTable,
-  HookReturnsTable
+const MAP = {
+  props: (data) => <PropTable data={data}/>,
+  hookReturns: (data) => <HookReturnsTable data={data}/>
 }
 
-export default tables;
+const Tables = ({ tableType, data }) => {
+  return MAP[tableType] && MAP[tableType](data)
+}
+
+export default Tables;

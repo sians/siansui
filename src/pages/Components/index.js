@@ -1,18 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Row from './Row';
-import Col from './Col';
-import Heading from './Heading';
-
 import { Nav, Sidebar, FooterNav } from 'components';
 import { Page, Content } from './styles';
-
-const MAP = {
-  row: <Row />,
-  col: <Col />,
-  heading: <Heading />,
-}
 
 const Index = () => {
   const params = useParams();
@@ -27,19 +17,11 @@ const Index = () => {
 
       <Page id='page'>
         <Sidebar />
-        
-        {params.name ? (
-          <Content>
-            {MAP[params.name]}
+        <Content>
+            index components
 
             <FooterNav />
-          </Content>
-        ) : (
-          <>
-
-            indexy
-          </>
-        )}
+        </Content>
       </Page>
     </>
   )

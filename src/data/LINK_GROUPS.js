@@ -5,6 +5,7 @@ const LINK_GROUPS = {
     Layout: [
       { text: 'Row', url: '/components/row' },
       { text: 'Col', url: '/components/col' },  
+      { text: 'Grid', url: '/components/grid' },  
     ],
     Typography: [
       { text: 'Heading', url: '/components/heading' },
