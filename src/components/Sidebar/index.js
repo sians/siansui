@@ -86,8 +86,8 @@ const Sidebar = () => {
 
                 <Icon 
                   name='chevron-down'
-                  color={theme.colors.midGrey}
-                  maxWidth={14}
+                  fill={{base: theme.colors.midGrey}}
+                  size={14}
                   rotateBy={expandedState[groupName] && '180'}
                 />
               </h4>

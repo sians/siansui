@@ -17,10 +17,11 @@ const theme = {
   // colours 
   colors: {
     black: '#2A282C',
-    white: '#FDFBFF15',
+    white: '#fefeff',
     trueWhite: '#FFF',
     
     main: '#B668FF',
+    mainLightest: '#b668ff17',
     mainLighter: '#B668FF30',
     mainDarker: '#7A34BB',
 

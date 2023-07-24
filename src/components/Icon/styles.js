@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div(props => {
-  const { maxWidth, isLink, isDisabled, rotateBy } = props;
+  const { size, isLink, isDisabled, rotateBy } = props;
 
-  const size = 18;
+  const defaultSize = 18;
 
   const baseStyles = {
-    width: maxWidth ? maxWidth : size,
-    height: maxWidth ? maxWidth : size,
+    width: size ? size : defaultSize,
+    height: size ? size : defaultSize,
     transform: rotateBy && `rotate(${rotateBy}deg)`,
     transition: 'transform 0.3s'
   }

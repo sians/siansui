@@ -16,7 +16,10 @@ export const Container = styled.div(props => {
     '.logo-container': {
       minWidth: logoWidth,
       borderRight: `1px solid ${theme.colors.grey}`,
-      margin: theme.margin
+      margin: theme.margin,
+      '&:hover': {
+        cursor: 'pointer'
+      }
     },
 
     '.main-container': {

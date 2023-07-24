@@ -5,14 +5,15 @@ import ComponentIndex from 'pages/Components';
 import ComponentDetail from 'pages/ComponentDetail';
 import HookIndex from 'pages/Hooks';
 import HookDetail from 'pages/HookDetail';
+import Home from 'pages/Home';
 
 const routes = [
-  { path: '/', component: ComponentIndex },
+  { path: '/', component: Home },
   { path: '/components', component: ComponentIndex },
   { path: '/components/:name', component: ComponentDetail },
   { path: '/hooks', component: HookIndex },  
   { path: '/hooks/:name', component: HookDetail },
-  { path: '/*', component: ComponentIndex },
+  { path: '/*', component: Home },
 ];
 
 export default function Router() {

@@ -12,6 +12,7 @@ import FooterNav from './FooterNav';
 import Layout from './Layout';
 import Card from './Card';
 import Widget from './Widget';
+import Button from './Button';
 
 export {
   Nav,
@@ -27,5 +28,6 @@ export {
   FooterNav,
   Layout,
   Card,
-  Widget
+  Widget,
+  Button
 }

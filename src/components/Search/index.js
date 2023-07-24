@@ -36,8 +36,8 @@ const Search = ({
       <Container isFocused={isFocused}>
         <Icon 
           name='search' 
-          color={theme.colors.midGrey}
-          maxWidth={12}
+          fill={{base: theme.colors.midGrey}}
+          size={12}
         />
 
         <Input 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import theme from 'theme';
 
@@ -10,17 +10,22 @@ import { Container } from './styles';
 
 const Icon = ({ 
   name, 
-  maxWidth,
+  size,
   action,
   className,
-  color,
+  fill,
   isDisabled,
   rotateBy,
-  verticalAlign
+  verticalAlign,
+  isHovered
 }) => {
   const isLink = action ? true : false;
 
-  const [isHover, setIsHover] = useState(false);
+  const [color, setColor] = useState([]);
+
+  useEffect(() => {
+    setColor(makeColor())
+  }, [fill])
 
   const handleAction = () => {
     if (!isDisabled && action) {
@@ -28,28 +33,56 @@ const Icon = ({
     }
   }
 
+  const colorMap = {
+    disabled: {
+      base: theme.colors.midGrey, 
+      hover: theme.colors.midGrey
+    },
+    link: {
+      base: theme.colors.black, 
+      hover: theme.colors.main
+    },
+    default: {
+      base: theme.colors.black,
+      hover: theme.colors.main
+    },
+
+    hasFill: { ...fill }
+  }
+  const makeColor = () => {
+    if (isDisabled) {
+      return colorMap.disabled;
+    }
+
+    if (fill) {
+      return colorMap.hasFill;
+    }
+
+    if (isLink) {
+      return colorMap.link
+    }
+
+    return colorMap.default;
+  }
+
   return (
   <Container 
-    maxWidth={maxWidth}
+    size={size}
     onClick={() => handleAction()}
     isLink={isLink}
     className={className}
     isDisabled={isDisabled}
-    onMouseEnter={() => setIsHover(true)}
-    onMouseLeave={() => setIsHover(false)}
     rotateBy={rotateBy}
   >
     <IcomoonReact 
       iconSet={iconSet} 
-      size={maxWidth}
+      size={size}
       title={name} 
       icon={name}
       color={
-        isDisabled 
-          ? theme.colors.midGrey
-          : isHover && isLink
-            ? theme.colors.main 
-            : color || theme.colors.black
+        isHovered
+          ? color.hover || color.base
+          : color.base
       }
       style={{verticalAlign: verticalAlign || 'super'}}
     />
@@ -70,7 +103,12 @@ Icon.propTypes = {
     'toggle-on',
     'icomoon',
   ]),
-  maxWidth: PropTypes.number,
+  size: PropTypes.number,
   action: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
+  fill: PropTypes.arrayOf([PropTypes.string])
+}
+
+Icon.defaultProps = {
+  fill: []
 }

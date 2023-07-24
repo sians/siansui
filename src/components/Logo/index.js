@@ -10,15 +10,15 @@ const Logo = () => {
       <Icon 
         name='circle'
         verticalAlign='baseline'
-        maxWidth={10}
-        color={theme.colors.main}
+        size={10}
+        fill={{ base: theme.colors.main }}
       />
       <span>sians</span>
       <Icon 
         name='circle' 
         verticalAlign='baseline'
-        maxWidth={10}
-        color={theme.colors.main}
+        size={10}
+        fill={{ base: theme.colors.main }}
       />
       <span>ui</span>
     </Container>

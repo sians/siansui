@@ -73,11 +73,13 @@ const FooterNav = ({ }) => {
             <Icon 
               name='chevron-down' 
               rotateBy={90}
-              color={isLeftHovered 
-                ? theme.colors.black
-                : theme.colors.midGrey}
-              maxWidth={14}
-              className='nav-icon-left'
+              isHovered={isLeftHovered}
+              fill={{
+                base: theme.colors.midGrey,
+                hover: theme.colors.black
+              }}
+              size={14}
+              className='icon nav-icon-left'
             />
             <Typography.Body>{prevComponentStr}</Typography.Body>
           </Layout.Row>
@@ -98,12 +100,13 @@ const FooterNav = ({ }) => {
             <Icon 
               name='chevron-down' 
               rotateBy={-90}
-              color={isRightHovered 
-                ? theme.colors.black
-                : theme.colors.midGrey}
-
-              maxWidth={14}
-              className='nav-icon-right'
+              isHovered={isRightHovered}
+              fill={{
+                base: theme.colors.midGrey,
+                hover: theme.colors.black
+              }}
+              size={14}
+              className='icon nav-icon-right'
             />
           </Layout.Row>
         }        

@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Search, Icon, Logo } from 'components';
 
 import { Container, MenuItem } from './styles';
+import theme from 'theme';
 
 const MENU = [
   'Components',
@@ -13,9 +14,13 @@ const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const handleLogoClick = () => {
+    navigate('/')
+  }
+
   return (
     <Container>
-      <div className='logo-container'>
+      <div className='logo-container' onClick={handleLogoClick}>
           <Logo />
       </div>
 
@@ -39,7 +44,10 @@ const Nav = () => {
             )
           })}
           <MenuItem>
-            <Icon name='bars'/>
+            <Icon 
+              name='bars' 
+              fill={{base: theme.colors.black}}
+            />
           </MenuItem>
         </ul>
 
