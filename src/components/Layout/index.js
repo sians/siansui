@@ -21,10 +21,10 @@ export const Row = styled.div(props => {
 })
 
 export const Col = styled.div(props => {
-  const { size, paddingX, paddingY, theme, justify, align, overflow, maxHeight, spacing, gutterSize } = props;
+  const { size, paddingX, paddingY, theme, justify, align, overflow, maxHeight, gutterSize } = props;
   const padding = `${paddingY || 0}px ${paddingX || 0}px`;
   const widthPercentage = size / 12 * 100;
-  const widthSubtractPx = ((paddingX || 0) * 2) + gutterSize;
+  const widthSubtractPx = ((paddingX || 0) * 2) + (gutterSize || 0);
 
   return {
     display: 'flex',
@@ -51,20 +51,34 @@ const Grid = ({ elements, gutterSize, colNum }) => {
 
   const chunkedElements = useMemo(() => {
     if (elements.length > 0) {
-      return chunkAry(elements, colNum);
+      const chunked = chunkAry(elements, colNum);
+
+      // add empty grid objects to maintain layout
+      const lastChunk = chunked[chunked.length - 1];
+      const lastChunkLength = chunked[chunked.length - 1]?.length;
+      if(lastChunkLength < colNum) {
+        for(let i = lastChunkLength; i < colNum; i++) {
+          lastChunk.push(<div/>);
+        }
+      }
+
+      return chunked;
     }
   }, [elements])
 
   return (
     <Row>
-      <Col>
+      <Col size={12}>
       
         {chunkedElements && chunkedElements.map((row, rowIdx) => {
           const isFirstRow = rowIdx === 0;
           return (
             <>
               {!isFirstRow && <Spacer size={gutterSize}/>}            
-              <Row key={`grid-r-${rowIdx}`} justify='space-between'>
+              <Row 
+                key={`grid-r-${rowIdx}`} 
+                justify='space-between'
+              >
                 {row && row.map((elem, elemId) => {
                   const totalMarginSize = gutterSize * (colNum  - 1);
                   const colSubtractSize = totalMarginSize / colNum;

@@ -1,10 +1,12 @@
 import HookCard from './HookCard'
+import ComponentCard from './ComponentCard'
 
 import { Typography } from 'components';
 import { Container } from './styles';
 
 const CARD_MAP  = {
   hook: (props) => <HookCard {...props} />,
+  component: (props) => <ComponentCard {...props} />
 }
 
 const Card = ({ 

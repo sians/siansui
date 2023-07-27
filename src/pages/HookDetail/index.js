@@ -28,7 +28,6 @@ const HookDetail = () => {
     console.log('FLOAT A B')
   }
 
-  console.log(data)
 
   return (
     <>

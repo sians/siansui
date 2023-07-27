@@ -58,7 +58,6 @@ const ComponentDetail = () => {
                     {section.title && <Typography.Heading size={3} >{section.title}</Typography.Heading>}                    
 
                     {section.widgets.map((widget, widgetIdx) => {
-                      console.log('widgets', widget)
                       return (
                         <Widget 
                           widget={widget}

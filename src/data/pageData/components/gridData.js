@@ -19,7 +19,7 @@ const Grid = ({ elements, gutterSize, colNum }) => {
 
   return (
     <Row>
-      <Col>
+      <Col size={12}>
         {chunkedElements && chunkedElements.map((row, rowIdx) => {
           const isFirstRow = rowIdx === 0;
           return (

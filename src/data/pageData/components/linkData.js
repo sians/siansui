@@ -139,7 +139,7 @@ const PAGE_DATA = {
   sections: sections,
   cardData: {
     title: 'Link',
-    description: 'An Icon component build on top of the iconomoon library.'
+    description: 'Navigate between pages.'
   }   
 
 }

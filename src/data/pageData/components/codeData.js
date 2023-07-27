@@ -211,7 +211,7 @@ const PAGE_DATA = {
   sections: sections,
   cardData: {
     title: 'Code',
-    description: ''
+    description: 'Style with code blocks or inline.'
   }   
 
 }

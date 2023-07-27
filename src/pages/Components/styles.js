@@ -23,6 +23,12 @@ export const Content = styled.article(props => {
     width: width,
     'section': {
       margin: `${margin * 3}px 0px`
+    },
+    '.group': {
+      marginTop: theme.margin * 3
+    },
+    'h4': {
+      marginBottom: theme.margin
     }
   }
 })

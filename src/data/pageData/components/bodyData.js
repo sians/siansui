@@ -160,7 +160,7 @@ const PAGE_DATA = {
   sections: sections,
   cardData: {
     title: 'Body',
-    description: 'An Icon component build on top of the iconomoon library.'
+    description: 'Main Text component for paragraph styles.'
   }   
 
 }
