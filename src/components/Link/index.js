@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-import { ButtonLink } from './styles';
+import { ButtonLink, ALink } from './styles';
 
-const Link = ({ text, url, variant }) => {
+const Link = ({ text, url, variant, isExternal }) => {
   const navigate = useNavigate();
 
   const handleClick = (event) => {
@@ -10,7 +11,11 @@ const Link = ({ text, url, variant }) => {
     navigate(url);
   }
 
-  return (
+  return isExternal ? (
+    <ALink href={url} target='_blank'>
+      {text}
+    </ALink>
+  ) : (
     <ButtonLink
       role="link"
       aria-label={text}
@@ -23,3 +28,14 @@ const Link = ({ text, url, variant }) => {
 }
 
 export default Link;
+
+Link.propTypes = {
+  text: PropTypes.string,
+  url: PropTypes.string,
+  variant: PropTypes.string,
+  isExternal: PropTypes.bool
+}
+
+Link.defaultProps = {
+  isExternal: false
+}

@@ -15,6 +15,12 @@ const theme = {
   sidebarPadding: margin,
   navHeight: 60,
 
+  text: {
+    sizes: {
+      body: '1.05rem'
+    }
+  },
+
   // colours 
   colors: {
     black: '#2A282C',
@@ -31,6 +37,10 @@ const theme = {
     secondaryBrighter: '#61ad09',
     secondaryDarker: '',
 
+    tercery: '#eb64b9',
+    terceryLighter: '',
+
+    veryLightestGrey: 'rgba(5, 5, 5, 0.06)',
     lightestGrey: '#d9d9d926',
     grey: '#D9D9D9',
     midGrey: '#BEB8C2',

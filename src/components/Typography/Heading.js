@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -58,3 +59,13 @@ const Heading = ({ text, size, children }) => {
 }
 
 export default Heading;
+
+Heading.propTypes = {
+  children: PropTypes.node.isRequired,
+  size: PropTypes.number,
+  text: PropTypes.string,
+};
+
+Heading.defaultProps = {
+  size: 4,
+};

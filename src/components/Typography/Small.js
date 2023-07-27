@@ -1,58 +1,50 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Styled = styled.p(props => {
-  const { theme, marginY, isItalic, isBold, variant } = props;
-
-  const baseStyles = {
-    margin: `${marginY}px 0px`,
-    fontSize: theme.text.sizes.body,
-    fontStyle: isItalic && 'italic',
-    fontWeight: isBold && 900,
-  }
-
-  const variantStyles = {
-    large: { fontSize: '1.2rem' }
-  }
+const Styled = styled.small(props => {
+  const { marginY, isItalic, isBold, color } = props;
 
   return {
-    ...baseStyles,
-    ...(variantStyles[variant])
+    margin: `${marginY} 0px`,
+    fontSize: '0.85rem',
+    fontWeight: 400,
+    fontStyle: isItalic && 'italic',
+    fontWeight: isBold && 900,
+    color: color
   }
 })
 
-const Body = ({ 
+const Small = ({ 
   children, 
   marginY, 
   isItalic, 
   isBold,
-  variant
+  color
 }) => {
   return (
     <Styled 
       marginY={marginY}
       isItalic={isItalic}
       isBold={isBold}
-      variant={variant}
+      color={color}
     >
       {children}
     </Styled>
   )
 }
 
-export default Body;
+export default Small;
 
-Body.propTypes = {
+Small.propTypes = {
   children: PropTypes.node.isRequired,
   marginY: PropTypes.number,
   isItalic: PropTypes.bool,
   isBold: PropTypes.bool,
-  variant: PropTypes.oneOf(['large', 'main'])
+  color: PropTypes.string
 };
 
-Body.defaultProps = {
+Small.defaultProps = {
   marginY: 0,
   isItalic: false,
   isBold: false,
-  variant: 'main'
 };

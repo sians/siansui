@@ -25,16 +25,64 @@ export const ButtonLink = styled.button(props => {
       }
     }
   }
-
+  
+  const btBottomPadding = 3;
   const mainStyles = {
     color: theme.colors.main,
-    '&:hover': {
-      cursor: 'pointer',
-      color: theme.colors.mainDarker
+    fontFamily: theme.fontFamily,
+    fontSize: theme.text.sizes.body,
+    background: 'none',    
+    outline: 'none',
+    border: 'none',
+
+    background: `
+      linear-gradient(to right, ${theme.colors.white}, ${theme.colors.white}),
+      linear-gradient(to right, ${theme.colors.secondary}, ${theme.colors.secondary})`,
+    backgroundSize: '100% 0.6em, 0 0.6em',
+    backgroundPosition: '100% 100%, 0 100%',
+    backgroundRepeat: 'no-repeat',
+    paddingBottom: `${btBottomPadding}px`,
+    transition: 'all 400ms',
+  
+    '&:hover, &:focus': {
+      backgroundSize: "0 0.6em, 100% 0.6em",
+      color: theme.colors.main,
+      cursor: 'pointer'
     }
+
   }
 
   return {
     ...(variants[variant] || mainStyles),
+  }
+})
+
+export const ALink = styled.a(props => {
+  const { theme } = props;
+  
+  const btBottomPadding = 3;
+  
+  return {
+    color: theme.colors.main,
+    position: 'inline-block',
+    padding: `0px ${theme.margin / 3}px`,
+    fontSize: theme.text.sizes.body,
+    fontWeight: 400,
+    textDecoration: 'none',
+    background: `
+      linear-gradient(to right, ${theme.colors.white}, ${theme.colors.white}),
+      linear-gradient(to right, ${theme.colors.secondary}, ${theme.colors.secondary})`,
+    backgroundSize: '100% 0.6em, 0 0.6em',
+    backgroundPosition: '100% 100%, 0 100%',
+    backgroundRepeat: 'no-repeat',
+    paddingBottom: `${btBottomPadding}px`,
+    transition: 'all 400ms',
+  
+    '&:hover, &:focus': {
+      backgroundSize: "0 0.6em, 100% 0.6em",
+      color: theme.colors.main,
+      cursor: 'pointer'
+    }
+
   }
 })

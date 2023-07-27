@@ -52,12 +52,13 @@ const ComponentDetail = () => {
 
               {data.sections && Object.keys(data.sections).map((sectionName, idx) => {
                 const section = data.sections[sectionName];
-                console.log(section, 'seccc')
+                
                 return (
                   <section key={`${section.title}-section`}>
                     {section.title && <Typography.Heading size={3} >{section.title}</Typography.Heading>}                    
 
                     {section.widgets.map((widget, widgetIdx) => {
+                      console.log('widgets', widget)
                       return (
                         <Widget 
                           widget={widget}

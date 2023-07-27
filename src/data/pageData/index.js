@@ -8,6 +8,11 @@ import rowData from './components/rowData';
 import colData from './components/colData';
 import gridData from './components/gridData';
 import headingData from './components/headingData';
+import iconData from './components/iconData';
+import bodyData from './components/bodyData';
+import smallData from './components/smallData';
+import codeData from './components/codeData';
+import linkData from './components/linkData';
 
 const MAP = {
   hooks: {
@@ -19,7 +24,12 @@ const MAP = {
     row: rowData,
     grid: gridData,
     col: colData,
-    heading: headingData
+    heading: headingData,
+    icon: iconData,
+    body: bodyData,
+    small: smallData,
+    code: codeData,
+    link: linkData
   }
 }
 
