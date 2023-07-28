@@ -13,6 +13,8 @@ import Layout from './Layout';
 import Card from './Card';
 import Widget from './Widget';
 import Button from './Button';
+import Badge from './Badge';
+import Switch from './Switch';
 
 export {
   Nav,
@@ -29,5 +31,7 @@ export {
   Layout,
   Card,
   Widget,
-  Button
+  Button,
+  Badge,
+  Switch
 }

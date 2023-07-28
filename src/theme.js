@@ -9,6 +9,7 @@ const theme = {
   borderRadius: 8,
   boxShadowBig: `0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;`,
   boxShadowDark: ` 0 6px 16px -8px #00000014, 0 9px 28px #00000014, 0 12px 48px 16px #0000000f;`,
+  boxShadowSmall: `0 3px 8px 3px #00000014, 1px 3px 8px #00000024`,
 
   // dimensiony thingys
   sidebarWidth: 300,
@@ -39,6 +40,8 @@ const theme = {
 
     tercery: '#eb64b9',
     terceryLighter: '',
+
+    danger: '#ff0140',
 
     veryLightestGrey: 'rgba(5, 5, 5, 0.06)',
     lightestGrey: '#d9d9d926',

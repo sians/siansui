@@ -53,9 +53,9 @@ const MAP = {
 }
 
 const Heading = ({ text, size, children }) => {
-  const Element = MAP[size].element;
+  const Element = MAP[size]?.element;
   
-  return <Element>{children || text}</Element>;
+  return Element && <Element>{children || text}</Element>;
 }
 
 export default Heading;

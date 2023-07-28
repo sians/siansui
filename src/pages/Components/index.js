@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import { convertCase } from 'utils';
 
-import { Nav, Sidebar, Layout, Typography, Card } from 'components';
+import { Nav, Sidebar, Layout, Typography, Card, Badge, Icon} from 'components';
 import { Page, Content } from './styles';
 
 import ALL_PAGE_DATA from 'data/pageData';
@@ -46,10 +46,9 @@ const Index = () => {
         <Sidebar />
         <Content>
           <Typography.Heading 
-            text='Components Overview'
-            size={1}
-          />
-
+              text='Components Overview'
+              size={99}
+            />                   
           <Layout.Row>
 
             {Object.keys(LINK_GROUPS.components).map((groupName) => {

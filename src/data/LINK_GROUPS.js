@@ -27,6 +27,7 @@ const LINK_GROUPS = {
       { text: 'Card', url: '/components/card' },
       { text: 'ProgressBar', url: '/components/progress_bar' },
       { text: 'Badge', url: '/components/badge' },
+      { text: 'Switch', url: '/components/switch' },
     ],  
   },
   hooks: {

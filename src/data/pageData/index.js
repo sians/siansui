@@ -13,6 +13,8 @@ import bodyData from './components/bodyData';
 import smallData from './components/smallData';
 import codeData from './components/codeData';
 import linkData from './components/linkData';
+import badgeData from './components/badgeData';
+import switchData from './components/switchData';
 
 const MAP = {
   hooks: {
@@ -29,7 +31,9 @@ const MAP = {
     body: bodyData,
     small: smallData,
     code: codeData,
-    link: linkData
+    link: linkData,
+    badge: badgeData,
+    switch: switchData
   }
 }
 
