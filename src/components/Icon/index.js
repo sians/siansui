@@ -102,6 +102,8 @@ Icon.propTypes = {
     'toggle-off',
     'toggle-on',
     'icomoon',
+    'magic',
+    'close'
   ]),
   size: PropTypes.number,
   action: PropTypes.func,

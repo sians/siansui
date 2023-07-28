@@ -6,7 +6,11 @@ const margin = 16;
 const theme = {
   margin: margin,
   fontFamily: "Avenir",
+  
+  borderRadiusSmall: 4,
   borderRadius: 8,
+  borderRadiusBig: 16,
+
   boxShadowBig: `0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;`,
   boxShadowDark: ` 0 6px 16px -8px #00000014, 0 9px 28px #00000014, 0 12px 48px 16px #0000000f;`,
   boxShadowSmall: `0 3px 8px 3px #00000014, 1px 3px 8px #00000024`,
