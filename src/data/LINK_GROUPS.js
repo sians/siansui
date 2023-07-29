@@ -29,6 +29,8 @@ const LINK_GROUPS = {
       { text: 'Badge', url: '/components/badge' },
       { text: 'Switch', url: '/components/switch' },
       { text: 'Chip', url: '/components/chip' },
+      { text: 'Avatar', url: '/components/avatar' },
+      { text: 'AvatarGroup', url: '/components/avatar_group' },
     ],  
   },
   hooks: {

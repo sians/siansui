@@ -21,8 +21,11 @@ export const Container = styled.div(props => {
       width: badgeSize,
       borderRadius: 8,
       position: 'absolute',
-      top: -theme.margin / 1.5,
-      right: -theme.margin / 1.5,
+      // top: -theme.margin / 1.5,
+      // right: -theme.margin / 1.5,
+      top: -4,
+      right: -4,
+
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',

@@ -16,6 +16,8 @@ import linkData from './components/linkData';
 import badgeData from './components/badgeData';
 import switchData from './components/switchData';
 import chipData from './components/chipData';
+import avatarData from './components/avatarData';
+import avatarGroupData from './components/avatarGroupData';
 
 const MAP = {
   hooks: {
@@ -35,7 +37,9 @@ const MAP = {
     link: linkData,
     badge: badgeData,
     switch: switchData,
-    chip: chipData
+    chip: chipData,
+    avatar: avatarData,
+    avatar_group: avatarGroupData
   }
 }
 

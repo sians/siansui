@@ -34,7 +34,7 @@ const theme = {
     
     main: '#B668FF',
     mainLightest: '#b668ff17',
-    mainLighter: '#B668FF30',
+    mainLighter: '#f1e2ff',
     mainDarker: '#7A34BB',
 
     secondary: '#E5FC59',

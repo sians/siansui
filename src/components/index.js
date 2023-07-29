@@ -16,6 +16,8 @@ import Button from './Button';
 import Badge from './Badge';
 import Switch from './Switch';
 import Chip from './Chip';
+import Avatar from './Avatar';
+import AvatarGroup from './AvatarGroup';
 
 export {
   Nav,
@@ -35,5 +37,7 @@ export {
   Button,
   Badge,
   Switch,
-  Chip
+  Chip,
+  Avatar,
+  AvatarGroup
 }
