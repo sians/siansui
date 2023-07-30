@@ -47,6 +47,28 @@ const theme = {
 
     danger: '#ff0140',
 
+    error: {
+      dark: '#993232',
+      main: '#D85656',
+      light: '#ECD5D5'
+    },
+    success: {
+      dark: '#327730',
+      main: '#7FB27E',
+      light: '#DDECDD'
+    },
+    warning: {
+      dark: '#D8A012',
+      main: '#E9CC82',
+      light: '#F8F1E1'
+    },
+    info: {
+      dark: '',
+      main: '',
+      light: ''
+    },
+
+
     veryLightestGrey: 'rgba(5, 5, 5, 0.06)',
     lightestGrey: '#d9d9d926',
     grey: '#D9D9D9',

@@ -25,6 +25,7 @@ const LINK_GROUPS = {
     ],
     General: [
       { text: 'Icon', url: '/components/icon' },
+      { text: 'Alert', url: '/components/alert' },
       { text: 'Card', url: '/components/card' },
       { text: 'ProgressBar', url: '/components/progress_bar' },
       { text: 'Badge', url: '/components/badge' },
@@ -32,6 +33,7 @@ const LINK_GROUPS = {
       { text: 'Chip', url: '/components/chip' },
       { text: 'Avatar', url: '/components/avatar' },
       { text: 'AvatarGroup', url: '/components/avatar_group' },
+      
     ],  
   },
   hooks: {

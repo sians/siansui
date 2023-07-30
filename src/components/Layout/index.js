@@ -3,14 +3,16 @@ import { chunkAry } from 'utils';
 import styled from 'styled-components';
 
 export const Row = styled.div(props => {
-  const { padding, align, justify, height, overflowY } = props;
-  const rowPadding = padding || 0;
+  const { paddingX, paddingY, align, justify, height, overflowY } = props;
+
+  const xPadding = paddingX || 0;
+  const yPadding = paddingY || 0;
 
   return {
     display: 'flex',
     flexDirection: 'row',
-    padding: rowPadding,
-    width: `calc(100% - ${rowPadding * 2}px)`,
+    padding: `${yPadding}px ${xPadding}px`,
+    width: `calc(100% - ${paddingX * 2}px)`,
     alignItems: align,
     justifyContent: justify,
     height: height,

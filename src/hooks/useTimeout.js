@@ -5,8 +5,10 @@ const useTimeout = (callback, delay) => {
     callbackRef.current = callback;
 
     useEffect(() => {
+      if (delay) {
         const id = setTimeout(() => callbackRef.current(), delay);
-        return () => clearTimeout(id);
+        return () => clearTimeout(id);  
+      }
     }, [delay]);
 }
 

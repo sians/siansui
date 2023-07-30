@@ -19,6 +19,7 @@ import Chip from './Chip';
 import Avatar from './Avatar';
 import AvatarGroup from './AvatarGroup';
 import Slider from './Slider';
+import Alert from './Alert';
 
 export {
   Nav,
@@ -41,5 +42,6 @@ export {
   Chip,
   Avatar,
   AvatarGroup,
-  Slider
+  Slider,
+  Alert
 }

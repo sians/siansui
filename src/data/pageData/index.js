@@ -19,6 +19,7 @@ import chipData from './components/chipData';
 import avatarData from './components/avatarData';
 import avatarGroupData from './components/avatarGroupData';
 import sliderData from './components/sliderData';
+import alertData from './components/alertData';
 
 const MAP = {
   hooks: {
@@ -41,7 +42,8 @@ const MAP = {
     chip: chipData,
     avatar: avatarData,
     avatar_group: avatarGroupData,
-    slider: sliderData
+    slider: sliderData,
+    alert: alertData
   }
 }
 

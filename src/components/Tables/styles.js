@@ -36,7 +36,7 @@ export const Row = styled.tr(props => {
 export const Header = styled(Row)({});
 
 export const Cell = styled.td(props => {
-  const { size, padding, justify, align, overflow, maxHeight } = props;
+  const { size, padding, justify, align, maxHeight } = props;
   const colPadding = padding || 0;
   const widthPercentage = size / 12 * 100;
 
@@ -49,7 +49,7 @@ export const Cell = styled.td(props => {
     justifyContent: justify,
     alignItems: align,
     transition: 'width 0.5s',
-    overflow: overflow && overflow,
-    maxHeight: maxHeight && maxHeight
+    maxHeight: maxHeight && maxHeight,
+    overflowY: 'scroll'
   }
 });
