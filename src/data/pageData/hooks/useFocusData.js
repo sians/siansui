@@ -1,3 +1,4 @@
+import { Link } from 'components';
 const codeSnippets = {
   1: `
     import { useRef, useState, useCallback } from 'react'
@@ -77,60 +78,94 @@ const codeSnippets = {
 
 const sections = {
   description: {
-    text: [
-      "The 'useFocus' hook allows you to track and control the focus state of an element.", 
-      "This hook returns an array that includes a callback ref, a boolean state to indicate whether the element is focused, and a function to manually set focus or blur.",
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [ 
+          "The 'useFocus' hook allows you to track and control the focus state of an element.", 
+          "This hook returns an array that includes a callback ref, a boolean state to indicate whether the element is focused, and a function to manually set focus or blur.",
+            ]
+      }
     ]
   },
   whenToUse: {
     title: 'When To Use',
-    text: [
-      "Use this hook when you need to trigger changes elsewhere in your code based on the focus/blur state of an element.",
-      "It allows for dynamic and responsive behavior not necessarily local to the focus/blur element itself.",        
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [ 
+          "Use this hook when you need to trigger changes elsewhere in your code based on the focus/blur state of an element.",
+          "It allows for dynamic and responsive behavior not necessarily local to the focus/blur element itself.",        
+        ]
+      }
     ]
   },
   returnValue: {
     title: 'Returned Values',
-    text: [
-      "The useFocus hook returns an array of the following three variables.",
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [ 
+          "The useFocus hook returns an array of the following three variables.",
+        ]
+      },
+      {
+        widgetType: 'table',
+        tableType: 'hookReturns',
+        data: [
+          { 
+            name: 'callbackRef',
+            description: 'A memoized ref object',
+            propType: 'func'
+          },
+          { 
+            name: 'isFocused',
+            description: '',
+            propType: 'boolean'
+          },
+          { 
+            name: 'setFocus',
+            description: 'resets the Focus to the referenced node',
+            propType: 'func'
+          },   
+        ]
+      }
     ],
-    tableData: [
-      { 
-        name: 'callbackRef',
-        description: 'A memoized ref object',
-        propType: 'func'
-      },
-      { 
-        name: 'isFocused',
-        description: '',
-        propType: 'boolean'
-      },
-      { 
-        name: 'setFocus',
-        description: 'resets the Focus to the referenced node',
-        propType: 'func'
-      },            
-    ]
   },
   snippets: {
     title: 'Snippets',
-    code: [
+    widgets: [
       {
-        str: codeSnippets[1],
-        language: 'javascript',
-        title: 'src/hooks/useFocus.js'
-      },
+        widgetType: 'code',
+        data: [
+          {
+            str: codeSnippets[1],
+            language: 'javascript',
+            title: 'src/hooks/useFocus.js'
+          },
+        ]
+      },  
       {
-        str: codeSnippets[2],
-        language: 'javascript',
-        title: 'Example use:'
-      },      
-    ]
+        widgetType: 'code',
+        data: [
+          {
+            str: codeSnippets[2],
+            language: 'javascript',
+            title: 'Example use:'
+          },
+        ]
+      },        
+    ],    
   },
   seeAlso: {
     title: 'See Also',
-    links: [
-      { url: '/components/search', text:  '<Search />' }
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [
+          <Link text='<Search />' url='/components/search'/>
+        ]
+      }
     ]
   }
 }

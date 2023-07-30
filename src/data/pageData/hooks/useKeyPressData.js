@@ -56,44 +56,67 @@ useKeyPress({
 }) 
   `
 }
-
 const sections = {
   description: {
-    text: [
-      "The 'useKeyPress' hook allows you to execute specific callbacks when a certain key or key combination is pressed.", 
-      "This hook takes an object mapping keys or key combinations to callback functions, and sets up event listeners to execute the callbacks when the specified keys are pressed.",
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [
+          "The 'useKeyPress' hook allows you to execute specific callbacks when a certain key or key combination is pressed.", 
+          "This hook takes an object mapping keys or key combinations to callback functions, and sets up event listeners to execute the callbacks when the specified keys are pressed."
+        ]
+      }
     ]
   },
   whenToUse: {
     title: 'When To Use',
-    text: [
-      "Use this hook when you need to perform actions in response to specific key presses or key combinations. This can be particularly useful in building keyboard navigation, shortcuts, or game controls.",
-      "It simplifies the process of setting up keydown event listeners and handling possible key combinations, making your code cleaner and more organized.",        
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [
+          "Use this hook when you need to perform actions in response to specific key presses or key combinations. This can be particularly useful in building keyboard navigation, shortcuts, or game controls.",
+          "It simplifies the process of setting up keydown event listeners and handling possible key combinations, making your code cleaner and more organized."
+        ]
+      }
     ]
   },
   returnValue: {
     title: 'Returned Values',
-    text: [
-      "The useKeyPress hook does not return any values. Instead, it performs side effects (the provided callback functions) when certain keys are pressed.",
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [
+          "The useKeyPress hook does not return any values. Instead, it performs side effects (the provided callback functions) when certain keys are pressed."
+        ]
+      }
     ]
   },
   snippets: {
     title: 'Snippets',
-    code: [
+    widgets: [
       {
-        str: codeSnippets[1],
-        language: 'javascript',
-        title: 'src/hooks/useKeyPress.js'
+        widgetType: 'code',
+        data: [
+          {
+            str: codeSnippets[1],
+            language: 'javascript',
+            title: 'src/hooks/useKeyPress.js'
+          }
+        ]
       },
       {
-        str: codeSnippets[2],
-        language: 'javascript',
-        title: 'Example use:'
-      },      
+        widgetType: 'code',
+        data: [
+          {
+            str: codeSnippets[2],
+            language: 'javascript',
+            title: 'Example use:'
+          }
+        ]
+      },
     ]
-  }
+  },
 }
-
 
 const PAGE_DATA = {
   title: "useKeyPress",
@@ -101,8 +124,7 @@ const PAGE_DATA = {
   cardData: {
     hookName: 'useKeyPress',
     description: 'Detects when a user presses a specific key on the keyboard.'
-  } 
+  }
 }
 
 export default PAGE_DATA;
-

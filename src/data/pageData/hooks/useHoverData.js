@@ -60,53 +60,81 @@ export default useHover;
 
 const sections = {
   description: {
-    text: [
-      "The 'useHover' hook allows you to track whether an element is being hovered over.", 
-      "This hook returns an array that includes a ref object and a boolean state to indicate whether the element is being hovered.",
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [
+          "The 'useHover' hook allows you to track whether an element is being hovered over.", 
+          "This hook returns an array that includes a ref object and a boolean state to indicate whether the element is being hovered."
+        ]
+      }
     ]
   },
   whenToUse: {
     title: 'When To Use',
-    text: [
-      "Use this hook when you need to handle hover states, such as creating hover effects, displaying tooltips, or any other changes based on the hover state of an element.",
-      "It simplifies the process of tracking hover state and encourages clean, organized code by localizing the hover state logic.",        
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [
+          "Use this hook when you need to handle hover states, such as creating hover effects, displaying tooltips, or any other changes based on the hover state of an element.",
+          "It simplifies the process of tracking hover state and encourages clean, organized code by localizing the hover state logic."
+        ]
+      }
     ]
   },
   returnValue: {
     title: 'Returned Values',
-    text: [
-      "The useHover hook returns an array of the following two variables.",
-    ],
-    tableData: [
-      { 
-        name: 'ref',
-        description: 'A mutable ref object',
-        propType: 'object'
+    widgets: [
+      {
+        widgetType: 'text',
+        data: [
+          "The useHover hook returns an array of the following two variables."
+        ]
       },
-      { 
-        name: 'isHovered',
-        description: 'A boolean indicating whether the element is being hovered over',
-        propType: 'boolean'
+      {
+        widgetType: 'table',
+        tableType: 'hookReturns',
+        data: [
+          { 
+            name: 'ref',
+            description: 'A mutable ref object',
+            propType: 'object'
+          },
+          { 
+            name: 'isHovered',
+            description: 'A boolean indicating whether the element is being hovered over',
+            propType: 'boolean'
+          }
+        ]
       }
     ]
   },
   snippets: {
     title: 'Snippets',
-    code: [
+    widgets: [
       {
-        str: codeSnippets[1],
-        language: 'javascript',
-        title: 'src/hooks/useHover.js'
+        widgetType: 'code',
+        data: [
+          {
+            str: codeSnippets[1],
+            language: 'javascript',
+            title: 'src/hooks/useHover.js'
+          }
+        ]
       },
       {
-        str: codeSnippets[2],
-        language: 'javascript',
-        title: 'Example use:'
-      },      
+        widgetType: 'code',
+        data: [
+          {
+            str: codeSnippets[2],
+            language: 'javascript',
+            title: 'Example use:'
+          }
+        ]
+      },
     ]
-  }
+  },
 }
-
 
 const PAGE_DATA = {
   title: "useHover",
@@ -118,4 +146,5 @@ const PAGE_DATA = {
 }
 
 export default PAGE_DATA;
+
 

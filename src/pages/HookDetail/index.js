@@ -3,7 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 
 import { convertCase } from 'utils';
 
-import { Typography, Nav, Sidebar, FooterNav, Button } from 'components';
+import { Typography, Nav, Sidebar, FooterNav, Button, Widget } from 'components';
 import SectionTypes from './SectionTypes';
 
 import { Page, Content } from './styles';
@@ -63,13 +63,15 @@ const HookDetail = () => {
                       />
                     }
 
-                    {/* {section.text && <SectionTypes.Text data={section.text} sectionIdx={idx}/>}
-
-                    {section.tableData && <SectionTypes.ReturnsTable data={section.tableData}/>}
-                    
-                    {section.code && <SectionTypes.Snippet data={section.code} sectionIdx={idx}/>}
-                    
-                    {section.links && <SectionTypes.Link data={section.links} sectionIdx={idx} />} */}
+                    {section.widgets.map((widget, widgetIdx) => {
+                      return (
+                        <Widget 
+                          key={`${idx}-widg-${widgetIdx}`}
+                          widget={widget}
+                          widgetIdx={`${idx}-${widgetIdx}`}
+                        />  
+                      )
+                    })}
                   </section>          
                 )
               })}
