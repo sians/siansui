@@ -1,77 +1,40 @@
-import { Container, Row, Cell, Header } from '../styles';
+import GenericTable from '../GenericTable';
+import { Cell } from '../styles';
 import { TypeString } from 'components';
 
-import theme from 'theme';
+const headers = [
+  { title: 'Property', size: 2.5 },
+  { title: 'Description', size: 5.5 },
+  { title: 'Type', size: 2 },
+  { title: 'Default', size: 2 },
+];
 
-const ROW_PADDING_Y = theme.margin;
+const renderRow = (propObj, idx) => (
+  <>
+    <Cell size={headers[0].size}>
+      <strong>{propObj.property}</strong>
+    </Cell>
 
-const TableRow = ({ propObj, rowIdx }) => {
-  return (
-    <Row rowIdx={rowIdx} paddingY={ROW_PADDING_Y} paddingX={ROW_PADDING_Y * 2}>
-      {propObj && (
-        <>
-          <Cell size={2.5}>
-            <strong>
-              {propObj.property}
-            </strong>
-          </Cell>
+    <Cell size={headers[1].size}>
+      {propObj.description}
+    </Cell>
 
-          <Cell size={5.5}>
-            {propObj.description}
-          </Cell>
-
-          <Cell size={2}>
-            <TypeString string={propObj.propType} />
-          </Cell>   
-
-          <Cell size={2}>
-            {propObj.default}
-          </Cell>        
-
-        </>
-      )}
-    </Row>
-  )
-}
-
+    <Cell size={headers[2].size}>
+      <TypeString string={propObj.propType} />
+    </Cell>
+    
+    <Cell size={headers[3].size}>{propObj.default}</Cell>
+  </>
+);
 
 const PropTable = ({ data }) => {
-
   return (
-    <Container fontFamily='Red Hat Mono'>
-      <Header 
-        paddingY={ROW_PADDING_Y}
-        paddingX={ROW_PADDING_Y * 2}
-        backgroundColor={`${theme.colors.grey}60`}
-      >
-        <Cell size={2.5}>
-          Property
-        </Cell>
-
-        <Cell size={5.5}>
-          Description
-        </Cell>
-
-        <Cell size={2}>
-          Type
-        </Cell>
-
-        <Cell size={2}>
-          Default
-        </Cell>   
-      </Header>
-
-      {data && data.map((propObj, propIdx) => {
-        return (
-          <TableRow 
-            key={`pt-${propIdx}`} 
-            rowIdx={propIdx}
-            propObj={propObj}
-          />
-        )
-      })}
-    </Container>
-  )
+    <GenericTable 
+      headers={headers} 
+      data={data} 
+      renderRow={renderRow} 
+    />
+  );
 }
 
 export default PropTable;

@@ -3,8 +3,7 @@ import { chunkAry } from 'utils';
 import styled from 'styled-components';
 
 export const Row = styled.div(props => {
-  const { padding, theme, align, justify, height, overflowY, spacing } = props;
-  const gutter = spacing || theme.margin;  
+  const { padding, align, justify, height, overflowY } = props;
   const rowPadding = padding || 0;
 
   return {
@@ -21,7 +20,7 @@ export const Row = styled.div(props => {
 })
 
 export const Col = styled.div(props => {
-  const { size, paddingX, paddingY, theme, justify, align, overflow, maxHeight, gutterSize } = props;
+  const { size, paddingX, paddingY, justify, align, overflow, maxHeight, gutterSize } = props;
   const padding = `${paddingY || 0}px ${paddingX || 0}px`;
   const widthPercentage = size / 12 * 100;
   const widthSubtractPx = ((paddingX || 0) * 2) + (gutterSize || 0);
@@ -64,7 +63,7 @@ const Grid = ({ elements, gutterSize, colNum }) => {
 
       return chunked;
     }
-  }, [elements])
+  }, [elements, colNum])
 
   return (
     <Row>
@@ -73,30 +72,26 @@ const Grid = ({ elements, gutterSize, colNum }) => {
         {chunkedElements && chunkedElements.map((row, rowIdx) => {
           const isFirstRow = rowIdx === 0;
           return (
-            <>
-              {!isFirstRow && <Spacer size={gutterSize}/>}            
-              <Row 
-                key={`grid-r-${rowIdx}`} 
+            <div key={`grid-r-${rowIdx}`} >
+              {!isFirstRow && <Spacer size={gutterSize}/>}
+              <Row  
                 justify='space-between'
               >
                 {row && row.map((elem, elemId) => {
                   const totalMarginSize = gutterSize * (colNum  - 1);
                   const colSubtractSize = totalMarginSize / colNum;
                   return (
-                    <>
                       <Col 
                         size={colSize} 
-                        key={`grid-c-${elemId}`}
+                        key={`grid-${rowIdx}-c-${elemId}`}
                         gutterSize={colSubtractSize}
                       >
                         {elem} 
                       </Col>
-                      
-                    </>
                   )
                 })}
               </Row>
-            </>
+            </div>
           )
         })}
 
@@ -105,8 +100,10 @@ const Grid = ({ elements, gutterSize, colNum }) => {
   )
 }
 
-export default {
+const Layout = {
   Row,
   Col,
   Grid
 }
+
+export default Layout;

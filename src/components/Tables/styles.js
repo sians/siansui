@@ -33,14 +33,10 @@ export const Row = styled.tr(props => {
   }
 });
 
-export const Header = styled(Row)(props => {
-  return {
-    
-  }
-});
+export const Header = styled(Row)({});
 
 export const Cell = styled.td(props => {
-  const { size, padding, theme, justify, align, overflow, maxHeight } = props;
+  const { size, padding, justify, align, overflow, maxHeight } = props;
   const colPadding = padding || 0;
   const widthPercentage = size / 12 * 100;
 

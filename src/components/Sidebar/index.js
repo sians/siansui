@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useMemo } from 'react';
+import { useEffect, useReducer, useMemo, useCallback } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
 import { convertCase } from 'utils';
@@ -48,27 +48,25 @@ const Sidebar = () => {
   }
   
   // Expand Group with active components on init
-  const setCurrentGroup = () => {
-    const {pathname} = location;
+  const setCurrentGroup = useCallback(() => {  
+    if (!location.pathname) return;
   
-    if (!pathname) return;
-  
-    const [, pageName, target] = pathname.split('/');
+    const [, pageName, target] = location.pathname.split('/');
 
     if (pageName && target) {
       const targetStrTypes = { hooks: 'camel', components: 'pascal'};
       const key = Object.keys(LINK_GROUPS[pageName]).find(key => {
         const formattedTarget = convertCase('snake', targetStrTypes[pageName], target)
-        return LINK_GROUPS[pageName]?.[key].some(({text}) => text === formattedTarget)
+        return LINK_GROUPS[pageName]?.[key].some(({ text }) => text === formattedTarget)
       });
   
       if (key) initExpanded(key);
     }
-  }
+  }, [location.pathname])
 
   useEffect(() => {
     setCurrentGroup()
-  }, [location?.pathname])
+  }, [location?.pathname, setCurrentGroup])
 
   return (
     <Container>
@@ -88,7 +86,7 @@ const Sidebar = () => {
                   name='chevron-down'
                   fill={{base: theme.colors.midGrey}}
                   size={14}
-                  rotateBy={expandedState[groupName] && '180'}
+                  rotateBy={expandedState[groupName] ? 180 : 0}
                 />
               </h4>
 

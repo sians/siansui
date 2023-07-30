@@ -8,7 +8,6 @@ const List = ({ widget, parentId }) => {
   return listType === 'ul' ? (
     <ul>
       {data && data.map((item, idx) => {
-        console.log(item.subtext, 'thhehee e e e e ')
         return item.subtext && 
           <Item key={`w-${parentId}-li-${idx}`}>
             <Layout.Row align='center'>
@@ -25,7 +24,11 @@ const List = ({ widget, parentId }) => {
   ) : (
     <ol>
       {data && data.map((item, idx) => {
-        return <li key={`w-${parentId}-li-${idx}`}>{item}</li>
+        return (
+          <li key={`w-${parentId}-li-${idx}`}>
+            {item}
+          </li>
+        )
       })}      
 
     </ol>

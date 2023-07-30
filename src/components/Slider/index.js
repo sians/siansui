@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 
 import useDrag from 'hooks/useDrag';
 
@@ -24,14 +24,15 @@ const Slider = ({
     return max && step ? Array(max / step).fill() : [];
   }, [step, max])
 
-  const roundValueToStep = (v) => {
+  const roundValueToStep = useCallback((v) => {
     if (step) {
       return Math.round(v / step) * step;
     } 
 
     return v
-  }
-  const setValueWithPosition = (positionX) => {
+  }, [step])
+
+  const setValueWithPosition = useCallback((positionX) => {
     if (drag.boundingRect) {
       let newValue;
       if (max) {
@@ -44,7 +45,8 @@ const Slider = ({
 
       onChange(newValue)
     }
-  }
+  }, [drag.boundingRect, max, onChange, roundValueToStep])
+
   const handleMouseDown = (e) => {
     drag.onMouseDown(e)
   }
@@ -61,7 +63,7 @@ const Slider = ({
     if (drag.position.x) {
       setValueWithPosition(drag.position.x)
     }
-  }, [drag.position.x])
+  }, [drag.position.x, setValueWithPosition])
 
 
   return (
@@ -131,7 +133,7 @@ Slider.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,  
-  icons: PropTypes.arrayOf([PropTypes.string]),
+  icons: PropTypes.arrayOf(PropTypes.string),
   iconFill: PropTypes.string,
   hasTicks: PropTypes.bool,
   size: PropTypes.oneOf([

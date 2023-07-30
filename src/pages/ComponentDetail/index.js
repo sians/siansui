@@ -1,8 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
-import { convertCase } from 'utils';
-
 import { Typography, Nav, Sidebar, FooterNav, Widget, Button } from 'components';
 
 import { Page, Content } from './styles';
@@ -60,6 +58,7 @@ const ComponentDetail = () => {
                     {section.widgets.map((widget, widgetIdx) => {
                       return (
                         <Widget 
+                          key={`${idx}-widg-${widgetIdx}`}
                           widget={widget}
                           widgetIdx={`${idx}-${widgetIdx}`}
                         />  

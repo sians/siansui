@@ -1,4 +1,3 @@
-import { Code, Link } from 'components';
 import { SliderExample } from 'examples';
 const codeSnippets = {
   1: `

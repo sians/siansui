@@ -1,69 +1,37 @@
-import { Container, Row, Cell, Header } from '../styles';
-import { TypeString } from 'components';
+import GenericTable from '../GenericTable';
+import { Cell } from '../styles';
 
-import theme from 'theme';
+const headers = [
+  { title: 'HTML', size: 2 },
+  { title: 'Eg.', size: 6 },
+  { title: 'Application', size: 4 },
+];
 
-const ROW_PADDING_Y = theme.margin;
+const renderRow = (propObj, idx) => (
+  <>
+    <Cell size={headers[0].size}>
+      <strong>{propObj.html}</strong>
+    </Cell>
 
-const TableRow = ({ propObj, rowIdx }) => {
-  const { html, eg, use } = propObj;
+    <Cell size={headers[1].size}>
+      {propObj.eg}
+    </Cell>
+
+    <Cell size={headers[2].size}>
+      {propObj.use}
+    </Cell>
+  </>
+);
+
+const PropTable = ({ data }) => {
   return (
-    <Row rowIdx={rowIdx} paddingY={ROW_PADDING_Y} paddingX={ROW_PADDING_Y * 2}>
-      {propObj && (
-        <>
-          <Cell size={2}>
-            <strong>
-              {html}
-            </strong>
-          </Cell>
-
-          <Cell size={6}>
-            {eg}
-          </Cell>
-
-          <Cell size={4}>
-            {use}
-          </Cell>   
-        </>
-      )}
-    </Row>
-  )
+    <GenericTable 
+      headers={headers} 
+      data={data} 
+      renderRow={renderRow}
+      tableType='prop'
+    />
+  );
 }
 
-
-const HeadingsTable = ({ data }) => {
-
-  return (
-    <Container fontFamily='Red Hat Mono'>
-      <Header 
-        paddingY={ROW_PADDING_Y}
-        paddingX={ROW_PADDING_Y * 2}
-        backgroundColor={`${theme.colors.grey}60`}
-      >
-        <Cell size={2}>
-          HTML
-        </Cell>
-
-        <Cell size={6}>
-          Eg.
-        </Cell>
-
-        <Cell size={4}>
-          Application
-        </Cell>
-      </Header>
-
-      {data && data.map((obj, propIdx) => {
-        return (
-          <TableRow 
-            key={`pt-${propIdx}`} 
-            rowIdx={propIdx}
-            propObj={obj}
-          />
-        )
-      })}
-    </Container>
-  )
-}
-
-export default HeadingsTable;
+export default PropTable;

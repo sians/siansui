@@ -28,5 +28,5 @@ Switch.propTypes = {
 
 Switch.defaultProps = {
   isDisabled: false,
-  action: console.log('action is required')
+  action: () => console.log('action is required')
 }

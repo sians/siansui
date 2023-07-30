@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import theme from 'theme';
 
@@ -7,6 +7,21 @@ import IcomoonReact from 'icomoon-react';
 import iconSet from 'assets/fonts/icons/selection.json';
 
 import { Container } from './styles';
+
+const COLOR_MAP = {
+  disabled: {
+    base: theme.colors.midGrey, 
+    hover: theme.colors.midGrey
+  },
+  link: {
+    base: theme.colors.black, 
+    hover: theme.colors.main
+  },
+  default: {
+    base: theme.colors.black,
+    hover: theme.colors.main
+  }
+}
 
 const Icon = ({ 
   name, 
@@ -23,47 +38,32 @@ const Icon = ({
 
   const [color, setColor] = useState([]);
 
-  useEffect(() => {
-    setColor(makeColor())
-  }, [fill])
-
-  const handleAction = () => {
+  const handleAction = useCallback(() => {
     if (!isDisabled && action) {
       action();
     }
-  }
+  }, [isDisabled, action])
 
-  const colorMap = {
-    disabled: {
-      base: theme.colors.midGrey, 
-      hover: theme.colors.midGrey
-    },
-    link: {
-      base: theme.colors.black, 
-      hover: theme.colors.main
-    },
-    default: {
-      base: theme.colors.black,
-      hover: theme.colors.main
-    },
-
-    hasFill: { ...fill }
-  }
-  const makeColor = () => {
+  const makeColor = useCallback(() => {
     if (isDisabled) {
-      return colorMap.disabled;
+      return COLOR_MAP.disabled;
     }
 
     if (fill) {
-      return colorMap.hasFill;
+      return fill;
     }
 
     if (isLink) {
-      return colorMap.link
+      return COLOR_MAP.link
     }
 
-    return colorMap.default;
-  }
+    return COLOR_MAP.default;
+  }, [isDisabled, fill, isLink])
+
+  useEffect(() => {
+    setColor(makeColor())
+  }, [fill, makeColor])
+
 
   return (
   <Container 
@@ -84,7 +84,7 @@ const Icon = ({
           ? color.hover || color.base
           : color.base
       }
-      style={{verticalAlign: verticalAlign || 'super'}}
+      style={{verticalAlign: verticalAlign}}
     />
   </Container>
 )}
@@ -119,15 +119,24 @@ Icon.propTypes = {
     'toggle-off',
     'toggle-on',
     'user',
-    
-    
   ]),
   size: PropTypes.number,
   action: PropTypes.func,
   className: PropTypes.string,
-  fill: PropTypes.arrayOf([PropTypes.string])
+  fill: PropTypes.shape({
+    base: PropTypes.string,
+    hover: PropTypes.string
+  }),
+  isDisabled: PropTypes.bool,
+  rotateBy: PropTypes.number,
+  verticalAlign: PropTypes.string,
+  isHovered: PropTypes.bool
 }
 
 Icon.defaultProps = {
-  fill: []
+  fill: COLOR_MAP.default,
+  className: 'icon',
+  size: 18,
+  verticalAlign: 'super',
+  isDisabled: false
 }

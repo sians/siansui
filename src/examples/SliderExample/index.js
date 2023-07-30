@@ -4,7 +4,7 @@ import { Slider } from 'components';
 
 import theme from 'theme';
 
-const SliderExample = ({}) => {
+const SliderExample = () => {
   const [value, setValue] = useState(70);
   const handleSliderChange = (v) => {
     setValue(v);

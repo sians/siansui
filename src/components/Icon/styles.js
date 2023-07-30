@@ -3,11 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div(props => {
   const { size, isLink, isDisabled, rotateBy } = props;
 
-  const defaultSize = 18;
-
   const baseStyles = {
-    width: size ? size : defaultSize,
-    height: size ? size : defaultSize,
+    width: size,
+    height: size,
     transform: rotateBy && `rotate(${rotateBy}deg)`,
     transition: 'transform 0.3s'
   }
