@@ -7,7 +7,6 @@ const Styled = styled.small(props => {
   return {
     margin: `${marginY} 0px`,
     fontSize: '0.85rem',
-    fontWeight: 400,
     fontStyle: isItalic && 'italic',
     fontWeight: isBold && 900,
     color: color

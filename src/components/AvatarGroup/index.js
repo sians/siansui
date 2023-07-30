@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Avatar, Icon, Typography } from 'components';
+import { Avatar, Typography } from 'components';
 import { Container, Item } from './styles';
 
 const AvatarGroup = ({ 

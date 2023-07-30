@@ -23,7 +23,6 @@ export const Container = styled.div(props => {
     },
 
     '.main-container': {
-      width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -45,7 +44,6 @@ export const MenuItem = styled.div(props => {
   return {
     padding: `0px ${theme.margin / 2}px`,
     marginRight: theme.margin / 2,
-    height: '100%',    
     display: 'flex',
     alignItems: 'center',
     borderTop: `${borderTop}px solid ${isActive ? theme.colors.main : 'transparent'}`,

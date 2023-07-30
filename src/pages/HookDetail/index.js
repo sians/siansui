@@ -4,7 +4,6 @@ import { useParams, useLocation } from 'react-router-dom';
 import { convertCase } from 'utils';
 
 import { Typography, Nav, Sidebar, FooterNav, Button, Widget } from 'components';
-import SectionTypes from './SectionTypes';
 
 import { Page, Content } from './styles';
 

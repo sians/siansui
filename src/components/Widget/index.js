@@ -11,7 +11,7 @@ const MAP = {
 }
 
 const Widget = ({ widgetIdx, widget }) => {
-  const { widgetType, data, title } = widget;
+  const { widgetType, data } = widget;
 
   return data && widgetType && (
     <>

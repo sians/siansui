@@ -2,8 +2,10 @@ import Heading from './Heading'
 import Body from './Body'
 import Small from './Small'
 
-export default {
+const Typography = {
   Heading,
   Body,
   Small
 }
+
+export default Typography;

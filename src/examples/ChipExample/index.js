@@ -16,7 +16,7 @@ const DATA = [
   },
 ]
 
-const ChipExample = ({}) => {
+const ChipExample = () => {
   const [data, setData] = useState(DATA);
 
   const handleRemove = (e, idx) => {

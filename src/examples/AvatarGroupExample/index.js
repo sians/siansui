@@ -1,24 +1,15 @@
-import { Avatar, AvatarGroup } from 'components';
+import { AvatarGroup } from 'components';
 
 const AVATAR_DATA = [
-  {
-    src: 'https://avatars.githubusercontent.com/u/22909505?v=4',
-  },
-  {
-  },
-  {
-    src: 'https://xsgames.co/randomusers/assets/avatars/female/20.jpg',
-  },
-  {
-    src: 'https://xsgames.co/randomusers/assets/avatars/female/38.jpg',
-  },  
-  {
-    src: 'https://xsgames.co/randomusers/assets/avatars/female/61.jpg',
-  },  
+  { src: 'https://avatars.githubusercontent.com/u/22909505?v=4' },
+  {},
+  { src: 'https://xsgames.co/randomusers/assets/avatars/female/20.jpg' },
+  { src: 'https://xsgames.co/randomusers/assets/avatars/female/38.jpg' },  
+  { src: 'https://xsgames.co/randomusers/assets/avatars/female/61.jpg' },  
 
 ]
 
-const AvatarGroupExample = ({}) => {
+const AvatarGroupExample = () => {
   return (
     <div>
       <AvatarGroup 

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Nav, Typography, Button, Icon } from 'components';
+import { Nav, Typography, Button } from 'components';
 
 import { Content } from './styles';
 

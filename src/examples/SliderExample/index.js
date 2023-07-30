@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { Slider } from 'components';
 
@@ -6,9 +6,9 @@ import theme from 'theme';
 
 const SliderExample = () => {
   const [value, setValue] = useState(70);
-  const handleSliderChange = (v) => {
+  const handleSliderChange = useCallback((v) => {
     setValue(v);
-  }
+  }, [])
 
   return (
     <div>

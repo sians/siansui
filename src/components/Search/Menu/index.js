@@ -1,4 +1,4 @@
-import { Layout, Typography } from 'components';
+import { Typography } from 'components';
 import { Container, MenuItem, Category } from './styles';
 
 const dummyRes = {
@@ -25,7 +25,7 @@ const dummyRes = {
 
 // TODO:  results must be sorted by category, with top level json keys category names
 
-const Menu = ({  }) => {
+const Menu = () => {
   const items = dummyRes;
   return items && Object.keys(items) && (
     <Container>

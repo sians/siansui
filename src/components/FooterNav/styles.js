@@ -8,7 +8,6 @@ export const Container = styled(Row)(props => {
 
   return {
     height: 60 + paddingY * 2,
-    height: 60,
     marginTop: theme.margin * 2,
     borderTop: `1px solid ${theme.colors.grey}`,
     justifyContent: 'space-between',

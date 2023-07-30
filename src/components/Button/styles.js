@@ -8,7 +8,6 @@ import theme from 'theme';
 // ]
 
 const borderSize = 1;
-const maxHeight = 55;
 const maxFABHeight = 46;
 
 const BASE_HOVER = { cursor: 'pointer' }
@@ -16,7 +15,6 @@ const BASE_STYLES = {
   borderRadius: theme.borderRadius,
   padding: theme.margin,
   outline: 'none',
-  border: 'none',
   fontFamily: theme.fontFamily,
   fontWeight: 600,
   border: `${borderSize}px solid transparent`,
@@ -96,7 +94,7 @@ export const MAP = {
 
 
 export const StyledButton = styled.button(props => {
-  const { variant, buttonSize } = props;
+  const { variant } = props;
   const buttonStyles = MAP[variant]?.styles;
   const hoverStyles = MAP[variant]?.hover;
 

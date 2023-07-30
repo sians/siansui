@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 import useHover from 'hooks/useHover';
@@ -12,7 +12,7 @@ import LINK_GROUPS from 'data/LINK_GROUPS';
 
 import theme from 'theme';
 
-const FooterNav = ({ }) => {
+const FooterNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
@@ -23,11 +23,16 @@ const FooterNav = ({ }) => {
   const [leftRef, isLeftHovered] = useHover();
   const [rightRef, isRightHovered] = useHover();
 
-  useEffect(() => {
-    handleSetData()
-  }, [params.name])
+  const makeComponentOrder = useCallback((pageType) => {
+    const ordered = [];
+    Object.keys(LINK_GROUPS[pageType]).forEach(key => {
+      LINK_GROUPS[pageType]?.[key].forEach(link => ordered.push(link.text));
+    })
+    
+    return ordered;
+  }, [])
 
-  const handleSetData = () => {
+  const handleSetData = useCallback(() => {
     const pageType = location?.pathname?.split('/')?.[1];
     const targetStrType = { hooks: 'camel', components: 'pascal'};
 
@@ -42,22 +47,19 @@ const FooterNav = ({ }) => {
 
       setNextComponentStr(ordered[currentIdx + 1]);
     }
-  }
-  const makeComponentOrder = (pageType) => {
-    const ordered = [];
-    Object.keys(LINK_GROUPS[pageType]).forEach(key => {
-      LINK_GROUPS[pageType]?.[key].forEach(link => ordered.push(link.text));
-    })
-    
-    return ordered;
-  }
+  }, [location.pathname, params.name, makeComponentOrder])  
 
-  const handleNavigation = (name) => {
+  const handleNavigation = useCallback((name) => {
     if (pageName) {
       const snakeName = convertCase('camel', 'snake', name);
       navigate(`/${pageName}/${snakeName}`)
     }
-  }
+  }, [pageName, navigate])
+
+  useEffect(() => {
+    handleSetData()
+  }, [params.name, handleSetData])
+
 
   return (
     <Container>
@@ -65,6 +67,7 @@ const FooterNav = ({ }) => {
         size={6}
         paddingX={theme.margin}
         className='col'
+        justify='center'
         ref={leftRef}
         onClick={() => prevComponentStr && handleNavigation(prevComponentStr)}
       >
@@ -90,6 +93,7 @@ const FooterNav = ({ }) => {
         size={6}
         className='col'
         paddingX={theme.margin}
+        justify='center'
         ref={rightRef}
         onClick={() => nextComponentStr && handleNavigation(nextComponentStr)}
       >

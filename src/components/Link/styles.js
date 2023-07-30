@@ -16,7 +16,6 @@ export const ButtonLink = styled.button(props => {
       fontFamily: theme.fontFamily,
       fontSize: 14,
       height: '100%',
-      width: '100%',
       borderRadius: theme.borderRadius,      
   
       '&:hover': {
@@ -31,7 +30,6 @@ export const ButtonLink = styled.button(props => {
     color: theme.colors.main,
     fontFamily: theme.fontFamily,
     fontSize: theme.text.sizes.body,
-    background: 'none',    
     outline: 'none',
     border: 'none',
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 const useDrag = (onChange) => {
   const [dragging, setDragging] = useState(false);
@@ -16,7 +16,7 @@ const useDrag = (onChange) => {
     setBoundingRect(containerRef.current?.getBoundingClientRect());
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (dragging) {
       const newPosition = {
         x: e.clientX,
@@ -32,7 +32,7 @@ const useDrag = (onChange) => {
       setDisplacement(newDisplacement);
       onChange(newPosition);
     }
-  };
+  }, [dragging, startPosition, onChange]);
 
   const handleMouseUp = () => {
     setDragging(false);
@@ -45,7 +45,7 @@ const useDrag = (onChange) => {
     setBoundingRect(containerRef.current?.getBoundingClientRect());
   };
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = useCallback((e) => {
     if (dragging) {
       const newPosition = {
         x: e.touches[0].clientX,
@@ -61,7 +61,7 @@ const useDrag = (onChange) => {
       setDisplacement(newDisplacement);
       onChange(newPosition);
     }
-  };
+  }, [dragging, startPosition, onChange]);
 
   const handleTouchEnd = () => {
     setDragging(false);
@@ -79,7 +79,7 @@ const useDrag = (onChange) => {
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [dragging]);
+  }, [dragging, handleTouchMove, handleMouseMove]);
 
   return {
     dragging,

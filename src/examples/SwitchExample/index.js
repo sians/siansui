@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Switch } from 'components';
 
-const SwitchExample = ({}) => {
+const SwitchExample = () => {
   const [isActive, setIsActive] = useState(false);
   const handleToggle = () => setIsActive(prev => !prev);
 

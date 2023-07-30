@@ -1,6 +1,6 @@
 import { Layout, Avatar, Badge } from 'components';
 
-const AvatarExample = ({}) => {
+const AvatarExample = () => {
   return (
     <Layout.Row>
       <Badge size='sm' number={2}>
