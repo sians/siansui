@@ -18,6 +18,7 @@ import Switch from './Switch';
 import Chip from './Chip';
 import Avatar from './Avatar';
 import AvatarGroup from './AvatarGroup';
+import Slider from './Slider';
 
 export {
   Nav,
@@ -39,5 +40,6 @@ export {
   Switch,
   Chip,
   Avatar,
-  AvatarGroup
+  AvatarGroup,
+  Slider
 }

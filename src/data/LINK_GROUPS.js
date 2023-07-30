@@ -21,6 +21,7 @@ const LINK_GROUPS = {
       { text: 'Select', url: '/components/select' },
       { text: 'Search', url: '/components/search' },
       { text: 'Button', url: '/components/button' },
+      { text: 'Slider', url: '/components/slider' },
     ],
     General: [
       { text: 'Icon', url: '/components/icon' },
