@@ -21,3 +21,18 @@ export const Content = styled.div(props => {
     }
   }
 })
+
+export const Background = styled.div(props => {
+  const { url } = props;
+  return {
+    backgroundImage: `url(${url})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    height: '100vh',
+    width: '100vw',
+    position: 'fixed',
+    zIndex: -1,
+    opacity: 0.1
+  }
+})

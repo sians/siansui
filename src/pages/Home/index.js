@@ -1,22 +1,23 @@
 import { useNavigate } from 'react-router-dom';
 import { Nav, Typography, Button } from 'components';
+import shapes from 'assets/shapes.png';
 
-import { Content } from './styles';
+import { Content, Background } from './styles';
 
 const Home = () => {
   const navigate = useNavigate();
   return (
     <>
+      <Background url={shapes}/>
       <Nav />
       <Content>
         <div>
           <Typography.Heading size={1}>
-            hello & welcome.
+            hi there.
           </Typography.Heading>
           
           <Typography.Body>
-            I got tired of trawling through my old repos looking for x implementation of y feature.
-            So I've put together a little reference for a bunch of components, features & patterns, with some examples, variants & commented code snippets. 
+            Just a place where I keep some basic code snippets.  Ready to reuse, refactor, restyle.
           </Typography.Body>
 
           <div className='btn-container'>
