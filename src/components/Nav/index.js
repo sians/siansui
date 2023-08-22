@@ -1,8 +1,11 @@
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { Search, Icon, Logo } from 'components';
+import useClickOutside from 'hooks/useClickOutside';
 
-import { Container, MenuItem } from './styles';
+import { Search, Icon, Logo, Menu } from 'components';
+
+import { Container, MenuItem, AnimateDropdown } from './styles';
 import theme from 'theme';
 
 const MENU = [
@@ -10,9 +13,42 @@ const MENU = [
   'Hooks'
 ]
 
+const DROPDOWN_MENU = [
+  {
+    text: 'Github',
+    url: '',
+    isExternal: true
+  },  
+  {
+    text: 'Contact',
+    url: '/contact'
+  },
+]
+
+
 const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClosingMenu, setIsClosingMenu] = useState(false);
+  const handleCloseMenuClick = () => setIsClosingMenu(true);
+  const handleCloseMenu = () => {
+    setIsMenuOpen(prev => !prev)
+    setIsClosingMenu(false);
+  }
+
+  const outsideRef = useClickOutside(() => {
+    if (isMenuOpen) handleCloseMenuClick();
+  }); 
+
+  useEffect(() => {
+    if (isClosingMenu) {
+      const timer = setTimeout(() => handleCloseMenu(), 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isClosingMenu])  
+  
 
   const handleLogoClick = () => {
     navigate('/')
@@ -43,13 +79,21 @@ const Nav = () => {
               </MenuItem>
             )
           })}
-          <MenuItem>
+          <MenuItem onClick={handleCloseMenuClick}>
             <Icon 
               name='bars' 
               fill={{base: theme.colors.black}}
             />
           </MenuItem>
         </ul>
+
+        <AnimateDropdown 
+          ref={outsideRef}
+          isMenuOpen={isMenuOpen}
+          isClosing={isClosingMenu}
+        >
+          <Menu items={DROPDOWN_MENU} selected={location.pathname.split('/')?.[1]}/>
+        </AnimateDropdown>
 
         
       </div>

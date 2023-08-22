@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+import theme from 'theme';
 
 export const Container = styled.div(props => {
   const { theme } = props;
@@ -56,3 +57,42 @@ export const MenuItem = styled.div(props => {
     }
   }
 })
+
+
+const fadeInGrow = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+const fadeOutShrink = keyframes`
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+`;
+export const AnimateDropdown = styled.div`
+  animation: ${props => {
+    return props.isClosing
+      ? css`${fadeOutShrink}  0.2s ease-out forwards;`
+      : css`${fadeInGrow}  0.2s ease-out forwards;`
+  }}
+  
+  ${props => {
+    return `
+      right: ${props.theme.margin}px;
+      top: ${props.theme.navHeight - theme.margin/2}px;
+      z-index: 10;
+      position: absolute;
+      visibility: ${props.isMenuOpen ? 'visible' : 'hidden'};
+    `
+  }}
+`
