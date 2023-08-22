@@ -21,6 +21,7 @@ import AvatarGroup from './AvatarGroup';
 import Slider from './Slider';
 import Alert from './Alert';
 import Input from './Input';
+import RadioGroup from './RadioGroup';
 
 export {
   Nav,
@@ -44,5 +45,7 @@ export {
   Avatar,
   AvatarGroup,
   Slider,
-  Alert
+  Alert,
+  Input,
+  RadioGroup
 }
