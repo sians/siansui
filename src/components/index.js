@@ -22,6 +22,7 @@ import Slider from './Slider';
 import Alert from './Alert';
 import Input from './Input';
 import RadioGroup from './RadioGroup';
+import Textarea from './Textarea';
 
 export {
   Nav,
@@ -47,5 +48,6 @@ export {
   Slider,
   Alert,
   Input,
-  RadioGroup
+  RadioGroup,
+  Textarea
 }

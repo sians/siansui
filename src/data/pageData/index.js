@@ -22,6 +22,7 @@ import sliderData from './components/sliderData';
 import alertData from './components/alertData';
 import inputData from './components/inputData';
 import radioGroupData from './components/radioGroupData';
+import textareaData from './components/textareaData';
 
 const MAP = {
   hooks: {
@@ -47,7 +48,8 @@ const MAP = {
     slider: sliderData,
     alert: alertData,
     input: inputData,
-    radio: radioGroupData
+    radio: radioGroupData,
+    textarea: textareaData
   }
 }
 
