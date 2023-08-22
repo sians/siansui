@@ -32,7 +32,8 @@ const Icon = ({
   isDisabled,
   rotateBy,
   verticalAlign,
-  isHovered
+  isHovered,
+  opacity
 }) => {
   const isLink = action ? true : false;
 
@@ -73,6 +74,7 @@ const Icon = ({
     className={className}
     isDisabled={isDisabled}
     rotateBy={rotateBy}
+    opacity={opacity}
   >
     <IcomoonReact 
       iconSet={iconSet} 
@@ -132,7 +134,8 @@ Icon.propTypes = {
   isDisabled: PropTypes.bool,
   rotateBy: PropTypes.number,
   verticalAlign: PropTypes.string,
-  isHovered: PropTypes.bool
+  isHovered: PropTypes.bool,
+  opacity: PropTypes.number
 }
 
 Icon.defaultProps = {
@@ -140,5 +143,6 @@ Icon.defaultProps = {
   className: 'icon',
   size: 18,
   verticalAlign: 'super',
-  isDisabled: false
+  isDisabled: false,
+  opacity: 1
 }

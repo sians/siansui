@@ -16,7 +16,7 @@ const LINK_GROUPS = {
     ],
     Forms: [
       { text: 'Form', url: '/components/form' },
-      { text: 'TextInput', url: '/components/text_input' },
+      { text: 'Input', url: '/components/input' },
       { text: 'TextField', url: '/components/text_field' },
       { text: 'Select', url: '/components/select' },
       { text: 'Search', url: '/components/search' },

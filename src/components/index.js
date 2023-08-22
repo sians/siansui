@@ -20,6 +20,7 @@ import Avatar from './Avatar';
 import AvatarGroup from './AvatarGroup';
 import Slider from './Slider';
 import Alert from './Alert';
+import Input from './Input';
 
 export {
   Nav,

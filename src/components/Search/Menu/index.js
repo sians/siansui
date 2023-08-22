@@ -5,7 +5,7 @@ const dummyRes = {
   components: [
     {
       category: 'components',
-      title: 'TextInput',
+      title: 'Input',
       description: 'Returns an html <input> tag...'
     },
     {

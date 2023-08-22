@@ -20,6 +20,7 @@ import avatarData from './components/avatarData';
 import avatarGroupData from './components/avatarGroupData';
 import sliderData from './components/sliderData';
 import alertData from './components/alertData';
+import inputData from './components/inputData';
 
 const MAP = {
   hooks: {
@@ -43,7 +44,8 @@ const MAP = {
     avatar: avatarData,
     avatar_group: avatarGroupData,
     slider: sliderData,
-    alert: alertData
+    alert: alertData,
+    input: inputData
   }
 }
 

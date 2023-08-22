@@ -4,6 +4,7 @@ import AvatarExample from './AvatarExample';
 import AvatarGroupExample from './AvatarGroupExample';
 import SliderExample from './SliderExample';
 import AlertExample from './AlertExample';
+import InputExample from './InputExample';
 
 export {
   SwitchExample,
@@ -11,5 +12,6 @@ export {
   AvatarExample,
   AvatarGroupExample,
   SliderExample,
-  AlertExample
+  AlertExample,
+  InputExample
 }
