@@ -23,6 +23,7 @@ import alertData from './components/alertData';
 import inputData from './components/inputData';
 import radioGroupData from './components/radioGroupData';
 import textareaData from './components/textareaData';
+import inputNumberData from './components/inputNumberData';
 
 const MAP = {
   hooks: {
@@ -49,7 +50,8 @@ const MAP = {
     alert: alertData,
     input: inputData,
     radio: radioGroupData,
-    textarea: textareaData
+    textarea: textareaData,
+    input_number: inputNumberData,
   }
 }
 

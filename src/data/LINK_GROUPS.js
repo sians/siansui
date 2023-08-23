@@ -17,6 +17,7 @@ const LINK_GROUPS = {
     Forms: [
       { text: 'Form', url: '/components/form' },
       { text: 'Input', url: '/components/input' },
+      { text: 'InputNumber', url: '/components/input_number' },
       { text: 'Textarea', url: '/components/textarea' },      
       { text: 'Radio', url: '/components/radio' },
       { text: 'Select', url: '/components/select' },

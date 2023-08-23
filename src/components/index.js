@@ -24,6 +24,7 @@ import Input from './Input';
 import RadioGroup from './RadioGroup';
 import Textarea from './Textarea';
 import Menu from './Menu';
+import InputNumber from './InputNumber';
 
 export {
   Nav,

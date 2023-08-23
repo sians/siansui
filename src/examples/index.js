@@ -7,6 +7,7 @@ import AlertExample from './AlertExample';
 import InputExample from './InputExample';
 import RadioGroupExample from './RadioGroupExample';
 import TextareaExample from './TextareaExample';
+import InputNumberExample from './InputNumberExample';
 
 export {
   SwitchExample,
@@ -17,5 +18,6 @@ export {
   AlertExample,
   InputExample,
   RadioGroupExample,
-  TextareaExample
+  TextareaExample,
+  InputNumberExample
 }
