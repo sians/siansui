@@ -83,7 +83,7 @@ export const AnimateDropdown = styled.div`
   animation: ${props => {
     return props.isClosing
       ? css`${fadeOutShrink}  0.2s ease-out forwards;`
-      : css`${fadeInGrow}  0.2s ease-out forwards;`
+      : props.isOpening ? css`${fadeInGrow}  0.2s ease-out forwards;` : 'none;'
   }}
   
   ${props => {
@@ -93,6 +93,7 @@ export const AnimateDropdown = styled.div`
       z-index: 10;
       position: absolute;
       visibility: ${props.isMenuOpen ? 'visible' : 'hidden'};
+      opacity: ${props.isMenuOpen ? 1 : 0};
     `
   }}
 `

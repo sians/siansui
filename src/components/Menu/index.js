@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+import { Link } from 'components';
 import { Container, Item } from './styles';
 
 const Menu = ({ items, selected }) => {
@@ -14,7 +15,11 @@ const Menu = ({ items, selected }) => {
               key={`dd-menu-${idx}`}
               isSelected={isSelected}
             >
-              {text}
+              <Link 
+                text={text} 
+                variant='nostyle'
+                url={url}
+              />
             </Item>
           )
         })}

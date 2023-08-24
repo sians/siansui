@@ -27,7 +27,6 @@ export const Item = styled.li(props => {
     '&:last-child': {
       marginBottom: 0
     }
-
   }
 
   const selectedStyles = {
@@ -39,7 +38,8 @@ export const Item = styled.li(props => {
     ...baseStyles,
     ...(isSelected && selectedStyles),
     '&:hover': {
-      backgroundColor: theme.colors.lightestGrey,
+      backgroundColor: theme.colors.secondary,
+      color: theme.colors.black,
       cursor: 'pointer'
     }
   }

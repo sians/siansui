@@ -30,25 +30,31 @@ const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isClosingMenu, setIsClosingMenu] = useState(false);
-  const handleCloseMenuClick = () => setIsClosingMenu(true);
-  const handleCloseMenu = () => {
-    setIsMenuOpen(prev => !prev)
-    setIsClosingMenu(false);
-  }
+  const [menuState, setMenuState] = useState("closed"); 
+  const handleToggleMenu = () => {
+    if (menuState === "closed") {
+      setMenuState("opening");
+    } else if (menuState === "open") {
+      setMenuState("closing");
+    }
+  };
+  useEffect(() => {
+    console.log(menuState, 'state')
+    let timer;
+    if (menuState === "opening") {
+      timer = setTimeout(() => setMenuState("open"), 200);
+    } else if (menuState === "closing") {
+      timer = setTimeout(() => setMenuState("closed"), 200);
+    }
+    return () => clearTimeout(timer);
+  }, [menuState]);
 
   const outsideRef = useClickOutside(() => {
-    if (isMenuOpen) handleCloseMenuClick();
-  }); 
-
-  useEffect(() => {
-    if (isClosingMenu) {
-      const timer = setTimeout(() => handleCloseMenu(), 200);
-      return () => clearTimeout(timer);
+    console.log('ref')
+    if (menuState === "open") {
+      handleToggleMenu();
     }
-  }, [isClosingMenu])  
-  
+  }); 
 
   const handleLogoClick = () => {
     navigate('/')
@@ -79,7 +85,7 @@ const Nav = () => {
               </MenuItem>
             )
           })}
-          <MenuItem onClick={handleCloseMenuClick}>
+          <MenuItem onClick={handleToggleMenu}>
             <Icon 
               name='bars' 
               fill={{base: theme.colors.black}}
@@ -89,8 +95,8 @@ const Nav = () => {
 
         <AnimateDropdown 
           ref={outsideRef}
-          isMenuOpen={isMenuOpen}
-          isClosing={isClosingMenu}
+          isMenuOpen={menuState === "open" || menuState === "closing"}
+          isClosing={menuState === "closing"}
         >
           <Menu items={DROPDOWN_MENU} selected={location.pathname.split('/')?.[1]}/>
         </AnimateDropdown>

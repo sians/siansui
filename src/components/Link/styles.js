@@ -26,6 +26,19 @@ export const ButtonLink = styled.button(props => {
     small: {
       fontSize: '0.9rem',
       padding: 0
+    },
+    nostyle: {
+      textDecoration: 'none',
+      color: theme.colors.black,
+      background: 'none',
+      outline: 'none',
+      border: 'none',
+      fontSize: 'inherit',
+      fontWeight: 'normal',
+      '&:hover': {
+        cursor: 'pointer',
+        color: theme.colors.black,
+      }      
     }
   }
   
