@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div(props => {
-  const { theme, isLabelHidden } = props;
+  const { theme, isLabelHidden, hasError } = props;
   return {
     position: 'relative',
     'label': {
@@ -9,12 +9,16 @@ export const Container = styled.div(props => {
       opacity: isLabelHidden ? 0 : 0.7,
       fontSize: '0.9rem',
     },
-    '.error-text': {
+    '.sub-text': {
       fontSize: '0.75rem',
       margin: 0,
-      color: theme.colors.error.main,
-      height: 20
+      color: hasError 
+        ? theme.colors.error.main
+        : theme.colors.main,
+      height: 20,
+      textAlign: hasError ? 'left' : 'right'
     }
+
   }
 })
 
@@ -24,6 +28,8 @@ export const StyledInput = styled.input(props => {
   const padding = theme.margin / 2;
   const borderSize = 1;
   const outlineSize = 2;
+  const totalHeight = 36;
+  const height = totalHeight - padding*2 - borderSize*2;
   const width = isFullWidth && `calc(100% - ${(padding*2) + (borderSize*2)}px)`;
 
   const hasBorder = isHovered || isFocused;
@@ -31,6 +37,7 @@ export const StyledInput = styled.input(props => {
   const baseStlyes = {
     padding: padding,
     width: width,
+    height: height,
     border: `${borderSize}px solid ${hasBorder ? theme.colors.main : theme.colors.mainLighter}`,
     borderRadius: theme.borderRadiusSmall,
     outline: isFocused && `${outlineSize}px solid ${theme.colors.mainLighter}`,

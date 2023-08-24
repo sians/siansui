@@ -20,13 +20,22 @@ const Input = ({
   isDisabled,
   isLabelHidden,
   isAutocomplete,
+  isAutofocus,
   errorText,
+  helperText,
   className,
   iconData,
   styles
  }) => {
   const [hoverRef, isHovered] = useHover();
-  const [focusRef, isFocused] = useFocus();
+  const [focusRef, isFocused, setFocus] = useFocus();
+
+  useEffect(() => {
+    if (isAutofocus) {
+      setFocus(true);
+    }
+  }, [isAutofocus])
+
 
   useEffect(() => {
     if (isFocused && onFocus) {
@@ -43,7 +52,8 @@ const Input = ({
   return (
     <Container
       className={className}
-      isLabelHidden={isLabelHidden}      
+      isLabelHidden={isLabelHidden}
+      hasError={!!errorText}
     >
       {iconData?.leftIcon &&
         <IconContainer isLeft>
@@ -62,6 +72,7 @@ const Input = ({
           placeholder={placeholder}
           value={value}
           name={name}
+          id={name}
           type={inputType}
           onChange={onChange}
           required={isRequired}
@@ -73,10 +84,12 @@ const Input = ({
           isFocused={isFocused}
           autocomplete={isAutocomplete}
           styles={styles}
+          
         />
 
-        <p className='error-text'>
+        <p className='sub-text'>
           {errorText}
+          {helperText && !errorText && helperText}
         </p>
       </label>
 
@@ -105,7 +118,9 @@ Input.propTypes = {
   isDisabled: PropTypes.bool,
   isLabelHidden: PropTypes.bool,
   isAutocomplete: PropTypes.bool,
+  isAutofocus: PropTypes.bool,
   errorText: PropTypes.string,
+  helperText: PropTypes.string,
   className: PropTypes.string,
   iconData: PropTypes.shape({
     leftIcon: PropTypes.element,
@@ -123,7 +138,7 @@ Input.defaultProps = {
   isDisabled: false,
   isLabelHidden: false,
   isAutocomplete: false,
-  errorText: '',
+  isAutofocus: false,
   className: '',
   iconData: {}
 }

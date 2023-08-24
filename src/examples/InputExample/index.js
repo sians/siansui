@@ -19,6 +19,7 @@ const InputExample = () => {
       onChange: (e) => setFullName(e.target.value),
       label: 'Full Name',
       name: 'full name',
+      isAutofocus: true
     },
     {
       placeholder: 'pfog@tourlemonde.fr',
@@ -45,6 +46,8 @@ const InputExample = () => {
           opacity={iconOpacity}
         /> 
       },
+      // helperText: 'Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character',
+      // errorText: 'Invalid Password',
     },    
   ]
 
