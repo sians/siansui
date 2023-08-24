@@ -24,6 +24,7 @@ import inputData from './components/inputData';
 import radioGroupData from './components/radioGroupData';
 import textareaData from './components/textareaData';
 import inputNumberData from './components/inputNumberData';
+import checkboxData from './components/checkboxData';
 
 const MAP = {
   hooks: {
@@ -52,6 +53,7 @@ const MAP = {
     radio: radioGroupData,
     textarea: textareaData,
     input_number: inputNumberData,
+    checkbox: checkboxData,
   }
 }
 

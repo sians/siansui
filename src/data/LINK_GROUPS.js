@@ -20,7 +20,7 @@ const LINK_GROUPS = {
       { text: 'InputNumber', url: '/components/input_number' },
       { text: 'Textarea', url: '/components/textarea' },      
       { text: 'Radio', url: '/components/radio' },
-      { text: 'Select', url: '/components/select' },
+      { text: 'Checkbox', url: '/components/checkbox' },
       { text: 'Search', url: '/components/search' },
       { text: 'Button', url: '/components/button' },
       { text: 'Slider', url: '/components/slider' },

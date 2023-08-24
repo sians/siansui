@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ButtonLink = styled.button(props => {
-  const { theme, variant } = props;
+  const { theme, variant, isBold } = props;
 
   const variants = {
     sidebar: {
@@ -22,6 +22,10 @@ export const ButtonLink = styled.button(props => {
         cursor: 'pointer',
         backgroundColor: theme.colors.secondary,
       }
+    },
+    small: {
+      fontSize: '0.9rem',
+      padding: 0
     }
   }
   
@@ -32,6 +36,7 @@ export const ButtonLink = styled.button(props => {
     fontSize: theme.text.sizes.body,
     outline: 'none',
     border: 'none',
+    fontWeight: isBold ? 'bold' : 400,
 
     background: `
       linear-gradient(to right, ${theme.colors.white}, ${theme.colors.white}),
@@ -47,16 +52,16 @@ export const ButtonLink = styled.button(props => {
       color: theme.colors.main,
       cursor: 'pointer'
     }
-
   }
 
   return {
-    ...(variants[variant] || mainStyles),
+    ...mainStyles,
+    ...(variant && variants[variant]),
   }
 })
 
 export const ALink = styled.a(props => {
-  const { theme } = props;
+  const { theme, isBold } = props;
   
   const btBottomPadding = 3;
   
@@ -65,7 +70,7 @@ export const ALink = styled.a(props => {
     position: 'inline-block',
     padding: `0px ${theme.margin / 3}px`,
     fontSize: theme.text.sizes.body,
-    fontWeight: 400,
+    fontWeight: isBold ? 'bold' : 400,
     textDecoration: 'none',
     background: `
       linear-gradient(to right, ${theme.colors.white}, ${theme.colors.white}),

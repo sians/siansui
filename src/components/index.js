@@ -25,6 +25,8 @@ import RadioGroup from './RadioGroup';
 import Textarea from './Textarea';
 import Menu from './Menu';
 import InputNumber from './InputNumber';
+import Checkbox from './Checkbox';
+import CheckboxGroup from './CheckboxGroup';
 
 export {
   Nav,
@@ -51,5 +53,9 @@ export {
   Alert,
   Input,
   RadioGroup,
-  Textarea
+  Textarea,
+  Menu,
+  InputNumber,
+  Checkbox,
+  CheckboxGroup
 }
