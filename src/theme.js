@@ -20,8 +20,9 @@ const theme = {
   sidebarPadding: margin,
   navHeight: 60,
 
-  text: {
-    sizes: {
+  font: {
+    size: {
+      input: 14,
       body: '1.05rem'
     }
   },
@@ -75,7 +76,63 @@ const theme = {
     midGrey: '#BEB8C2',
     darkerGrey: '#322f35db'
   },
+
+
+  // borderRadius: {
+  //   small: 4,
+  //   main: 8,
+  //   big: 16
+  // },
+  // boxShadow: {
+  //   small: `0 3px 8px 3px #00000014, 1px 3px 8px #00000024`,
+  //   big: `0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;`,
+  //   dark: `0 6px 16px -8px #00000014, 0 9px 28px #00000014, 0 12px 48px 16px #0000000f;`,
+  // },
 };
+
+const LIGHT = {
+  fg: '#2A282C',
+  bg: '#fefeff',
+
+  main: {
+    lightest: '#F9F3FF',
+    light: '#F1E3FE',
+    base: '#B668FF',
+    dark: '#9352D0',
+    darkest: '#714699'    
+  },
+  secondary: {
+    lightest: '#FAFFDD',
+    light: '#F3FFA6',
+    base: '#E5FC59',
+    dark: '#D2EB3A',
+    darkest: '#ACC223'
+  },
+  neutral: {
+
+  },  
+
+  error: {
+    dark: '#993232',
+    main: '#D85656',
+    light: '#ECD5D5'
+  },
+  success: {
+    dark: '#327730',
+    main: '#7FB27E',
+    light: '#DDECDD'
+  },
+  warning: {
+    dark: '#D8A012',
+    main: '#E9CC82',
+    light: '#F8F1E1'
+  },
+  info: {
+    dark: '',
+    main: '',
+    light: ''
+  }
+}
 
 export const GlobalStyles = createGlobalStyle(() => {
   return {
@@ -100,7 +157,7 @@ export const GlobalStyles = createGlobalStyle(() => {
       margin: 0,
       padding: 0,
       listStyle: 'none'
-    },    
+    }, 
   }
 })
 

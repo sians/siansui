@@ -27,6 +27,7 @@ import Menu from './Menu';
 import InputNumber from './InputNumber';
 import Checkbox from './Checkbox';
 import CheckboxGroup from './CheckboxGroup';
+import Select from './Select';
 
 export {
   Nav,
@@ -57,5 +58,6 @@ export {
   Menu,
   InputNumber,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Select
 }

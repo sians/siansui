@@ -9,6 +9,7 @@ import RadioGroupExample from './RadioGroupExample';
 import TextareaExample from './TextareaExample';
 import InputNumberExample from './InputNumberExample';
 import CheckboxExample from './CheckboxExample';
+import SelectExample from './SelectExample';
 
 export {
   SwitchExample,
@@ -21,5 +22,6 @@ export {
   RadioGroupExample,
   TextareaExample,
   InputNumberExample,
-  CheckboxExample
+  CheckboxExample,
+  SelectExample
 }

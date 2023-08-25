@@ -6,7 +6,7 @@ const Styled = styled.p(props => {
 
   const baseStyles = {
     margin: `${marginY}px 0px`,
-    fontSize: theme.text.sizes.body,
+    fontSize: theme.font.size.body,
     fontStyle: isItalic && 'italic',
     fontWeight: isBold && 900,
   }

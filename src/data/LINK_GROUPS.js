@@ -21,7 +21,7 @@ const LINK_GROUPS = {
       { text: 'Textarea', url: '/components/textarea' },      
       { text: 'Radio', url: '/components/radio' },
       { text: 'Checkbox', url: '/components/checkbox' },
-      { text: 'Search', url: '/components/search' },
+      { text: 'Select', url: '/components/select' },
       { text: 'Button', url: '/components/button' },
       { text: 'Slider', url: '/components/slider' },
     ],
