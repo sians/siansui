@@ -13,16 +13,16 @@ const CheckboxExample = () => {
     return Object.keys(topicState).map((topic) => {
       return { 
         label: topic, 
-        isChecked: topicState[topic],
+        value: topicState[topic],
       }
     })
   }, [topicState])
 
-  const handleTopicClick = (label) => {
+  const handleTopicClick = (e) => {
     setTopicState(prev => {
       return { 
         ...prev, 
-        [label]: !prev[label] 
+        [e.target.label]: !prev[e.target.label] 
       }
     })
   }
@@ -42,7 +42,7 @@ const CheckboxExample = () => {
     return {
       id: 'TermsBox',
       name: 'terms',
-      isChecked: terms,
+      value: terms,
       onChange: () => handleTermsClick(),
       label: (
         <p>I accept the <Link text='Terms of Use' variant='small'/> & <Link text='Privacy Policy' variant='small'/></p>

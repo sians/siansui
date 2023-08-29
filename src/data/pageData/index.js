@@ -26,6 +26,7 @@ import textareaData from './components/textareaData';
 import inputNumberData from './components/inputNumberData';
 import checkboxData from './components/checkboxData';
 import selectData from './components/selectData';
+import formData from './components/formData';
 
 const MAP = {
   hooks: {
@@ -56,6 +57,7 @@ const MAP = {
     input_number: inputNumberData,
     checkbox: checkboxData,
     select: selectData,
+    form: formData
   }
 }
 

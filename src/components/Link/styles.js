@@ -46,7 +46,7 @@ export const ButtonLink = styled.button(props => {
   const mainStyles = {
     color: theme.colors.main,
     fontFamily: theme.fontFamily,
-    fontSize: theme.text.sizes.body,
+    fontSize: theme.font.size.body,
     outline: 'none',
     border: 'none',
     fontWeight: isBold ? 'bold' : 400,
@@ -82,7 +82,7 @@ export const ALink = styled.a(props => {
     color: theme.colors.main,
     position: 'inline-block',
     padding: `0px ${theme.margin / 3}px`,
-    fontSize: theme.text.sizes.body,
+    fontSize: theme.font.size.body,
     fontWeight: isBold ? 'bold' : 400,
     textDecoration: 'none',
     background: `

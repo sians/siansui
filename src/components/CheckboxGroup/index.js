@@ -22,7 +22,7 @@ const CheckboxGroup = ({
             id={`${name}Box${idx+1}`}
             onChange={onChange}
             name={name}
-            isChecked={box.isChecked}
+            value={box.value}
           />
         )
       })

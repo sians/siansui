@@ -16,7 +16,7 @@ const Button = ({
   size
 }) => {
   const [ref, isHovered] = useHover();
-  const handleClick = () => onClick();
+  const handleClick = (e) => onClick(e);
 
   const buttonSize = size || 'small';
   const sizeMap = {

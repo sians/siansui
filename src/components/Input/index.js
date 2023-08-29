@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
  
 import useHover from 'hooks/useHover';
 import useFocus from 'hooks/useFocus';
@@ -29,6 +29,7 @@ const Input = ({
  }) => {
   const [hoverRef, isHovered] = useHover();
   const [focusRef, isFocused, setFocus] = useFocus();
+  const prevIsFocused = useRef(null);
 
   useEffect(() => {
     if (isAutofocus) {
@@ -39,12 +40,25 @@ const Input = ({
 
   useEffect(() => {
     if (isFocused && onFocus) {
-      onFocus();
+      onFocus({
+        target: {
+          value: value,
+          name: name
+        }
+      });
     };
     
-    if (!isFocused && onBlur) {
-      onBlur();
+    if ((prevIsFocused.current === true) && 
+      !isFocused && onBlur) {
+        onBlur({
+          target: {
+            value: value,
+            name: name
+          }
+        });
     }
+
+    prevIsFocused.current = isFocused;
   }, [isFocused])
 
 
@@ -62,7 +76,7 @@ const Input = ({
       }
 
       <label for={name}>
-        {label}
+        <p>{label}</p>
 
         <StyledInput 
           ref={(elem) => { 

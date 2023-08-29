@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Row } from 'components/Layout';
+import Row from 'components/Layout/Row';
 
 export const Container = styled(Row)(props => {
   const { theme } = props;

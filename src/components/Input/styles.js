@@ -2,12 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div(props => {
   const { theme, isLabelHidden, hasError } = props;
+  
   return {
     position: 'relative',
     'label': {
       fontWeight: 'bold',
-      opacity: isLabelHidden ? 0 : 0.7,
-      fontSize: '0.9rem',
+      'p': {
+        opacity: isLabelHidden ? 0 : 0.7,
+        height: isLabelHidden && 0,
+        fontSize: '0.9rem',
+        margin: 0
+      }
     },
     '.sub-text': {
       fontSize: '0.75rem',

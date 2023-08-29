@@ -13,12 +13,12 @@ Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  isChecked: PropTypes.bool,
+  value: PropTypes.bool,
   isDisabled: PropTypes.bool,
 }
 
 Checkbox.defaultProps = {
-  isChecked: false,
+  value: false,
   isDisabled: false,
 }
 `,
@@ -105,7 +105,7 @@ const sections = {
             default: '',
           },
           { 
-            property: 'isChecked',
+            property: 'value',
             description: '',
             propType: 'boolean',
             default: '',

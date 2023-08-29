@@ -2,44 +2,10 @@ import { useMemo } from 'react';
 import { chunkAry } from 'utils';
 import styled from 'styled-components';
 
-export const Row = styled.div(props => {
-  const { paddingX, paddingY, align, justify, height, overflowY } = props;
+import Row from './Row';
+import Col from './Col';
 
-  const xPadding = paddingX || 0;
-  const yPadding = paddingY || 0;
 
-  return {
-    display: 'flex',
-    flexDirection: 'row',
-    padding: `${yPadding}px ${xPadding}px`,
-    width: `calc(100% - ${paddingX * 2}px)`,
-    alignItems: align,
-    justifyContent: justify,
-    height: height,
-    overflowY: overflowY,
-    flexWrap: 'wrap',
-  }
-})
-
-export const Col = styled.div(props => {
-  const { size, paddingX, paddingY, justify, align, overflow, maxHeight, gutterSize } = props;
-  const padding = `${paddingY || 0}px ${paddingX || 0}px`;
-  const widthPercentage = size / 12 * 100;
-  const widthSubtractPx = ((paddingX || 0) * 2) + (gutterSize || 0);
-
-  return {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: padding,
-    width: `calc(${widthPercentage}% - ${widthSubtractPx}px)`,
-    flexWrap: 'wrap',
-    justifyContent: justify,
-    alignItems: align,
-    transition: 'width 0.5s',
-    overflow: overflow && overflow,
-    maxHeight: maxHeight && maxHeight,
-  }
-})
 
 const Spacer = styled.div(props => {
   return {
@@ -102,10 +68,8 @@ const Grid = ({ elements, gutterSize, colNum }) => {
   )
 }
 
-const Layout = {
+export const Layout = {
   Row,
   Col,
   Grid
 }
-
-export default Layout;

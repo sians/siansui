@@ -10,6 +10,7 @@ import TextareaExample from './TextareaExample';
 import InputNumberExample from './InputNumberExample';
 import CheckboxExample from './CheckboxExample';
 import SelectExample from './SelectExample';
+import FormExample from './FormExample';
 
 export {
   SwitchExample,
@@ -23,5 +24,6 @@ export {
   TextareaExample,
   InputNumberExample,
   CheckboxExample,
-  SelectExample
+  SelectExample,
+  FormExample
 }

@@ -10,11 +10,17 @@ const Checkbox = ({
   id,
   name,
   onChange,
-  isChecked,
+  value,
   isDisabled,
 }) => {
   const [hoverRef, isHovered] = useHover();
-  const handleChange = () => onChange(label);
+  const handleChange = () => onChange({
+    target: {
+      name: name,
+      value: !value,
+      label: label
+    }
+  });
 
   return (
     <Container 
@@ -27,7 +33,7 @@ const Checkbox = ({
         type="checkbox" 
         id={id}
         name={name}
-        checked={isChecked}
+        checked={value}
         disabled={isDisabled}
         onChange={handleChange}
         isHovered={isHovered}
@@ -47,11 +53,11 @@ Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  isChecked: PropTypes.bool,
+  value: PropTypes.bool,
   isDisabled: PropTypes.bool,
 }
 
 Checkbox.defaultProps = {
-  isChecked: false,
+  value: false,
   isDisabled: false,
 }

@@ -19,6 +19,9 @@ export const Fieldset = styled.fieldset(props => {
         marginTop: theme.margin / 4,
         fontSize: '0.9rem'
       },
+      '&:hover': {
+        cursor: 'pointer'
+      }
     }
   }
 })

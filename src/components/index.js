@@ -9,7 +9,7 @@ import Tables from './Tables';
 import TypeString from './TypeString';
 import Code from './Code';
 import FooterNav from './FooterNav';
-import Layout from './Layout';
+import { Layout } from './Layout';
 import Card from './Card';
 import Widget from './Widget';
 import Button from './Button';
@@ -28,6 +28,7 @@ import InputNumber from './InputNumber';
 import Checkbox from './Checkbox';
 import CheckboxGroup from './CheckboxGroup';
 import Select from './Select';
+import Form from './Form';
 
 export {
   Nav,
@@ -59,5 +60,6 @@ export {
   InputNumber,
   Checkbox,
   CheckboxGroup,
-  Select
+  Select,
+  Form
 }

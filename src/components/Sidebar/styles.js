@@ -9,7 +9,7 @@ export const Container = styled.div(props => {
   return {
     minWidth: width,
     maxWidth: width,
-    height: `calc(100vh - ${theme.navHeight}px)`,
+    height: `calc(100vh - ${theme.navHeight * 2}px)`,
     borderRight: `1px solid ${theme.colors.grey}`,
     margin: theme.margin,
     overflowY: 'scroll',
