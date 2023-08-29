@@ -35,7 +35,7 @@ const Input = ({
     if (isAutofocus) {
       setFocus(true);
     }
-  }, [isAutofocus])
+  }, [isAutofocus, setFocus])
 
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Input = ({
     }
 
     prevIsFocused.current = isFocused;
-  }, [isFocused])
+  }, [isFocused, name, value, onBlur, onFocus])
 
 
 
@@ -75,7 +75,7 @@ const Input = ({
         </IconContainer>
       }
 
-      <label for={name}>
+      <label htmlFor={name}>
         <p>{label}</p>
 
         <StyledInput 

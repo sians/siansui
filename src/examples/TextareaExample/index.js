@@ -21,7 +21,7 @@ const TextareaExample = () => {
     <div>
       {textareas.map((groupData, idx) => {
         return (
-          <Textarea {...groupData} />
+          <Textarea key={`txta-ex-${idx}`} {...groupData} />
         )
       })}
     </div>

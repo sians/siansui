@@ -22,7 +22,7 @@ export const FormRow = ({ fields, values, onChange, formId }) => {
         <Layout.Col 
           size={12 / Object.keys(fields).length} 
           key={`${formId}-col-${name}`}
-          padding={idx !== Object.keys(fields).length - 1 && {pr: theme.margin}}
+          padding={idx !== Object.keys(fields).length - 1 ? {pr: theme.margin} : {}}
         >
           <FormField 
             {...fields[name]} 
@@ -72,13 +72,6 @@ const Form = ({ formId }) => {
           return validation.errorMessage;
         }
       } else if (validation.matchField) {
-        console.log(
-          formValues,
-          validation,
-          formValues[validation?.matchField], 
-          value, 
-          formValues[validation?.matchField] !== value
-        )
         if (formValues[validation?.matchField] !== value) {
           return validation.errorMessage;
         }
@@ -88,14 +81,11 @@ const Form = ({ formId }) => {
   };
   
   const handleSubmit = (e) => {
-    console.log(e, 'sub', formObj)
     e.preventDefault();
     // after init submit, will now validate fields onBlur
     setIsValidateOnBlur(true);
-    console.log(2)
     const fieldsToValidate = Object.keys(formObj.validates);
     if (!fieldsToValidate.length) return;
-    console.log(3)
     const newErrors = {};
   
     fieldsToValidate.forEach((field) => {
@@ -105,10 +95,8 @@ const Form = ({ formId }) => {
         newErrors[field] = errorMessage;
       }
     });
-    console.log(4)
 
     if (Object.keys(newErrors).length) {
-      console.log(5)
       setFormErrors(prev => ({ ...prev, ...newErrors }));
     } else {
       // submit

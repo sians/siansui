@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import ReactSelect from 'react-select'
 
 import useHover from 'hooks/useHover';
-import useFocus from 'hooks/useFocus';
 
 import { useTheme } from 'styled-components';
 import { Container, makeStyles } from './styles';

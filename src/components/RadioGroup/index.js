@@ -13,8 +13,6 @@ const RadioGroup = ({
   isHorizontal,  
   showFieldset
 }) => {
-  
-
   return (
     <Fieldset 
       isHorizontal={isHorizontal}
@@ -29,6 +27,7 @@ const RadioGroup = ({
         {options.map((radio, idx) => {
           return (
             <RadioButton 
+              key={`radio-btn-${idx}-${name}`}
               id={`${name}Choice${idx+1}`}
               name={name}
               value={radio.value}
@@ -47,7 +46,7 @@ export default RadioGroup;
 RadioGroup.propTypes = {
   legend: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  options: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
   selected: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   isHorizontal: PropTypes.bool,

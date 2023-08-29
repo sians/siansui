@@ -12,7 +12,6 @@ const Avatar = ({
   variant,
   hasOutline
 }) => {
-  console.log(name, src, )
   return (
     <Container
       size={size}

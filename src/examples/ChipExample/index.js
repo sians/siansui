@@ -38,7 +38,6 @@ const ChipExample = () => {
   return (
     <Layout.Row>
       {data.map((elem, idx) => {
-        console.log(elem)
         return (
           <Chip 
             key={`chip-${idx}`}

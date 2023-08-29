@@ -64,11 +64,11 @@ const FooterNav = () => {
   return (
     <Container>
       <Layout.Col 
+        innerRef={leftRef}
         size={6}
-        paddingX={theme.margin}
+        padding={{pl: theme.margin, pr: theme.margin, pt: theme.margin, pb: theme.margin}}
         className='col'
         justify='center'
-        ref={leftRef}
         onClick={() => prevComponentStr && handleNavigation(prevComponentStr)}
       >
         {prevComponentStr &&        
@@ -90,11 +90,11 @@ const FooterNav = () => {
       </Layout.Col>
 
       <Layout.Col 
+        innerRef={rightRef}
         size={6}
         className='col'
-        paddingX={theme.margin}
+        padding={{pl: theme.margin, pr: theme.margin, pt: theme.margin, pb: theme.margin}}
         justify='center'
-        ref={rightRef}
         onClick={() => nextComponentStr && handleNavigation(nextComponentStr)}
       >
         {nextComponentStr &&    
@@ -113,7 +113,7 @@ const FooterNav = () => {
               className='icon nav-icon-right'
             />
           </Layout.Row>
-        }        
+        }
       </Layout.Col>
     </Container>
   )

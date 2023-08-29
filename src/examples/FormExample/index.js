@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Layout, Form } from 'components';
 
 const FormExample = () => {
@@ -9,12 +8,10 @@ const FormExample = () => {
       <Layout.Col size={12}>
         Form Examples:
         <Form formId='shipping'/>
-        <Form formId='login'/>
+        {/* <Form formId='login'/>
         <Form formId='signup'/>
         <Form formId='forgotPassword'/>
-        <Form formId='resetPassword'/>
-
-
+        <Form formId='resetPassword'/> */}
       </Layout.Col>
     </Layout.Row>
   )

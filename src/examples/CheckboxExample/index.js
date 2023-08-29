@@ -27,7 +27,6 @@ const CheckboxExample = () => {
     })
   }
 
-
   const checkboxGroups = [
     {
       legend: "Select topics that you are interested in:",
@@ -44,9 +43,7 @@ const CheckboxExample = () => {
       name: 'terms',
       value: terms,
       onChange: () => handleTermsClick(),
-      label: (
-        <p>I accept the <Link text='Terms of Use' variant='small'/> & <Link text='Privacy Policy' variant='small'/></p>
-      )
+      label: `I accept the ${<Link text='Terms of Use' variant='small'/>} & ${<Link text='Privacy Policy' variant='small'/>}`
     }
   }, [terms])
 

@@ -11,7 +11,7 @@ const RadioButton = ({
   const [hoverRef, isHovered] = useHover();
 
   return (
-    <label for={id}>
+    <label htmlFor={id}>
       <Radio
         ref={hoverRef}
         type='radio'

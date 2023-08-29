@@ -31,7 +31,6 @@ export const makeStyles = (theme, props) => {
       display: 'flex',
       justifyContent: 'space-between',
       width: width,
-      height: height,
       borderRadius: theme.borderRadiusSmall,
       border: `${borderSize}px solid ${isHovered || isFocused ? theme.colors.main : theme.colors.mainLighter}`,
       outline: isFocused && `${outlineSize}px solid ${theme.colors.mainLighter}`,

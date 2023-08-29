@@ -39,7 +39,7 @@ const InputNumber = ({
     if (isAutofocus) {
       setFocus(true);
     }
-  }, [isAutofocus])
+  }, [isAutofocus, setFocus])
 
   useEffect(() => {
     if (isFocused && onFocus) {
@@ -49,7 +49,7 @@ const InputNumber = ({
     if (!isFocused && onBlur) {
       onBlur();
     }
-  }, [isFocused])
+  }, [isFocused, onFocus, onBlur])
 
   const handleArrowClick = (arrow) => {
     if (inputRef.current) {

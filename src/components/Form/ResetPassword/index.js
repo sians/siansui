@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { FormRow } from '..';
-import { Icon, Link, Typography } from 'components';
+import { Icon } from 'components';
 
 const ICON_OPACITY = 0.7;
 

@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Layout, Select, Input } from 'components';
+import { Layout, Select } from 'components';
 import OPTIONS from './OPTIONS';
 
 const SelectExample = () => {
@@ -24,12 +23,6 @@ const SelectExample = () => {
           </Layout.Col>
         )
       })}
-
-      <Layout.Col size={12}>
-        <Input 
-          isFullWidth
-        />
-      </Layout.Col>
     </Layout.Row>
   )
 }

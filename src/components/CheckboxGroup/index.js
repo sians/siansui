@@ -29,7 +29,7 @@ const CheckboxGroup = ({
     }
 
     return [];
-  }, [options])
+  }, [options, name, onChange])
 
   return (
     <Fieldset 

@@ -28,7 +28,7 @@ const Textarea = ({
     if (isAutofocus) {
       setFocus(true);
     }
-  }, [isAutofocus])
+  }, [isAutofocus, setFocus])
 
   useEffect(() => {
     if (isFocused && onFocus) {
@@ -38,11 +38,11 @@ const Textarea = ({
     if (!isFocused && onBlur) {
       onBlur();
     }
-  }, [isFocused])
+  }, [isFocused, onFocus, onBlur])
 
   return (
     <Container className={className}>
-      <label for={name}>
+      <label htmlFor={name}>
         {label}
 
         <StyledTextarea 

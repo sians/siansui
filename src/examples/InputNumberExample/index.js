@@ -27,7 +27,7 @@ const InputNumberExample = () => {
       onChange: (e) => handleCookiesChange(e.target.value),
       label: 'Cookies',
       name: 'cookies',
-      errorText: !isCookiesValid && 'Cookies must be in multiples of 10',
+      errorText: isCookiesValid ? null : 'Cookies must be in multiples of 10',
       helperText: 'There are 10 cookies per packet.',
       step: 10
     },

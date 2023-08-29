@@ -21,7 +21,7 @@ const useFocus = () => {
     }
   }, [])
 
-  const setFocus = (hasFocus) => {
+  const setFocus = useCallback((hasFocus) => {
     if (ref.current) {
       if (hasFocus) {
         ref.current.focus();
@@ -29,7 +29,7 @@ const useFocus = () => {
         ref.current.blur();
       }
     }
-  }
+  }, [])
   
   return [
     callbackRef,

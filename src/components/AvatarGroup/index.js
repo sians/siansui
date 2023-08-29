@@ -14,7 +14,12 @@ const AvatarGroup = ({
     <Container>
       {data && data.slice(0,max).map((avatar, idx) => {
         return (
-          <Item indent={idx} size={size} variant={variant}>
+          <Item 
+            key={`avat-grp-item-${idx}`}
+            indent={idx} 
+            size={size} 
+            variant={variant}
+          >
             <Avatar 
               src={avatar.src}
               name={avatar.name}

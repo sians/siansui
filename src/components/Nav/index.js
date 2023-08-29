@@ -39,7 +39,6 @@ const Nav = () => {
     }
   };
   useEffect(() => {
-    console.log(menuState, 'state')
     let timer;
     if (menuState === "opening") {
       timer = setTimeout(() => setMenuState("open"), 200);
@@ -50,7 +49,6 @@ const Nav = () => {
   }, [menuState]);
 
   const outsideRef = useClickOutside(() => {
-    console.log('ref')
     if (menuState === "open") {
       handleToggleMenu();
     }

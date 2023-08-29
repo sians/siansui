@@ -90,49 +90,49 @@ const theme = {
   // },
 };
 
-const LIGHT = {
-  fg: '#2A282C',
-  bg: '#fefeff',
+// const LIGHT = {
+//   fg: '#2A282C',
+//   bg: '#fefeff',
 
-  main: {
-    lightest: '#F9F3FF',
-    light: '#F1E3FE',
-    base: '#B668FF',
-    dark: '#9352D0',
-    darkest: '#714699'    
-  },
-  secondary: {
-    lightest: '#FAFFDD',
-    light: '#F3FFA6',
-    base: '#E5FC59',
-    dark: '#D2EB3A',
-    darkest: '#ACC223'
-  },
-  neutral: {
+//   main: {
+//     lightest: '#F9F3FF',
+//     light: '#F1E3FE',
+//     base: '#B668FF',
+//     dark: '#9352D0',
+//     darkest: '#714699'    
+//   },
+//   secondary: {
+//     lightest: '#FAFFDD',
+//     light: '#F3FFA6',
+//     base: '#E5FC59',
+//     dark: '#D2EB3A',
+//     darkest: '#ACC223'
+//   },
+//   neutral: {
 
-  },  
+//   },  
 
-  error: {
-    dark: '#993232',
-    main: '#D85656',
-    light: '#ECD5D5'
-  },
-  success: {
-    dark: '#327730',
-    main: '#7FB27E',
-    light: '#DDECDD'
-  },
-  warning: {
-    dark: '#D8A012',
-    main: '#E9CC82',
-    light: '#F8F1E1'
-  },
-  info: {
-    dark: '',
-    main: '',
-    light: ''
-  }
-}
+//   error: {
+//     dark: '#993232',
+//     main: '#D85656',
+//     light: '#ECD5D5'
+//   },
+//   success: {
+//     dark: '#327730',
+//     main: '#7FB27E',
+//     light: '#DDECDD'
+//   },
+//   warning: {
+//     dark: '#D8A012',
+//     main: '#E9CC82',
+//     light: '#F8F1E1'
+//   },
+//   info: {
+//     dark: '',
+//     main: '',
+//     light: ''
+//   }
+// }
 
 export const GlobalStyles = createGlobalStyle(() => {
   return {

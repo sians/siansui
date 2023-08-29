@@ -13,6 +13,7 @@ export const Container = styled.div(props => {
     justifyContent: 'space-between',
     alignItems: 'center',
     fontSize: 14,
+    backgroundColor: theme.colors.white,
 
     '.logo-container': {
       minWidth: logoWidth,

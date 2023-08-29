@@ -30,6 +30,9 @@ const Col = ({
   maxHeight,
   gutterSize,
   children,
+  innerRef,
+  className,
+  onClick
 }) => {
   const { pt, pr, pb, pl } = padding;
   const { mt, mr, mb, ml } = margin;
@@ -56,6 +59,9 @@ const Col = ({
       maxHeight={maxHeight}
       width={width}
       overflow={overflow}
+      ref={innerRef}
+      className={className}
+      onClick={onClick && onClick}
     >
       {children}
     </Styled>
@@ -77,6 +83,9 @@ Col.propTypes = {
   overflow: PropTypes.string,
   maxHeight: PropTypes.number,
   gutterSize: PropTypes.number,
+  // innerRef: PropTypes.
+  className: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 Col.defaultProps = {
