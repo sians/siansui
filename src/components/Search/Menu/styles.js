@@ -9,14 +9,14 @@ export const Container = styled.div(props => {
     width: width,
     height: height,
     backgroundColor: theme.colors.trueWhite,
-    boxShadow: theme.boxShadowBig,
-    borderRadius: theme.borderRadius,
+    boxShadow: theme.boxShadow.big,
+    borderRadius: theme.borderRadius.main,
     position: 'absolute',
     top: 60,
     left: '-50%',
     // transform: 'translate(-50%, -50%)',
     zIndex: 10,
-    color: theme.colors.darkerGrey
+    color: theme.colors.grey.darkest
   }
 })
 
@@ -28,17 +28,17 @@ export const MenuItem = styled.div(props => {
   const height = totalHeight - padding * 2;
 
   return {
-    backgroundColor: theme.colors.lightestGrey,
+    backgroundColor: theme.colors.grey.light,
     height: height,
     padding: padding,
-    borderRadius: theme.borderRadius,
+    borderRadius: theme.borderRadius.main,
     margin: theme.margin / 4,
 
 
     '&:hover': {
-      backgroundColor: theme.colors.secondary,
+      backgroundColor: theme.colors.secondary.base,
       cursor: 'pointer',
-      color: theme.colors.black
+      color: theme.colors.fg
     }
   }
 })
@@ -48,13 +48,13 @@ export const Category = styled.div(props => {
   return {
     padding: `${theme.margin / 5}px ${theme.margin / 2}px`,
     borderRadius: `
-      ${isFirst ? theme.borderRadius : 0}px 
-      ${isFirst ? theme.borderRadius: 0}px 
+      ${isFirst ? theme.borderRadius.main : 0}px 
+      ${isFirst ? theme.borderRadius.main : 0}px 
       0px 
       0px`,
     marginBottom: theme.margin / 4,
-    backgroundColor: theme.colors.mainLighter,
-    color: theme.colors.main
+    backgroundColor: theme.colors.main.light,
+    color: theme.colors.main.base
 
   }
 })

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useTheme } from 'styled-components';
+
 import useFocus from 'hooks/useFocus';
 import useKeyPress from 'hooks/useKeyPress';
 
@@ -7,11 +9,10 @@ import Menu from './Menu';
 
 import { Input, Container } from './styles';
 
-import theme from 'theme';
-
 const Search = ({
   placeholder
 }) => {
+  const theme = useTheme();
   const [ref, isFocused, setFocus] = useFocus();
   const [query, setQuery] = useState('');
   
@@ -36,7 +37,7 @@ const Search = ({
       <Container isFocused={isFocused}>
         <Icon 
           name='search' 
-          fill={{base: theme.colors.midGrey}}
+          fill={{base: theme.colors.grey.dark}}
           size={12}
         />
 

@@ -1,68 +1,75 @@
 import styled from 'styled-components';
-import theme from 'theme';
 
-export const SIZE_MAP = {
-  sm: {
-    xPadding: 4,
-    yPadding: 2,
-    icon: 10
-  },
-  md: {
-    xPadding: 10,
-    yPadding: 4,
-    icon: 12
-  },
-  lg: {
-    xPadding: 16,
-    yPadding: 8,
-    icon: 14
+export const makeSizeMap = (size) => {
+  const sizes = {
+    sm: {
+      xPadding: 4,
+      yPadding: 2,
+      icon: 10
+    },
+    md: {
+      xPadding: 10,
+      yPadding: 4,
+      icon: 12
+    },
+    lg: {
+      xPadding: 16,
+      yPadding: 8,
+      icon: 14
+    }
   }
+  return sizes[size]
 }
 
-export const VARIANT_MAP = {
-  solid: {
-    base: {
-      backgroundColor: theme.colors.main,
-      color: theme.colors.white,
+export const makeVariantStyles = (theme, variant) => {
+  const styles = {
+    solid: {
+      base: {
+        backgroundColor: theme.colors.main.base,
+        color: theme.colors.bg,
+      },
+      hover: {
+        backgroundColor: theme.colors.main.light,
+        color: theme.colors.main.dark,
+      }
     },
-    hover: {
-      backgroundColor: theme.colors.mainLighter,
-      color: theme.colors.mainDarker,
-    }
-  },
 
-  outline: {
-    base: {
-      backgroundColor: theme.colors.mainLightest,
-      color: `${theme.colors.mainDarker}`,
-      border: `1px solid ${theme.colors.mainDarker}`
+    outline: {
+      base: {
+        backgroundColor: theme.colors.main.lightest,
+        color: `${theme.colors.main.dark}`,
+        border: `1px solid ${theme.colors.main.dark}`
+      },
+      hover: {
+        backgroundColor: theme.colors.main.light,
+        color: theme.colors.main.dark,
+      }
     },
-    hover: {
-      backgroundColor: theme.colors.mainLighter,
-      color: theme.colors.mainDarker,
-    }
-  },
 
-  disabled: {
-    base: {
-      backgroundColor: theme.colors.veryLightestGrey,
-      color: theme.colors.midGrey
-    },
+    disabled: {
+      base: {
+        backgroundColor: theme.colors.grey.lightest,
+        color: theme.colors.grey.dark
+      },
+    }
   }
+  return styles[variant];
 }
 
 export const Container = styled.div(props => {
-  const { size, variant, isDisabled } = props;
+  const { theme, size, variant, isDisabled } = props;
 
-  const xPadding = SIZE_MAP[size].xPadding;
-  const yPadding = SIZE_MAP[size].yPadding;
+  const sizing = makeSizeMap(size);
+  const variantStyles = makeVariantStyles(theme, variant);
+  const xPadding = sizing.xPadding;
+  const yPadding = sizing.yPadding;
 
   const baseStyles = {
     display: 'flex',
     alignItems: 'center',
     padding: `${yPadding}px ${xPadding}px`,
     fontSize: '0.8rem',
-    borderRadius: theme.borderRadiusBig,
+    borderRadius: theme.borderRadius.big,
     border: `1px solid transparent`,
     fontWeight: 600,
 
@@ -74,16 +81,16 @@ export const Container = styled.div(props => {
   }
 
   const baseHover = {
-    backgroundColor: theme.colors.main,
+    backgroundColor: theme.colors.main.base,
     cursor: 'pointer'
   }
 
   return {
     ...baseStyles,
-    ...VARIANT_MAP[variant]?.base,
+    ...variantStyles?.base,
     '&:hover': !isDisabled && {
       ...baseHover,
-      ...VARIANT_MAP[variant]?.hover,
+      ...variantStyles?.hover,
     }
   }
 })

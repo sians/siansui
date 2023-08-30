@@ -6,6 +6,7 @@ import { Content, Background } from './styles';
 
 const Home = () => {
   const navigate = useNavigate();
+
   return (
     <>
       <Background url={shapes}/>

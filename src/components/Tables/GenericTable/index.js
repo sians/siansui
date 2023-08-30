@@ -1,17 +1,16 @@
+import { useTheme } from 'styled-components';
 import { Container, Cell, Header, Row } from '../styles';
 
-import theme from 'theme';
-
-const ROW_PADDING_Y = theme.margin;
-
 const GenericTable = ({ headers, data, renderRow, tableType }) => {
+  const theme = useTheme();
+  const rowPaddingY = theme.margin;
   return (
     <Container fontFamily='Red Hat Mono'>
       <thead>
         <Header 
-          paddingY={ROW_PADDING_Y}
-          paddingX={ROW_PADDING_Y * 2}
-          backgroundColor={`${theme.colors.grey}60`}
+          paddingY={rowPaddingY}
+          paddingX={rowPaddingY * 2}
+          backgroundColor={`${theme.colors.grey.main}60`}
         >
           {headers.map((header, idx) => (
             <Cell 
@@ -30,8 +29,8 @@ const GenericTable = ({ headers, data, renderRow, tableType }) => {
             <Row 
               key={`${tableType}-tr-${idx}`}
               rowIdx={idx} 
-              paddingY={ROW_PADDING_Y} 
-              paddingX={ROW_PADDING_Y * 2}
+              paddingY={rowPaddingY} 
+              paddingX={rowPaddingY * 2}
             >
               {renderRow(item, idx)}
             </Row>

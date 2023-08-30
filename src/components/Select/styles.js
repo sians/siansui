@@ -22,64 +22,64 @@ export const makeStyles = (theme, props) => {
       ...provided,
       minWidth: state.selectProps.width,
       maxWidth: state.selectProps.width,
-      color: theme.colors.black,
+      color: theme.colors.fg,
       padding: theme.margin / 2,
-      border: `${borderSize}px solid ${theme.colors.mainLighter}`,
+      border: `${borderSize}px solid ${theme.colors.main.light}`,
       fontSize: theme.font.size.input
     }),
     control: () => ({
       display: 'flex',
       justifyContent: 'space-between',
       width: width,
-      borderRadius: theme.borderRadiusSmall,
-      border: `${borderSize}px solid ${isHovered || isFocused ? theme.colors.main : theme.colors.mainLighter}`,
-      outline: isFocused && `${outlineSize}px solid ${theme.colors.mainLighter}`,
+      borderRadius: theme.borderRadius.small,
+      border: `${borderSize}px solid ${isHovered || isFocused ? theme.colors.main.base : theme.colors.main.light}`,
+      outline: isFocused && `${outlineSize}px solid ${theme.colors.main.light}`,
       height: totalHeight - borderSize*2,
     }),
     placeholder: () => ({
       paddingLeft: theme.margin/2,
-      fontFamily: theme.fontFamily,
+      fontFamily: theme.font.family.base,
       fontSize: theme.font.size.input,
-      color: theme.colors.midGrey
+      color: theme.colors.grey.dark
     }),
     valueContainer: () => ({
       height: height,
       padding: `${padding}px ${padding/2}px`,
       fontSize: theme.font.size.input,
-      borderRadius: theme.borderRadiusSmall,
+      borderRadius: theme.borderRadius.small,
       display: 'flex',
       alignItems: 'center',
     }),
     option: (provided, { isSelected, isFocused }) => {
       return {
         ...provided,
-        borderRadius: theme.borderRadiusSmall,
+        borderRadius: theme.borderRadius.small,
         color: isSelected 
-          ? theme.colors.main 
-          : theme.colors.black,
+          ? theme.colors.main.base
+          : theme.colors.fg,
         backgroundColor: isSelected 
-          ? theme.colors.mainLighter 
-          : isFocused && theme.colors.secondary
+          ? theme.colors.main.light 
+          : isFocused && theme.colors.secondary.base
       }
     },
     multiValue: (provided) => {
       return {
         ...provided,
-        backgroundColor: theme.colors.white,
+        backgroundColor: theme.colors.bg,
       };
     },
     multiValueLabel: (provided) => ({
       ...provided,
-      color: theme.colors.main,
-      backgroundColor: theme.colors.mainLighter,
+      color: theme.colors.main.base,
+      backgroundColor: theme.colors.main.light,
     }),
     multiValueRemove: (provided) => ({
       ...provided,
-      backgroundColor: theme.colors.mainLighter,
-      color: theme.colors.main,
+      backgroundColor: theme.colors.main.light,
+      color: theme.colors.main.base,
       ':hover': {
-        color: theme.colors.mainLighter,
-        backgroundColor: theme.colors.main,
+        color: theme.colors.main.light,
+        backgroundColor: theme.colors.main.base,
       },
     }),
   }

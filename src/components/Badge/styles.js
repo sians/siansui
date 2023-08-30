@@ -15,8 +15,8 @@ export const Container = styled.div(props => {
     width: 'fit-content',
     '.badge': {
       backgroundColor: theme.colors.danger,
-      color: theme.colors.white,
-      boxShadow: theme.boxShadowBig,
+      color: theme.colors.bg,
+      boxShadow: theme.boxShadow.big,
       height: badgeSize,
       width: badgeSize,
       borderRadius: 8,

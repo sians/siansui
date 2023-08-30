@@ -6,10 +6,12 @@ export const Content = styled.div(props => {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: `calc(100vh - ${theme.navHeight}px)`,
+    height: `calc(100vh - ${theme.nav.height}px)`,
     maxWidth: '80%',
     margin: 'auto',
     textAlign: 'center',
+    zIndex: 1,
+    position: 'relative',
 
     '.btn-container': {
       display: 'flex',
@@ -32,7 +34,6 @@ export const Background = styled.div(props => {
     height: '100vh',
     width: '100vw',
     position: 'fixed',
-    zIndex: -1,
     opacity: 0.1
   }
 })

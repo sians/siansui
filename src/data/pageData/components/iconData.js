@@ -37,8 +37,8 @@ const Icon = ({
 
   const colorMap = {
     disabled: {
-      base: theme.colors.midGrey, 
-      hover: theme.colors.midGrey
+      base: theme.colors.grey.dark, 
+      hover: theme.colors.grey.dark
     },
     link: {
       base: theme.colors.black, 

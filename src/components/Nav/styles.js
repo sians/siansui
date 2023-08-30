@@ -1,23 +1,24 @@
 import styled, { keyframes, css } from 'styled-components';
-import theme from 'theme';
 
 export const Container = styled.div(props => {
   const { theme } = props;
 
-  const logoWidth = `calc(${theme.sidebarWidth}px - ${theme.sidebarPadding * 2}px)`
+  const logoWidth = `calc(${theme.sidebar.width}px - ${theme.sidebar.padding * 2}px)`
 
   return {
-    height: theme.navHeight,
+    height: theme.nav.height,
     boxShadow: "0px 2px 8px 0px rgba(42, 36, 50, 0.15)",
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     fontSize: 14,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.bg,
+    zIndex: 2,
+    position: 'relative',
 
     '.logo-container': {
       minWidth: logoWidth,
-      borderRight: `1px solid ${theme.colors.grey}`,
+      borderRight: `1px solid ${theme.colors.grey.main}`,
       margin: theme.margin,
       '&:hover': {
         cursor: 'pointer'
@@ -48,12 +49,12 @@ export const MenuItem = styled.div(props => {
     marginRight: theme.margin / 2,
     display: 'flex',
     alignItems: 'center',
-    borderTop: `${borderTop}px solid ${isActive ? theme.colors.main : 'transparent'}`,
-    height: `calc(${theme.navHeight}px - ${borderTop}px)`,
-    color: isActive && theme.colors.main,
+    borderTop: `${borderTop}px solid ${isActive ? theme.colors.main.base : 'transparent'}`,
+    height: `calc(${theme.nav.height}px - ${borderTop}px)`,
+    color: isActive && theme.colors.main.base,
 
     '&:hover': {
-      borderTop: `${borderTop}px solid ${theme.colors.main}`,
+      borderTop: `${borderTop}px solid ${theme.colors.main.base}`,
       cursor: 'pointer'
     }
   }
@@ -90,7 +91,7 @@ export const AnimateDropdown = styled.div`
   ${props => {
     return `
       right: ${props.theme.margin}px;
-      top: ${props.theme.navHeight - theme.margin/2}px;
+      top: ${props.theme.nav.height - props.theme.margin/2}px;
       z-index: 10;
       position: absolute;
       visibility: ${props.isMenuOpen ? 'visible' : 'hidden'};

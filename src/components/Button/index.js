@@ -1,8 +1,9 @@
+import { useTheme } from 'styled-components';
 import useHover from 'hooks/useHover';
 
 import { Icon } from 'components';
 
-import { MAP, StyledButton } from './styles';
+import { makeVariantStyles, StyledButton } from './styles';
 
 const Button = ({
   onClick,
@@ -15,8 +16,11 @@ const Button = ({
   iconPosition,
   size
 }) => {
+  const theme = useTheme();
   const [ref, isHovered] = useHover();
   const handleClick = (e) => onClick(e);
+  
+  const styles = makeVariantStyles(theme, variant);
 
   const buttonSize = size || 'small';
   const sizeMap = {
@@ -33,8 +37,8 @@ const Button = ({
     <Icon 
       name={iconName} 
       fill={{
-        base: MAP[variant]?.fill.base,
-        hover: MAP[variant]?.fill.hover 
+        base: styles?.fill.base,
+        hover: styles?.fill.hover 
       }}
       size={sizeMap[buttonSize].icon}
       isHovered={isHovered}

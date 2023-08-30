@@ -1,8 +1,9 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
 import { Typography } from 'components';
-import theme from 'theme';
 
 const Text = ({ widget, parentId }) => {
+  const theme = useTheme();
   const { data } = widget;
   return data && data.map((paragraph, idx) => {
     return (typeof paragraph === 'string') ? (

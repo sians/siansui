@@ -16,8 +16,8 @@ const Inline = styled.code(props => {
     margin: '0px 1px',
     padding: \`\${theme.margin / 5}px \${theme.margin / 2}px\`,
     fontSize: '0.8em',
-    background: theme.colors.veryLightestGrey,
-    border: \`1px solid \${theme.colors.grey}\`,
+    background: theme.colors.grey.lightest,
+    border: \`1px solid \${theme.colors.grey.main}\`,
     borderRadius: theme.borderRadius / 2,
   }
 })

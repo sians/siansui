@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import theme from 'theme';
 
 // const variants = [
 //   'primary',
@@ -11,95 +10,100 @@ const borderSize = 1;
 const maxFABHeight = 46;
 
 const BASE_HOVER = { cursor: 'pointer' }
-const BASE_STYLES = {
-  borderRadius: theme.borderRadius,
-  padding: theme.margin,
-  outline: 'none',
-  fontFamily: theme.fontFamily,
-  fontWeight: 600,
-  border: `${borderSize}px solid transparent`,
-  transition: 'all 0.2s',
-  display: 'flex',
+const makeBaseStyles = (theme) => {
+  return {
+    borderRadius: theme.borderRadius.main,
+    padding: theme.margin,
+    outline: 'none',
+    fontFamily: theme.font.family.base,
+    fontWeight: 600,
+    border: `${borderSize}px solid transparent`,
+    transition: 'all 0.2s',
+    display: 'flex',
 
-  '.icon.start': {
-    marginRight: theme.margin / 2,
-  },
-  '.icon.end': {
-    marginLeft: theme.margin / 2,
+    '.icon.start': {
+      marginRight: theme.margin / 2,
+    },
+    '.icon.end': {
+      marginLeft: theme.margin / 2,
+    }
   }
 }
 
-export const MAP = {
-  primary: {
-    styles: {
-      backgroundColor: `${theme.colors.main}`,
-      color: theme.colors.white,
+export const makeVariantStyles = (theme, variant) => {
+  const map = {
+    primary: {
+      styles: {
+        backgroundColor: `${theme.colors.main.base.base}`,
+        color: theme.colors.bg,
+      },
+      hover: {
+        ...BASE_HOVER,
+        backgroundColor: `${theme.colors.main.base}80`,
+      },
+      fill: { // for icon base/hover state
+        base: theme.colors.bg
+      }
     },
-    hover: {
-      ...BASE_HOVER,
-      backgroundColor: `${theme.colors.main}80`,
-    },
-    fill: { // for icon base/hover state
-      base: theme.colors.white
-    }
-  },
 
-  secondary: {
-    styles: {
-      backgroundColor: `${theme.colors.white}`,
-      color: theme.colors.darkerGrey,
-      border: `${borderSize}px solid ${theme.colors.midGrey}`,
-    },
-    hover: {
-      ...BASE_HOVER,
-      color: theme.colors.main,
-      border: `${borderSize}px solid ${theme.colors.main}`,
-      backgroundColor: theme.colors.mainLightest
-    },
-    fill: {
-      base: theme.colors.black,
-      hover: theme.colors.main
-    }
-  },  
+    secondary: {
+      styles: {
+        backgroundColor: `${theme.colors.bg}`,
+        color: theme.colors.grey.darkest,
+        border: `${borderSize}px solid ${theme.colors.grey.dark}`,
+      },
+      hover: {
+        ...BASE_HOVER,
+        color: theme.colors.main.base,
+        border: `${borderSize}px solid ${theme.colors.main.base}`,
+        backgroundColor: theme.colors.main.lightest
+      },
+      fill: {
+        base: theme.colors.fg,
+        hover: theme.colors.main.base
+      }
+    },  
 
-  floatingAction: {
-    styles: {
-      backgroundColor: theme.colors.white,
-      color: theme.colors.darkerGrey,
-      borderRadius: '50%',
-      boxShadow: theme.boxShadowDark,
-      height: maxFABHeight - borderSize * 2,
-      width: maxFABHeight - borderSize * 2,
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    hover: {
-      ...BASE_HOVER,
-      backgroundColor: theme.colors.secondaryLighter,
-    },
-    fill: {
-      base: theme.colors.black,
-      hover: theme.colors.secondaryBrighter,
-    }
-  },    
+    floatingAction: {
+      styles: {
+        backgroundColor: theme.colors.bg,
+        color: theme.colors.grey.darkest,
+        borderRadius: '50%',
+        boxShadow: theme.boxShadow.dark,
+        height: maxFABHeight - borderSize * 2,
+        width: maxFABHeight - borderSize * 2,
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      hover: {
+        ...BASE_HOVER,
+        backgroundColor: theme.colors.secondaryLighter,
+      },
+      fill: {
+        base: theme.colors.fg,
+        hover: theme.colors.secondaryBrighter,
+      }
+    },    
 
-  disabled: {
-    styles: {
-      color: `${theme.colors.black}50`,
-      backgroundColor: theme.colors.grey
-    },
-    hover: { ...BASE_HOVER }
+    disabled: {
+      styles: {
+        color: `${theme.colors.fg}50`,
+        backgroundColor: theme.colors.grey.main
+      },
+      hover: { ...BASE_HOVER }
+    }
   }
-}
 
+  return [map[variant]?.styles, map[variant]?.hover];
+}
 
 export const StyledButton = styled.button(props => {
-  const { variant } = props;
-  const buttonStyles = MAP[variant]?.styles;
-  const hoverStyles = MAP[variant]?.hover;
+  const { theme, variant } = props;
+  const baseStyles = makeBaseStyles(theme);
+  const [buttonStyles, hoverStyles] = makeVariantStyles(theme, variant);
 
   return {
-    ...BASE_STYLES,
+    ...baseStyles,
     ...buttonStyles,
     '&:hover': hoverStyles
   }

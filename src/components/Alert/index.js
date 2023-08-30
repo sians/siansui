@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
+import { useTheme } from 'styled-components';
 
 import useHover from 'hooks/useHover';
 import useTimeout from 'hooks/useTimeout';
@@ -27,10 +28,11 @@ const Alert = ({
   onClose,
   displayTimeout
 }) => {
+  const theme = useTheme();
   useTimeout(() => onClose(id), displayTimeout);
 
   const variantStyles = useMemo(() => {
-    return makeVariantStyles(variant, alertType);
+    return makeVariantStyles(theme, variant, alertType);
   }, [variant, alertType]);
   
   const mainColSize = useMemo(() => {

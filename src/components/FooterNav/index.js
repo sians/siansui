@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useTheme } from 'styled-components';
 
 import useHover from 'hooks/useHover';
 
@@ -10,9 +11,8 @@ import { Container } from './styles';
 
 import LINK_GROUPS from 'data/LINK_GROUPS';
 
-import theme from 'theme';
-
 const FooterNav = () => {
+  const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
@@ -78,8 +78,8 @@ const FooterNav = () => {
               rotateBy={90}
               isHovered={isLeftHovered}
               fill={{
-                base: theme.colors.midGrey,
-                hover: theme.colors.black
+                base: theme.colors.grey.dark,
+                hover: theme.colors.fg
               }}
               size={14}
               className='icon nav-icon-left'
@@ -106,8 +106,8 @@ const FooterNav = () => {
               rotateBy={-90}
               isHovered={isRightHovered}
               fill={{
-                base: theme.colors.midGrey,
-                hover: theme.colors.black
+                base: theme.colors.grey.dark,
+                hover: theme.colors.fg
               }}
               size={14}
               className='icon nav-icon-right'

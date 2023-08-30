@@ -1,27 +1,11 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect, useCallback } from 'react';
-
-import theme from 'theme';
+import { useTheme } from 'styled-components';
 
 import IcomoonReact from 'icomoon-react';
 import iconSet from 'assets/fonts/icons/selection.json';
 
 import { Container } from './styles';
-
-const COLOR_MAP = {
-  disabled: {
-    base: theme.colors.midGrey, 
-    hover: theme.colors.midGrey
-  },
-  link: {
-    base: theme.colors.black, 
-    hover: theme.colors.main
-  },
-  default: {
-    base: theme.colors.black,
-    hover: theme.colors.main
-  }
-}
 
 const Icon = ({ 
   name, 
@@ -35,6 +19,21 @@ const Icon = ({
   isHovered,
   opacity
 }) => {
+  const theme = useTheme();
+  const colorMap = {
+    disabled: {
+      base: theme.colors.grey.dark, 
+      hover: theme.colors.grey.dark
+    },
+    link: {
+      base: theme.colors.fg, 
+      hover: theme.colors.main.base
+    },
+    default: {
+      base: theme.colors.fg,
+      hover: theme.colors.main.base
+    }
+  }  
   const isLink = action ? true : false;
 
   const [color, setColor] = useState([]);
@@ -47,7 +46,7 @@ const Icon = ({
 
   const makeColor = useCallback(() => {
     if (isDisabled) {
-      return COLOR_MAP.disabled;
+      return colorMap.disabled;
     }
 
     if (fill) {
@@ -55,10 +54,10 @@ const Icon = ({
     }
 
     if (isLink) {
-      return COLOR_MAP.link
+      return colorMap.link
     }
 
-    return COLOR_MAP.default;
+    return colorMap.default;
   }, [isDisabled, fill, isLink])
 
   useEffect(() => {
@@ -139,7 +138,10 @@ Icon.propTypes = {
 }
 
 Icon.defaultProps = {
-  fill: COLOR_MAP.default,
+  fill: {
+    main: 'black',
+    
+  },
   className: 'icon',
   size: 18,
   verticalAlign: 'super',

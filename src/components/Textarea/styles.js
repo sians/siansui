@@ -26,15 +26,15 @@ export const StyledTextarea = styled.textarea(props => {
   const baseStlyes = {
     padding: padding,
     width: width,
-    border: `${borderSize}px solid ${hasBorder ? theme.colors.main : theme.colors.mainLighter}`,
-    borderRadius: theme.borderRadiusSmall,
-    outline: isFocused && `${outlineSize}px solid ${theme.colors.mainLighter}`,
+    border: `${borderSize}px solid ${hasBorder ? theme.colors.main.base : theme.colors.main.light}`,
+    borderRadius: theme.borderRadius.small,
+    outline: isFocused && `${outlineSize}px solid ${theme.colors.main.light}`,
     transition: 'border 0.3s',
-    fontFamily: theme.fontFamily,
+    fontFamily: theme.font.family.base,
 
     '&::placeholder': {
-      color: theme.colors.midGrey,
-      fontFamily: theme.fontFamily
+      color: theme.colors.grey.dark,
+      fontFamily: theme.font.family.base
     },
   }
 

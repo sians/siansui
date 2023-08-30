@@ -1,26 +1,28 @@
 import styled from 'styled-components';
-import theme from 'theme';
 
-const SIZE_MAP = {
-  sm: {
-    railHeight: theme.margin / 3,
-    tickHeight: theme.margin / 1.5,
-    thumbSize: theme.margin
-  },
-  lg: {
-    railHeight: theme.margin / 1.5,
-    tickHeight: theme.margin / 0.9,
-    thumbSize: theme.margin * 1.5
-  },
+const makeSizeMap = (theme) => {
+  return {
+    sm: {
+      railHeight: theme.margin / 3,
+      tickHeight: theme.margin / 1.5,
+      thumbSize: theme.margin
+    },
+    lg: {
+      railHeight: theme.margin / 1.5,
+      tickHeight: theme.margin / 0.9,
+      thumbSize: theme.margin * 1.5
+    },
+  }
 }
 
 export const Container = styled.div(props => {
-  const { value, hasIcons, max, size } = props;
+  const { theme, value, hasIcons, max, size } = props;
+  const sizeMap = makeSizeMap(theme);
 
   const valuePercent = value / max * 100;
-  const borderRadius = theme.borderRadius;
-  const railHeight = SIZE_MAP[size]?.railHeight;
-  const thumbSize = SIZE_MAP[size]?.thumbSize;
+  const borderRadius = theme.borderRadius.main;
+  const railHeight = sizeMap[size]?.railHeight;
+  const thumbSize = sizeMap[size]?.thumbSize;
   
   const width = `calc(100% - ${hasIcons ? theme.margin * 4 : ''}px)`
 
@@ -35,7 +37,7 @@ export const Container = styled.div(props => {
     '.rail': {
       width: '100%',
       height: railHeight,
-      backgroundColor: theme.colors.mainLighter,
+      backgroundColor: theme.colors.main.light,
       borderRadius: borderRadius,
       position: 'absolute'
     },
@@ -44,7 +46,7 @@ export const Container = styled.div(props => {
       width: valuePercent ? `${valuePercent}%` : 0,
       height: railHeight,
       borderRadius: borderRadius,
-      backgroundColor: theme.colors.main,
+      backgroundColor: theme.colors.main.base,
       position: 'absolute',
       zIndex: 2
     },
@@ -55,7 +57,7 @@ export const Container = styled.div(props => {
       height: thumbSize,
       width: thumbSize,
       borderRadius: '50%',
-      backgroundColor: theme.colors.main,
+      backgroundColor: theme.colors.main.base,
     },    
 
     '.icon-container': {
@@ -78,16 +80,17 @@ export const Container = styled.div(props => {
 })
 
 export const Tick = styled.div(props => {
-  const { step, max, value, idx, size } = props;
-  
+  const { theme, step, max, value, idx, size } = props;
+  const sizeMap = makeSizeMap(theme);
+
   const tickColor = ((idx+1) * step) < value
-    ? theme.colors.main
-    : theme.colors.mainLighter;
-  const thumbSize = SIZE_MAP[size]?.thumbSize;
+    ? theme.colors.main.base
+    : theme.colors.main.light;
+  const thumbSize = sizeMap[size]?.thumbSize;
 
   return {
     width: (max / step) + thumbSize / 2,
-    height: SIZE_MAP[size]?.tickHeight,
+    height: sizeMap[size]?.tickHeight,
     zIndex: -1,
     borderRight: `1px solid ${tickColor}`,
   }

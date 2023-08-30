@@ -3,23 +3,23 @@ import styled from 'styled-components';
 export const Container = styled.div(props => {
   const { theme } = props;
 
-  const padding = theme.sidebarPadding;
-  const width = `calc(${theme.sidebarWidth}px - ${padding * 2}px)`
+  const padding = theme.sidebar.padding;
+  const width = `calc(${theme.sidebar.width}px - ${padding * 2}px)`
 
   return {
     minWidth: width,
     maxWidth: width,
-    height: `calc(100vh - ${theme.navHeight * 2}px)`,
-    borderRight: `1px solid ${theme.colors.grey}`,
+    height: `calc(100vh - ${theme.nav.height * 2}px)`,
+    borderRight: `1px solid ${theme.colors.grey.main}`,
     margin: theme.margin,
     overflowY: 'scroll',
     position: 'fixed',
     zIndex: 3,
 
     'h4': {
-      borderBottom: `1px solid ${theme.colors.grey}`,
+      borderBottom: `1px solid ${theme.colors.grey.main}`,
       paddingBottom: theme.margin / 2,
-      width: `calc(${theme.sidebarWidth - padding * 2}px - ${theme.margin}px)`,
+      width: `calc(${theme.sidebar.width - padding * 2}px - ${theme.margin}px)`,
       margin: `${theme.margin / 2}px 0px`,
       display: 'flex',
       justifyContent: 'space-between',
@@ -49,20 +49,20 @@ export const ItemGroup = styled.div(props => {
 export const ListItem = styled.li(props => {
   const { theme, isActive } = props;
   
-  const width = `calc(${theme.sidebarWidth}px - ${theme.margin * 3}px)`
+  const width = `calc(${theme.sidebar.width}px - ${theme.margin * 3}px)`
 
   return {
     marginBottom: theme.margin / 2,
     width: width,
     height: 25 + theme.margin * 2,
-    borderRadius: theme.borderRadius,
+    borderRadius: theme.borderRadius.main,
 
-    backgroundColor: isActive && theme.colors.mainLighter,
+    backgroundColor: isActive && theme.colors.main.light,
     'button': isActive && {
-      color: theme.colors.main,
+      color: theme.colors.main.base,
 
       '&:hover': {
-        color: theme.colors.black
+        color: theme.colors.fg
       }
     }
   }

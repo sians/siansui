@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
+import { useTheme } from 'styled-components';
 
 import { Slider } from 'components';
 
-import theme from 'theme';
-
 const SliderExample = () => {
+  const theme = useTheme();
   const [value, setValue] = useState(70);
   const handleSliderChange = useCallback((v) => {
     setValue(v);
@@ -16,7 +16,7 @@ const SliderExample = () => {
         value={value}
         onChange={handleSliderChange}
         icons={['cards-sm', 'cards-lg']}
-        iconFill={theme.colors.darkerGrey}
+        iconFill={theme.colors.grey.darkest}
         step={10}
         min={0}
         max={210}

@@ -1,24 +1,23 @@
 import styled from 'styled-components';
 import { Layout } from 'components';
-import theme from 'theme';
 
-export const makeVariantStyles = (variant, alertType) => {
+export const makeVariantStyles = (theme, variant, alertType) => {
   const variantMap = {
     solid: {
       backgroundColor: theme.colors?.[alertType].dark,
-      color: theme.colors.white,
+      color: theme.colors.bg,
       icon: theme.colors[alertType].dark,
-      iconContainer: theme.colors.white,
-      close: theme.colors.white,
+      iconContainer: theme.colors.bg,
+      close: theme.colors.bg,
       closeHover: theme.colors[alertType]?.main
     },
   
     light: {
       backgroundColor: theme.colors[alertType].light,
       color: theme.colors[alertType].dark,
-      icon: theme.colors.white,
+      icon: theme.colors.bg,
       iconContainer: theme.colors[alertType].dark,
-      close: theme.colors.white,
+      close: theme.colors.bg,
       closeHover: theme.colors[alertType]?.main
     },
 

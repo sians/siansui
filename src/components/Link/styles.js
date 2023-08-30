@@ -6,21 +6,21 @@ export const ButtonLink = styled.button(props => {
   const variants = {
     sidebar: {
       textDecoration: 'none',
-      color: theme.colors.black,
+      color: theme.colors.fg,
       background: 'none',
       outline: 'none',
       border: 'none',
       width: '100%',
       textAlign: 'left',
       padding: theme.margin,
-      fontFamily: theme.fontFamily,
+      fontFamily: theme.font.family.base,
       fontSize: 14,
       height: '100%',
-      borderRadius: theme.borderRadius,      
+      borderRadius: theme.borderRadius.main,      
   
       '&:hover': {
         cursor: 'pointer',
-        backgroundColor: theme.colors.secondary,
+        backgroundColor: theme.colors.secondary.base,
       }
     },
     small: {
@@ -29,7 +29,7 @@ export const ButtonLink = styled.button(props => {
     },
     nostyle: {
       textDecoration: 'none',
-      color: theme.colors.black,
+      color: theme.colors.fg,
       background: 'none',
       outline: 'none',
       border: 'none',
@@ -37,23 +37,23 @@ export const ButtonLink = styled.button(props => {
       fontWeight: 'normal',
       '&:hover': {
         cursor: 'pointer',
-        color: theme.colors.black,
+        color: theme.colors.fg,
       }      
     }
   }
   
   const btBottomPadding = 3;
   const mainStyles = {
-    color: theme.colors.main,
-    fontFamily: theme.fontFamily,
+    color: theme.colors.main.base,
+    fontFamily: theme.font.family.base,
     fontSize: theme.font.size.body,
     outline: 'none',
     border: 'none',
     fontWeight: isBold ? 'bold' : 400,
 
     background: `
-      linear-gradient(to right, ${theme.colors.white}, ${theme.colors.white}),
-      linear-gradient(to right, ${theme.colors.secondary}, ${theme.colors.secondary})`,
+      linear-gradient(to right, ${theme.colors.bg}, ${theme.colors.bg}),
+      linear-gradient(to right, ${theme.colors.secondary.base}, ${theme.colors.secondary.base})`,
     backgroundSize: '100% 0.6em, 0 0.6em',
     backgroundPosition: '100% 100%, 0 100%',
     backgroundRepeat: 'no-repeat',
@@ -62,7 +62,7 @@ export const ButtonLink = styled.button(props => {
   
     '&:hover, &:focus': {
       backgroundSize: "0 0.6em, 100% 0.6em",
-      color: theme.colors.main,
+      color: theme.colors.main.base,
       cursor: 'pointer'
     }
   }
@@ -79,15 +79,15 @@ export const ALink = styled.a(props => {
   const btBottomPadding = 3;
   
   return {
-    color: theme.colors.main,
+    color: theme.colors.main.base,
     position: 'inline-block',
     padding: `0px ${theme.margin / 3}px`,
     fontSize: theme.font.size.body,
     fontWeight: isBold ? 'bold' : 400,
     textDecoration: 'none',
     background: `
-      linear-gradient(to right, ${theme.colors.white}, ${theme.colors.white}),
-      linear-gradient(to right, ${theme.colors.secondary}, ${theme.colors.secondary})`,
+      linear-gradient(to right, ${theme.colors.bg}, ${theme.colors.bg}),
+      linear-gradient(to right, ${theme.colors.secondary.base}, ${theme.colors.secondary.base})`,
     backgroundSize: '100% 0.6em, 0 0.6em',
     backgroundPosition: '100% 100%, 0 100%',
     backgroundRepeat: 'no-repeat',
@@ -96,7 +96,7 @@ export const ALink = styled.a(props => {
   
     '&:hover, &:focus': {
       backgroundSize: "0 0.6em, 100% 0.6em",
-      color: theme.colors.main,
+      color: theme.colors.main.base,
       cursor: 'pointer'
     }
 

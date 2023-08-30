@@ -19,7 +19,7 @@ export const Container = styled.div(props => {
       margin: 0,
       color: hasError 
         ? theme.colors.error.main
-        : theme.colors.main,
+        : theme.colors.main.base,
       height: 20,
       textAlign: hasError ? 'left' : 'right'
     }
@@ -43,14 +43,14 @@ export const StyledInput = styled.input(props => {
     padding: padding,
     width: width,
     height: height,
-    border: `${borderSize}px solid ${hasBorder ? theme.colors.main : theme.colors.mainLighter}`,
-    borderRadius: theme.borderRadiusSmall,
-    outline: isFocused && `${outlineSize}px solid ${theme.colors.mainLighter}`,
+    border: `${borderSize}px solid ${hasBorder ? theme.colors.main.base : theme.colors.main.light}`,
+    borderRadius: theme.borderRadius.small,
+    outline: isFocused && `${outlineSize}px solid ${theme.colors.main.light}`,
     transition: 'border 0.3s',
 
     '&::placeholder': {
-      color: theme.colors.midGrey,
-      fontFamily: theme.fontFamily
+      color: theme.colors.grey.dark,
+      fontFamily: theme.font.family.base
     },
   }
 

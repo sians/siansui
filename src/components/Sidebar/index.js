@@ -1,5 +1,6 @@
 import { useEffect, useReducer, useMemo, useCallback } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import { useTheme } from 'styled-components';
 
 import { convertCase } from 'utils';
 
@@ -7,8 +8,6 @@ import LINK_GROUPS from 'data/LINK_GROUPS';
 
 import { Link, Icon } from 'components';
 import { Container, ItemGroup, ListItem } from './styles';
-
-import theme from 'theme';
 
 // TODO: refactor state logic to useSidebar hook?
 
@@ -35,6 +34,7 @@ function reducer(state, action) {
 }
 
 const Sidebar = () => {
+  const theme = useTheme();
   const params = useParams();
   const location = useLocation();
   const [expandedState, dispatch] = useReducer(reducer, initializeState(location?.pathname?.split('/')[1]));
@@ -84,7 +84,7 @@ const Sidebar = () => {
 
                 <Icon 
                   name='chevron-down'
-                  fill={{base: theme.colors.midGrey}}
+                  fill={{base: theme.colors.grey.dark}}
                   size={14}
                   rotateBy={expandedState[groupName] ? 180 : 0}
                 />

@@ -9,7 +9,7 @@ export const Container = styled.table(props => {
     fontSize: 14,
     width: '100%',
     maxWidth: maxWidth,
-    border: `1px solid ${theme.colors.grey}`,
+    border: `1px solid ${theme.colors.grey.main}`,
   }
 });
 
@@ -29,7 +29,7 @@ export const Row = styled.tr(props => {
     overflowY: overflowY,
     flexWrap: 'wrap',
     backgroundColor: backgroundColor,
-    borderTop: `${borderWidth}px solid ${theme.colors.grey}`,
+    borderTop: `${borderWidth}px solid ${theme.colors.grey.main}`,
   }
 });
 

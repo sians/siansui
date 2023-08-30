@@ -29,7 +29,7 @@ export const Bullet = styled.div(props => {
   const size = 7;
   return {
     borderRadius: '50%',
-    backgroundColor: theme.colors.main,
+    backgroundColor: theme.colors.main.base,
     width: size,
     height: size,
     marginRight: theme.margin / 2

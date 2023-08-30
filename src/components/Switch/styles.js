@@ -14,18 +14,18 @@ export const Container = styled.div(props => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: isActive ? 'flex-end' : 'flex-start',
-    backgroundColor: isActive ? theme.colors.main : theme.colors.mainLighter,
+    backgroundColor: isActive ? theme.colors.main.base : theme.colors.main.light,
     height: height,
     width: width,
     borderRadius: borderRadius,
     transition: 'background-color 0.2s; justify-content 0.3s',
 
     '.toggle': {
-      backgroundColor: theme.colors.white,
+      backgroundColor: theme.colors.bg,
       borderRadius: borderRadius,
       height: height - 2,
       width: width / 2,
-      boxShadow: theme.boxShadowSmall
+      boxShadow: theme.boxShadow.small
     },
 
     '&:hover': !isDisabled && {
@@ -34,7 +34,7 @@ export const Container = styled.div(props => {
   }
 
   const disabledStyles = {
-    backgroundColor: theme.colors.grey,
+    backgroundColor: theme.colors.grey.main,
     '.toggle': {
       ...baseStyles['.toggle'],
       boxShadow: 'none'

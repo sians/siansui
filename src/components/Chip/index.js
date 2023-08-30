@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
+import { useTheme } from 'styled-components';
 
 import useHover from 'hooks/useHover';
 
 import { Icon } from 'components';
-import { Container, Remove, SIZE_MAP, VARIANT_MAP } from './styles';
+import { Container, Remove, makeSizeMap, makeVariantStyles } from './styles';
 
 const Chip = ({ 
   text,
@@ -16,10 +17,13 @@ const Chip = ({
   hasRemove,
   action
 }) => {
+  const theme = useTheme();
   const [ref, isHovered] = useHover();
   const variantName = useMemo(() => {
     return isDisabled ? 'disabled' : variant
   }, [variant, isDisabled])
+  const sizing = makeSizeMap(size);
+  const variantStyles = makeVariantStyles(theme, variant)
 
   const handleChipClick = () => !isDisabled && action();
   const handleRemoveChip = (e) => !isDisabled && onRemove(e);
@@ -37,13 +41,13 @@ const Chip = ({
         <div className='icon-container'>
           <Icon 
             name={iconName}
-            size={SIZE_MAP[size]?.icon}
+            size={sizing?.icon}
             isHovered={isHovered}
             fill={{
-              base: VARIANT_MAP[variantName]?.base.color,
+              base: variantStyles?.base.color,
               hover: isDisabled 
-                ? VARIANT_MAP[variantName]?.base.color
-                : VARIANT_MAP[variantName]?.hover.color,
+                ? variantStyles?.base.color
+                : variantStyles?.hover.color,
             }}
           />
         </div>
@@ -54,14 +58,13 @@ const Chip = ({
         <Remove onClick={(e) => handleRemoveChip(e)}>
           <Icon 
             name='close'
-            size={SIZE_MAP[size]?.icon}
+            size={sizing?.icon}
             isHovered={isHovered}
             fill={{
-              base: VARIANT_MAP[variantName]?.base.color,
+              base: variantStyles?.base.color,
               hover: isDisabled 
-                ? VARIANT_MAP[variantName]?.base.color
-                : VARIANT_MAP[variantName]?.hover.color,
-
+                ? variantStyles?.base.color
+                : variantStyles?.hover.color,
             }}
           />
         </Remove>    

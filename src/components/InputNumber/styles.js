@@ -1,10 +1,17 @@
 import styled from 'styled-components';
-import theme from 'theme';
 
-const PADDING = theme.margin / 2;
-const BORDER_SIZE = 1;
-const TOTAL_HEIGHT = 36;
-const HEIGHT = TOTAL_HEIGHT - PADDING*2 - BORDER_SIZE*2;
+const makeSharedStyles = (theme) => {
+  const padding = theme.margin / 2;
+  const borderSize = 1;
+  const totalHeight = 36;
+  
+  return {
+    padding: padding,
+    borderSize: borderSize,
+    totalHeight: totalHeight,
+    height: totalHeight - padding*2 - borderSize*2
+  }  
+}
 
 export const Container = styled.div(props => {
   const { theme, isFullWidth, isLabelHidden, hasError } = props;
@@ -34,25 +41,26 @@ export const Container = styled.div(props => {
 })
 
 export const Input = styled.input(props => {
-  const { isFullWidth, isHovered, isFocused, hasError, iconKeys, styles } = props;
+  const { theme, isFullWidth, isHovered, isFocused, hasError, iconKeys, styles } = props;
+  const { padding, borderSize, height  } = makeSharedStyles(theme);
 
   const outlineSize = 2;
-  const width = isFullWidth && `calc(100% - ${(PADDING*2) + (BORDER_SIZE*2)}px)`;
+  const width = isFullWidth && `calc(100% - ${(padding*2) + (borderSize*2)}px)`;
 
   const hasBorder = isHovered || isFocused;
 
   const baseStlyes = {
-    padding: PADDING,
+    padding: padding,
     width: width,
-    height: HEIGHT,
-    border: `${BORDER_SIZE}px solid ${hasBorder ? theme.colors.main : theme.colors.mainLighter}`,
-    borderRadius: theme.borderRadiusSmall,
-    outline: isFocused && `${outlineSize}px solid ${theme.colors.mainLighter}`,
+    height: height,
+    border: `${borderSize}px solid ${hasBorder ? theme.colors.main.base : theme.colors.main.light}`,
+    borderRadius: theme.borderRadius.small,
+    outline: isFocused && `${outlineSize}px solid ${theme.colors.main.light}`,
     transition: 'border 0.3s',
 
     '&::placeholder': {
-      color: theme.colors.midGrey,
-      fontFamily: theme.fontFamily
+      color: theme.colors.grey.dark,
+      fontFamily: theme.font.family.base
     },
 
     // remove default styles for arrows
@@ -70,7 +78,7 @@ export const Input = styled.input(props => {
   }
 
   const errorStyles = {
-    border: `${BORDER_SIZE}px solid ${theme.colors.error.main}`,
+    border: `${borderSize}px solid ${theme.colors.error.main}`,
     outline: isFocused && `${outlineSize}px solid ${theme.colors.error.light}`,
   }
 
@@ -78,7 +86,7 @@ export const Input = styled.input(props => {
   const iconStyles = {
     paddingLeft: iconKeys?.includes('leftIcon') && iconPadding,
     paddingRight: iconKeys?.includes('rightIcon') && iconPadding,
-    width: isFullWidth && `calc(100% - ${(BORDER_SIZE*2) + (iconKeys.length * iconPadding) + (iconKeys.length === 1 && PADDING)}px)`
+    width: isFullWidth && `calc(100% - ${(borderSize*2) + (iconKeys.length * iconPadding) + (iconKeys.length === 1 && padding)}px)`
   }
 
   return {
@@ -90,7 +98,7 @@ export const Input = styled.input(props => {
 })
 
 export const IconContainer = styled.div(props => {
-  const { isLeft } = props;
+  const { theme, isLeft } = props;
 
   return {
     position: 'absolute',
@@ -102,26 +110,27 @@ export const IconContainer = styled.div(props => {
 })
 
 export const Arrows = styled.div(props => {
-  const { isHovered } = props;
+  const { theme, isHovered } = props;
+  const { totalHeight, borderSize } = makeSharedStyles(theme);
 
   return {
     opacity: isHovered ? 1 : 0,
-    height: TOTAL_HEIGHT,
+    height: totalHeight,
     width: theme.margin * 1.5,
     position: 'absolute',
-    bottom: TOTAL_HEIGHT / 2,
+    bottom: totalHeight / 2,
     right: 2,
     transition: 'opacity 0.3s',
     '.arrow': {
-      height: (TOTAL_HEIGHT / 2) - (BORDER_SIZE*2),
+      height: (totalHeight / 2) - (borderSize*2),
       display: 'flex',
       justifyContent: 'center',
       // alignItems: 'center',
-      borderLeft: `1px solid ${theme.colors.mainLighter}`,
-      borderRadius: `0px ${theme.borderRadiusSmall}px ${theme.borderRadiusSmall}px 0px`,
+      borderLeft: `1px solid ${theme.colors.main.light}`,
+      borderRadius: `0px ${theme.borderRadius.small}px ${theme.borderRadius.small}px 0px`,
       
       '&:hover': {
-        backgroundColor: theme.colors.mainLightest
+        backgroundColor: theme.colors.main.lightest
       }
     }
   }

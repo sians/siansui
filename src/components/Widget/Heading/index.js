@@ -1,8 +1,10 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
+
 import { Typography } from 'components';
-import theme from 'theme';
 
 const Heading = ({ widget, parentId }) => {
+  const theme = useTheme();
   const { data } = widget;
   const { id, text, size, textAlign } = data;
 

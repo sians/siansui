@@ -9,8 +9,8 @@ export const StyledForm = styled.div(props => {
   return {
     width: width,
     padding: padding,
-    borderRadius: theme.borderRadiusBig,
-    boxShadow: theme.boxShadowBig,
+    borderRadius: theme.borderRadius.big,
+    boxShadow: theme.boxShadow.big,
     margin: 'auto'
   }
 })

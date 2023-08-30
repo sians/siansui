@@ -5,7 +5,7 @@ export const Container = styled.div(props => {
   return {
     display: 'flex',
     alignItems: 'center',
-    color: isDisabled && theme.colors.grey,
+    color: isDisabled && theme.colors.grey.main,
     
     'label': {
       cursor: isDisabled 
@@ -27,8 +27,8 @@ export const Box = styled.input(props => {
 
   const borderSize = 1;
   const borderColor = isHovered 
-    ? theme.colors.main 
-    : checked ? theme.colors.main : theme.colors.grey;
+    ? theme.colors.main.base 
+    : checked ? theme.colors.main.base : theme.colors.grey.main;
   const boxSize = theme.margin;
   const tickSize = theme.margin/1.5;
 
@@ -39,13 +39,13 @@ export const Box = styled.input(props => {
     border: `${borderSize}px solid ${borderColor}`,
     width: boxSize,
     height: boxSize,
-    borderRadius: theme.borderRadiusSmall,
+    borderRadius: theme.borderRadius.small,
     cursor: isHovered && 'pointer',
     position: 'relative',
   }
 
   const checkedStyles = {
-    backgroundColor: theme.colors.main,
+    backgroundColor: theme.colors.main.base,
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -53,7 +53,7 @@ export const Box = styled.input(props => {
       left: `calc(50% - ${tickSize/2}px)`,
       width: tickSize,
       height: tickSize,
-      backgroundColor: theme.colors.white,
+      backgroundColor: theme.colors.bg,
       clipPath: 'polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)',
       transformOrigin: 'bottom left',
     },        
@@ -61,9 +61,9 @@ export const Box = styled.input(props => {
 
   const disabledStyles = {
     backgroundColor: checked 
-      ? `${theme.colors.main}30`
+      ? `${theme.colors.main.base}30`
       : theme.colors.lightestGrey,
-    border: `${borderSize}px solid ${checked ? `${theme.colors.main}50` : theme.colors.grey}`,
+    border: `${borderSize}px solid ${checked ? `${theme.colors.main.base}50` : theme.colors.grey.main}`,
     cursor: 'default'
   }
 

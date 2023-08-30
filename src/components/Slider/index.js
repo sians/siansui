@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import { useEffect, useMemo, useCallback } from 'react';
+import { useTheme } from 'styled-components';
 
 import useDrag from 'hooks/useDrag';
 
 import { Icon } from 'components';
 
 import { Container, Tick } from './styles';
-import theme from 'theme';
 
 const Slider = ({
   value,
@@ -19,6 +19,7 @@ const Slider = ({
   hasTicks,
   size
 }) => {
+  const theme = useTheme();
   const drag = useDrag((v) => console.log(v));
   const stepsAry = useMemo(() => {
     return max && step ? Array(max / step).fill() : [];
@@ -144,7 +145,7 @@ Slider.propTypes = {
 
 Slider.defaultProps = {
   icons: [],
-  iconFill: theme.colors.main,
+  iconFill: 'black',
   hasTicks: false,
   size: 'sm'
 }

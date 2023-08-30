@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTheme } from 'styled-components';
 
 import useClickOutside from 'hooks/useClickOutside';
 
 import { Search, Icon, Logo, Menu } from 'components';
 
 import { Container, MenuItem, AnimateDropdown } from './styles';
-import theme from 'theme';
 
 const MENU = [
   'Components',
@@ -27,6 +27,7 @@ const DROPDOWN_MENU = [
 
 
 const Nav = () => {
+  const theme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -86,7 +87,7 @@ const Nav = () => {
           <MenuItem onClick={handleToggleMenu}>
             <Icon 
               name='bars' 
-              fill={{base: theme.colors.black}}
+              fill={{base: theme.colors.fg}}
             />
           </MenuItem>
         </ul>

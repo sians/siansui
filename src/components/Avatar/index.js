@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import { useTheme } from 'styled-components';
+
 import { Icon } from 'components';
 
 import { Container } from './styles';
-import theme from 'theme';
 
 const Avatar = ({ 
   src, 
@@ -12,6 +13,7 @@ const Avatar = ({
   variant,
   hasOutline
 }) => {
+  const theme = useTheme();
   return (
     <Container
       size={size}
@@ -33,7 +35,7 @@ const Avatar = ({
               <Icon 
                 name='user'
                 fill={{
-                  base: theme.colors.darkerGrey
+                  base: theme.colors.grey.darkest
                 }}
               />
             )}

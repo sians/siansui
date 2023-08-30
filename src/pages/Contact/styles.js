@@ -4,7 +4,7 @@ export const Page = styled.div(props => {
   const { theme } = props;
   
   const margin = theme.margin*2
-  const height = `calc(100vh - ${theme.navHeight + margin*2}px)`
+  const height = `calc(100vh - ${theme.nav.height + margin*2}px)`
   
   return {
     height: height,
