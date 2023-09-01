@@ -1,4 +1,3 @@
-
 import { useEffect, useCallback } from 'react';
 
 // const EXAMPLE_MAP = {
@@ -13,7 +12,7 @@ const useKeyPress = (keyActionMap) => {
 		if (event.shiftKey) modifiers.push('Shift');
 		if (event.ctrlKey) modifiers.push('Control');		
 		if (event.altKey) modifiers.push('Alt');
-		if (event.metaKey) modifiers.push('Meta');
+    if (event.metaKey) modifiers.push('Meta');
 		
 		// Form the key string, modifiers go first
     const keyString = modifiers.length > 0 

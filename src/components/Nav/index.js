@@ -26,7 +26,7 @@ const DROPDOWN_MENU = [
 ]
 
 
-const Nav = () => {
+const Nav = ({ pageData }) => {
   const theme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -69,6 +69,7 @@ const Nav = () => {
         <div>
           <Search 
             placeholder='Search...'
+            pageData={pageData}
           />
         </div>
 

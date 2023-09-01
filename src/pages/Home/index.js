@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Nav, Typography, Button } from 'components';
+import { Typography, Button } from 'components';
 import shapes from 'assets/shapes.png';
 
 import { Content, Background } from './styles';
@@ -10,7 +10,6 @@ const Home = () => {
   return (
     <>
       <Background url={shapes}/>
-      <Nav />
       <Content>
         <div>
           <Typography.Heading size={1}>

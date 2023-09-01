@@ -39,3 +39,43 @@ export const Input = styled.input(props => {
   
   }
 })
+
+
+export const makeSelectStyles = (theme) => {
+
+  const totalHeight = 36;
+  const totalWidth = 200;
+  const padding = theme.margin / 2;
+  const borderSize = 1;
+  const width = `calc(${totalWidth}px - ${(padding*2) + (borderSize*2)}px)`;
+
+  const menuWidth = 400;
+
+  return {
+    control: () => ({
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: width,
+      border: `none`,
+      outline: 'none',
+      height: totalHeight - borderSize*2,
+      fontFamily: theme.font.family.base
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      fontFamily: theme.font.family.base
+    }),
+    indicatorsContainer: () => ({
+      display: 'none'
+    }),
+    menu: (provided) => ({
+      ...provided,
+      minWidth: menuWidth,
+      maxWidth: menuWidth,
+      color: theme.colors.fg,
+      padding: 0,
+      border: `${borderSize}px solid ${theme.colors.main.light}`,
+      fontSize: theme.font.size.input
+    }), 
+  }
+}

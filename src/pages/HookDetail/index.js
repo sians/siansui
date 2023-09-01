@@ -3,7 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 
 import { convertCase } from 'utils';
 
-import { Typography, Nav, Sidebar, FooterNav, Button, Widget } from 'components';
+import { Typography, Sidebar, FooterNav, Button, Widget } from 'components';
 
 import { Page, Content } from './styles';
 
@@ -30,8 +30,6 @@ const HookDetail = () => {
 
   return (
     <>
-      <Nav />
-
       <Page id='page'>
         <Sidebar />
         <Content>

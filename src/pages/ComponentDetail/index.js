@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
-import { Typography, Nav, Sidebar, FooterNav, Widget, Button } from 'components';
+import { Typography, Sidebar, FooterNav, Widget, Button } from 'components';
 
 import { Page, Content } from './styles';
 
@@ -28,8 +28,6 @@ const ComponentDetail = () => {
 
   return (
     <>
-      <Nav />
-
       <Page id='page'>
         <Sidebar />
         <Content>

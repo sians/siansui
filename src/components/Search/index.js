@@ -1,34 +1,54 @@
-import { useState } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { useTheme } from 'styled-components';
+import ReactSelect from 'react-select'
 
-import useFocus from 'hooks/useFocus';
 import useKeyPress from 'hooks/useKeyPress';
+import useSearch from 'hooks/useSearch';
 
 import { Icon } from 'components';
-import Menu from './Menu';
+import CustomOption from './CustomOption';
+import Group, { formatGroupLabel } from './Group';
 
-import { Input, Container } from './styles';
+import { makeSelectStyles } from './styles';
+import { Container } from './styles';
 
 const Search = ({
-  placeholder
+  placeholder,
+  pageData
 }) => {
   const theme = useTheme();
-  const [ref, isFocused, setFocus] = useFocus();
+  const selectStyles = useMemo(() => makeSelectStyles(theme), [theme]);
+
+  const selectRef = useRef();
+  const [isFocused, setIsFocused] = useState(false);
   const [query, setQuery] = useState('');
+  const searchResults = useSearch(pageData, query);
   
-  const handleInput = (e) => {
-    setQuery(e.target.value);
-  }
+  const handleInput = (v, action) => {
+    if (action.action === 'input-change') {
+      setQuery(v);
+    }
+  };
+  const triggerBlur = () => selectRef.current.blur();
+  const handleOnBlur = () => setIsFocused(false);
+  const hanldeResetSearch = () => {
+    triggerBlur();
+    setQuery('');
+  };
+  const handleFocus = () => {
+    selectRef.current.focus();
+    setIsFocused(true);
+  };
   const handleEsc = () => {
     if (query.length > 0) {
-      setQuery('');
+      hanldeResetSearch();
     } else {
-      setFocus(false);
+      triggerBlur();
     }
   }
-
+  
   useKeyPress({
-    'Meta+k': () => setFocus(true),
+    'Meta+k': () => handleFocus(),
     'Escape': () => handleEsc(),
   })
 
@@ -41,20 +61,33 @@ const Search = ({
           size={12}
         />
 
-        <Input 
-          placeholder={placeholder}
-          ref={ref}
-          value={query}
-          onChange={(e) => handleInput(e)}
-        />
-
+        <div>
+          <ReactSelect
+            placeholder={placeholder}
+            menuIsOpen={(searchResults?.length > 0) && isFocused ? true : false}
+            openMenuOnFocus={false}
+            openMenuOnClick={false}
+            defaultOptions={false}
+            options={searchResults || []}
+            styles={selectStyles}
+            inputValue={query}
+            onInputChange={(v, action) => handleInput(v, action)}
+            resetSearch={hanldeResetSearch}
+            onFocus={handleFocus}
+            onBlur={handleOnBlur}
+            onBlurResetsInput={false}
+            ref={selectRef}
+            components={{
+              Group: Group,
+              Option: CustomOption
+            }}
+            formatGroupLabel={formatGroupLabel}
+            isSearchable
+          />
+        </div>
         <div className='hotkey'>
           ⌘K
-        </div>      
-
-        {isFocused && 
-          <Menu />      
-        }
+        </div>
       </Container>
     </>
   )

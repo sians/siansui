@@ -1,12 +1,11 @@
 import flynn from 'assets/flynn.png';
-import { Nav, Typography, Link } from 'components';
+import { Typography, Link } from 'components';
 
 import { Page } from './styles';
 
 const Contact = () => {
   return (
     <>
-      <Nav />
       <Page>
         <Typography.Heading size={2}>
           Contact

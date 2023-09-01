@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import { convertCase } from 'utils';
 
-import { Nav, Sidebar, Layout, Typography, Card } from 'components';
+import { Sidebar, Layout, Typography, Card } from 'components';
 import { Page, Content } from './styles';
 
 import ALL_PAGE_DATA from 'data/pageData';
@@ -40,8 +40,6 @@ const Index = () => {
 
   return (
     <>
-      <Nav />
-
       <Page id='page'>
         <Sidebar />
         <Content>

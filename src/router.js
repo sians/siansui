@@ -8,6 +8,10 @@ import HookDetail from 'pages/HookDetail';
 import Home from 'pages/Home';
 import Contact from 'pages/Contact';
 
+import ALL_PAGE_DATA from 'data/pageData';
+
+import { Nav } from 'components';
+
 const routes = [
   { path: '/', component: Home },
   { path: '/components', component: ComponentIndex },
@@ -27,7 +31,12 @@ export default function Router() {
             <Route
               key={`route-${index}`} 
               path={route.path} 
-              element={<route.component {...route.props} />} 
+              element={(
+                <>
+                  <Nav pageData={ALL_PAGE_DATA}/>
+                  <route.component {...route.props} />
+                </>
+              )} 
             />
           );
         })}
