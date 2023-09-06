@@ -1,10 +1,8 @@
 import { useTheme } from 'styled-components';
-import useAppTheme from 'hooks/useAppTheme';
 import { Container, Cell, Header, Row } from '../styles';
 
 const GenericTable = ({ headers, data, renderRow, tableType }) => {
   const theme = useTheme();
-  const { themeState } = useAppTheme();
   const rowPaddingY = theme.margin;
   return (
     <Container fontFamily='Red Hat Mono'>
@@ -12,7 +10,7 @@ const GenericTable = ({ headers, data, renderRow, tableType }) => {
         <Header 
           paddingY={rowPaddingY}
           paddingX={rowPaddingY * 2}
-          isDark={themeState.themeName === 'dark'}
+          isDark={theme.themeName === 'dark'}
         >
           {headers.map((header, idx) => (
             <Cell 

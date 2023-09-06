@@ -4,7 +4,6 @@ import { useTheme } from 'styled-components';
 
 import useHover from 'hooks/useHover';
 import useFocus from 'hooks/useFocus';
-import useAppTheme from 'hooks/useAppTheme';
 
 import { Icon } from 'components';
 
@@ -33,13 +32,12 @@ const InputNumber = ({
   className,
 }) => {
   const theme = useTheme();
-  const { themeState } = useAppTheme();
   const inputRef = useRef(null);
   const [hoverRef, isHovered] = useHover();
   const [arrowRef, isArrowHovered] = useHover();
   const [focusRef, isFocused, setFocus] = useFocus();
 
-  const isDark = useMemo(() => themeState?.themeName === 'dark', []);
+  const isDark = useMemo(() => theme.themeName === 'dark', []);
 
   useEffect(() => {
     if (isAutofocus) {

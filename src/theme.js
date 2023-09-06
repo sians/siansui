@@ -139,6 +139,7 @@ const DARK = {
 export const setThemeType = (themeName) => { // 'light', 'dark'
   return {
     ...THEME,
+    themeName: themeName,
     colors: themeName === 'light' ? LIGHT : DARK
   }
 }

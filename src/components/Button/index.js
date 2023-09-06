@@ -1,5 +1,4 @@
 import { useTheme } from 'styled-components';
-import useAppTheme from 'hooks/useAppTheme';
 import useHover from 'hooks/useHover';
 
 import { Icon } from 'components';
@@ -18,14 +17,13 @@ const Button = ({
   size
 }) => {
   const theme = useTheme();
-  const { themeState } = useAppTheme();
   const [ref, isHovered] = useHover();
   const handleClick = (e) => onClick(e);
   
   const [,,fill] = makeVariantStyles(
     theme, 
     variant, 
-    themeState.themeName === 'dark'
+    theme.themeName === 'dark'
   );
 
   const buttonSize = size || 'small';
@@ -61,7 +59,7 @@ const Button = ({
       isFullWidth={isFullWidth}
       isDisabled={isDisabled}
       buttonSize={buttonSize}
-      isDark={themeState.themeName === 'dark'}
+      isDark={theme.themeName === 'dark'}
     >
       {iconPosition === 'start' && icon('start')}
       
