@@ -8,10 +8,12 @@ import { setThemeType } from 'theme';
 const useAppTheme = () => {
   return useContext(AppThemeContext)
 }
-
+const THEME_NAME = 'dark';
 const INITIAL_STATE = {
-  themeName: 'light',
-  theme: setThemeType('light')
+  themeName: THEME_NAME,
+  isSidebarExtended: true,
+  sidebarTransitionTime: 800,
+  theme: setThemeType(THEME_NAME),
 };
 
 export const useInstantiatedAppTheme = () => {
@@ -21,15 +23,36 @@ export const useInstantiatedAppTheme = () => {
     setThemeState(prev => {
       const newName = prev.themeName === 'light' ? 'dark' : 'light';
       return {
+        ...prev,
         themeName: newName,
         theme: setThemeType(newName)
       }
     })
   }
 
+  const toggleSidebar = () => {
+    setThemeState(prev => {
+      return {
+        ...prev,
+        isSidebarExtended: !prev.isSidebarExtended
+      }
+    })
+  }
+
+  const setIsSidebarExpanded = (value) => {
+    setThemeState(prev => {
+      return {
+        ...prev,
+        isSidebarExtended: value
+      }
+    })
+  }
+
   return {
     themeState,
-    toggleTheme
+    toggleTheme,
+    toggleSidebar,
+    setIsSidebarExpanded
   };
 }
 

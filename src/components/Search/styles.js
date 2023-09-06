@@ -41,7 +41,7 @@ export const Input = styled.input(props => {
 })
 
 
-export const makeSelectStyles = (theme) => {
+export const makeSelectStyles = (theme, isDark) => {
 
   const totalHeight = 36;
   const totalWidth = 200;
@@ -59,11 +59,16 @@ export const makeSelectStyles = (theme) => {
       border: `none`,
       outline: 'none',
       height: totalHeight - borderSize*2,
-      fontFamily: theme.font.family.base
+      fontFamily: theme.font.family.base,
+    }),
+    input: (provided) => ({
+      ...provided,
+      color: isDark && theme.colors.fg
     }),
     placeholder: (provided) => ({
       ...provided,
-      fontFamily: theme.font.family.base
+      fontFamily: theme.font.family.base,
+      color: isDark && `${theme.colors.fg}80`
     }),
     indicatorsContainer: () => ({
       display: 'none'
@@ -74,6 +79,9 @@ export const makeSelectStyles = (theme) => {
       maxWidth: menuWidth,
       color: theme.colors.fg,
       padding: 0,
+      backgroundColor: isDark 
+        ? theme.colors.grey.lightest
+        : theme.colors.bg,
       border: `${borderSize}px solid ${theme.colors.main.light}`,
       fontSize: theme.font.size.input
     }), 

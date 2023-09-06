@@ -2,6 +2,7 @@ import { useState, useMemo, useRef } from 'react';
 import { useTheme } from 'styled-components';
 import ReactSelect from 'react-select'
 
+import useAppTheme from 'hooks/useAppTheme';
 import useKeyPress from 'hooks/useKeyPress';
 import useSearch from 'hooks/useSearch';
 
@@ -17,7 +18,11 @@ const Search = ({
   pageData
 }) => {
   const theme = useTheme();
-  const selectStyles = useMemo(() => makeSelectStyles(theme), [theme]);
+  const { themeState } = useAppTheme();
+  const selectStyles = useMemo(() => makeSelectStyles(
+    theme, 
+    themeState?.themeName === 'dark'
+  ), [theme, themeState]);
 
   const selectRef = useRef();
   const [isFocused, setIsFocused] = useState(false);
@@ -81,7 +86,8 @@ const Search = ({
               Group: Group,
               Option: CustomOption
             }}
-            formatGroupLabel={formatGroupLabel}
+            formatGroupLabel={(data) => formatGroupLabel(data, themeState?.themeName === 'dark')}
+            isDark={themeState?.themeName === 'dark'}
             isSearchable
           />
         </div>

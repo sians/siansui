@@ -14,7 +14,7 @@ export const Container = styled.table(props => {
 });
 
 export const Row = styled.tr(props => {
-  const { theme, paddingY, paddingX, align, justify, height, overflowY, backgroundColor} = props;
+  const { theme, paddingY, paddingX, align, justify, height, overflowY } = props;
 
   const padding = `${paddingY || 0}px ${paddingX || 0}px`;
   const borderWidth = 1;
@@ -28,12 +28,18 @@ export const Row = styled.tr(props => {
     height: height,
     overflowY: overflowY,
     flexWrap: 'wrap',
-    backgroundColor: backgroundColor,
     borderTop: `${borderWidth}px solid ${theme.colors.grey.main}`,
   }
 });
 
-export const Header = styled(Row)({});
+export const Header = styled(Row)(props => {
+  const { theme, isDark } = props;
+  return {
+    backgroundColor: isDark 
+      ? theme.colors.grey.light
+      : `${theme.colors.grey.main}60`
+  }
+});
 
 export const Cell = styled.td(props => {
   const { size, padding, justify, align, maxHeight } = props;

@@ -2,14 +2,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Styled = styled.small(props => {
-  const { marginY, isItalic, isBold, color } = props;
+  const { marginY, isItalic, isBold, color, textAlign } = props;
 
   return {
     margin: `${marginY} 0px`,
     fontSize: '0.85rem',
     fontStyle: isItalic && 'italic',
     fontWeight: isBold && 900,
-    color: color
+    color: color,
+    textAlign: textAlign
   }
 })
 
@@ -18,7 +19,8 @@ const Small = ({
   marginY, 
   isItalic, 
   isBold,
-  color
+  color,
+  textAlign
 }) => {
   return (
     <Styled 
@@ -26,6 +28,7 @@ const Small = ({
       isItalic={isItalic}
       isBold={isBold}
       color={color}
+      textAlign={textAlign}
     >
       {children}
     </Styled>
@@ -39,11 +42,13 @@ Small.propTypes = {
   marginY: PropTypes.number,
   isItalic: PropTypes.bool,
   isBold: PropTypes.bool,
-  color: PropTypes.string
+  color: PropTypes.string,
+  textAlign: PropTypes.string
 };
 
 Small.defaultProps = {
   marginY: 0,
   isItalic: false,
   isBold: false,
+  textAlign: 'left'
 };

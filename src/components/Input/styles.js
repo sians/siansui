@@ -43,6 +43,8 @@ export const StyledInput = styled.input(props => {
     padding: padding,
     width: width,
     height: height,
+    color: theme.colors.fg,
+    backgroundColor: theme.colors.bg,
     border: `${borderSize}px solid ${hasBorder ? theme.colors.main.base : theme.colors.main.light}`,
     borderRadius: theme.borderRadius.small,
     outline: isFocused && `${outlineSize}px solid ${theme.colors.main.light}`,
@@ -82,6 +84,6 @@ export const IconContainer = styled.div(props => {
     top: theme.margin*2,
     left: isLeft && theme.margin/2,
     right: !isLeft && theme.margin/2,
-    zIndex: 3,
+    zIndex: 1,
   }
 })

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div(props => {
   const { theme } = props;
@@ -7,14 +7,16 @@ export const Container = styled.div(props => {
   const width = `calc(${theme.sidebar.width}px - ${padding * 2}px)`
 
   return {
-    minWidth: width,
-    maxWidth: width,
-    height: `calc(100vh - ${theme.nav.height * 2}px)`,
-    borderRight: `1px solid ${theme.colors.grey.main}`,
-    margin: theme.margin,
-    overflowY: 'scroll',
-    position: 'fixed',
-    zIndex: 1,
+    '.animate': {
+      width: width,
+      height: `calc(100vh - ${theme.nav.height * 2}px)`,
+      borderRight: `1px solid ${theme.colors.grey.main}`,
+
+      margin: theme.margin,
+      overflowY: 'scroll',
+      position: 'absolute',
+      zIndex: 1,  
+    },
 
     'h4': {
       borderBottom: `1px solid ${theme.colors.grey.main}`,
@@ -67,3 +69,70 @@ export const ListItem = styled.li(props => {
     }
   }
 })
+
+
+const slideIn = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
+const slideOut = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+`;
+
+
+export const Animate = styled.div`
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  visibility: ${props => props.isOpen ? 'visible' : 'hidden'};
+
+  animation: ${props => {
+    return props.isClosing 
+      ? css`${slideOut}  0.8s ease-out forwards;`
+      : props.isOpen && css`${slideIn} 0.8s ease-out forwards;`
+  }}
+`
+
+// const slideIn = keyframes`
+//   0% {
+//     width: var(--closed-width);
+//   }
+//   100% {
+//     width: var(--open-width);
+//   }
+// `;
+// const slideOut = keyframes`
+//   0% {
+//     width: var(--open-width);    
+//   }
+//   100% {
+//     width: var(--closed-width);
+//   }
+// `;
+
+
+// export const Animate = styled.div`
+//   position: absolute;
+//   height: 100vh;
+//   top: 0;
+//   left: 0;
+
+//   --open-width: ${props => props.theme.sidebar.width}px; 
+//   --closed-width: 0px;
+
+//   animation: ${props => {
+//     return props.isClosing 
+//       ? css`${slideOut}  0.8s ease-out forwards;`
+//       : props.isOpen && css`${slideIn} 0.8s ease-out forwards;`
+//   }}
+// `

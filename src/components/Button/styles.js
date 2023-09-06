@@ -30,7 +30,7 @@ const makeBaseStyles = (theme) => {
   }
 }
 
-export const makeVariantStyles = (theme, variant) => {
+export const makeVariantStyles = (theme, variant, isDark) => {
   const map = {
     primary: {
       styles: {
@@ -66,7 +66,7 @@ export const makeVariantStyles = (theme, variant) => {
 
     floatingAction: {
       styles: {
-        backgroundColor: theme.colors.bg,
+        backgroundColor: isDark ? theme.colors.grey.light : theme.colors.bg,
         color: theme.colors.grey.darkest,
         borderRadius: '50%',
         boxShadow: theme.boxShadow.dark,
@@ -83,7 +83,7 @@ export const makeVariantStyles = (theme, variant) => {
         base: theme.colors.fg,
         hover: theme.colors.secondaryBrighter,
       }
-    },    
+    },
 
     disabled: {
       styles: {
@@ -94,13 +94,13 @@ export const makeVariantStyles = (theme, variant) => {
     }
   }
 
-  return [map[variant]?.styles, map[variant]?.hover];
+  return [map[variant]?.styles, map[variant]?.hover, map[variant]?.fill];
 }
 
 export const StyledButton = styled.button(props => {
-  const { theme, variant } = props;
+  const { theme, variant, isDark } = props;
   const baseStyles = makeBaseStyles(theme);
-  const [buttonStyles, hoverStyles] = makeVariantStyles(theme, variant);
+  const [buttonStyles, hoverStyles] = makeVariantStyles(theme, variant, isDark);
 
   return {
     ...baseStyles,

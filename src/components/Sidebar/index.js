@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useMemo, useCallback } from 'react';
+import { useEffect, useReducer, useMemo, useCallback, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
@@ -7,7 +7,7 @@ import { convertCase } from 'utils';
 import LINK_GROUPS from 'data/LINK_GROUPS';
 
 import { Link, Icon } from 'components';
-import { Container, ItemGroup, ListItem } from './styles';
+import { Container, ItemGroup, ListItem, Animate } from './styles';
 
 // TODO: refactor state logic to useSidebar hook?
 
@@ -33,10 +33,12 @@ function reducer(state, action) {
   }
 }
 
-const Sidebar = () => {
+const Sidebar = ({ isClosing, isOpen  }) => {
   const theme = useTheme();
   const params = useParams();
   const location = useLocation();
+  // const { isSidebarOpen, isSidebarOpening } = sidebarState;
+  
   const [expandedState, dispatch] = useReducer(reducer, initializeState(location?.pathname?.split('/')[1]));
   const pageName = useMemo(() => location?.pathname?.split('/')?.[1], [location?.pathname]);
 
@@ -69,49 +71,60 @@ const Sidebar = () => {
   }, [location?.pathname, setCurrentGroup])
 
   return (
-    <Container>
-      <ul>
-        {Object.keys(LINK_GROUPS[pageName]).map(groupName => {
-          return (
-            <ItemGroup 
-              key={`link-grp-${groupName}`}
-              className={`link-grp-${groupName}`}
-              isExpanded={expandedState[groupName]}
-              numItemsInGroup={LINK_GROUPS[pageName]?.[groupName].length}
-            >
-              <h4 onClick={() => toggleExpand(groupName)}>
-                {groupName}
+    <Container >
+      <Animate 
+        isOpen={isOpen}
+        isClosing={isClosing}
+        className='animate'
+      >
+        {isOpen && 
 
-                <Icon 
-                  name='chevron-down'
-                  fill={{base: theme.colors.grey.dark}}
-                  size={14}
-                  rotateBy={expandedState[groupName] ? 180 : 0}
-                />
-              </h4>
+            <ul>
+              {Object.keys(LINK_GROUPS[pageName]).map(groupName => {
+                return (
+                  <ItemGroup 
+                    key={`link-grp-${groupName}`}
+                    className={`link-grp-${groupName}`}
+                    isExpanded={expandedState[groupName]}
+                    numItemsInGroup={LINK_GROUPS[pageName]?.[groupName].length}
+                  >
+                    <h4 onClick={() => toggleExpand(groupName)}>
+                      {groupName}
 
-              <ul>
-                {LINK_GROUPS[pageName]?.[groupName].map(item => {
-                  const formattedName = convertCase('camel', 'snake', item.text);
-                  return (
-                    <ListItem 
-                      key={`sb-link-${formattedName}`}
-                      isActive={params?.name === formattedName}
-                    >
-                      <Link 
-                        url={item.url}
-                        text={item.text}
-                        variant='sidebar'
+                      <Icon 
+                        name='chevron-down'
+                        fill={{base: theme.colors.grey.dark}}
+                        size={14}
+                        rotateBy={expandedState[groupName] ? 180 : 0}
                       />
-                    </ListItem>
-                  )
-                })}
-              </ul>
-            </ItemGroup>
-          )
-        })}
-      </ul>
-    </Container>
+                    </h4>
+
+                    <ul>
+                      {LINK_GROUPS[pageName]?.[groupName].map(item => {
+                        const formattedName = convertCase('camel', 'snake', item.text);
+                        return (
+                          <ListItem 
+                            key={`sb-link-${formattedName}`}
+                            isActive={params?.name === formattedName}
+                            
+                          >
+                            <Link 
+                              url={item.url}
+                              text={item.text}
+                              variant='sidebar'
+                            />
+                          </ListItem>
+                        )
+                      })}
+                    </ul>
+                  </ItemGroup>
+                )
+              })}
+            </ul>
+          
+        }
+      </Animate>      
+    </Container>     
   )
 }
 

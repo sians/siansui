@@ -1,7 +1,7 @@
 import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div(props => {
-  const { theme } = props;
+  const { theme, isDark } = props;
 
   const logoWidth = `calc(${theme.sidebar.width}px - ${theme.sidebar.padding * 2}px)`
 
@@ -12,7 +12,7 @@ export const Container = styled.div(props => {
     justifyContent: 'space-between',
     alignItems: 'center',
     fontSize: 14,
-    backgroundColor: theme.colors.bg,
+    backgroundColor: isDark ? theme.colors.grey.light : theme.colors.bg,
     zIndex: 2,
     position: 'relative',
 

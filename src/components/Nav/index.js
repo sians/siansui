@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
+import useAppTheme from 'hooks/useAppTheme';
 import useClickOutside from 'hooks/useClickOutside';
 
 import { Search, Icon, Logo, Menu } from 'components';
@@ -28,6 +29,7 @@ const DROPDOWN_MENU = [
 
 const Nav = ({ pageData }) => {
   const theme = useTheme();
+  const { themeState } = useAppTheme();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -60,7 +62,7 @@ const Nav = ({ pageData }) => {
   }
 
   return (
-    <Container>
+    <Container isDark={themeState.themeName === 'dark'}>
       <div className='logo-container' onClick={handleLogoClick}>
           <Logo />
       </div>

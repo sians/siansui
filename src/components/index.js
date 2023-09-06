@@ -29,6 +29,8 @@ import Checkbox from './Checkbox';
 import CheckboxGroup from './CheckboxGroup';
 import Select from './Select';
 import Form from './Form';
+import Blur from './Blur';
+import FloatingMenu from './FloatingMenu';
 
 export {
   Nav,
@@ -61,5 +63,7 @@ export {
   Checkbox,
   CheckboxGroup,
   Select,
-  Form
+  Form,
+  Blur,
+  FloatingMenu
 }

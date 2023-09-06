@@ -25,7 +25,7 @@ const Input = ({
   helperText,
   className,
   iconData,
-  styles
+  styles,
  }) => {
   const [hoverRef, isHovered] = useHover();
   const [focusRef, isFocused, setFocus] = useFocus();

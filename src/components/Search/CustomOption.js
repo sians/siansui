@@ -3,16 +3,28 @@ import styled from 'styled-components';
 import { Typography } from 'components';
 
 const Option = styled.div(props => {
-  const { theme, isFocused } = props;
+  const { theme, isFocused, isDark } = props;
   return {
     margin: theme.margin / 2,
     padding: theme.margin / 2,
     borderRadius: theme.borderRadius.small,
-    backgroundColor: isFocused && theme.colors.secondary.base,
+    backgroundColor: isFocused 
+      ? isDark ? theme.colors.main.light : theme.colors.main.base
+      : '',
+    color: isDark 
+      ? isFocused 
+        ? theme.colors.main.base
+        : theme.colors.grey.dark
+      : '',
+
+
 
     '&:hover': {
-      backgroundColor: theme.colors.secondary.light,
-      cursor: 'pointer'
+      backgroundColor: isDark 
+        ? theme.colors.secondary.base
+        : theme.colors.secondary.light,
+      cursor: 'pointer',
+      color: isDark && theme.colors.fg
     },
 
     '&:last-child': {
@@ -31,6 +43,7 @@ const CustomOption = ({ data, selectProps, ...rest }) => {
     <Option 
       onClick={handleSelect}
       isFocused={rest.isFocused}
+      isDark={selectProps.isDark}
     >
       <Typography.Heading size={7}>
         {data.title}

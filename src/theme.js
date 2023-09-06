@@ -3,82 +3,11 @@ import './fonts.css';
 
 const margin = 16;
 
-const theme = {
-  margin: margin,
-  fontFamily: "Avenir",
-  
-  borderRadiusSmall: 4,
-  borderRadius: 8,
-  borderRadiusBig: 16,
-
-  boxShadowBig: `0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;`,
-  boxShadowDark: ` 0 6px 16px -8px #00000014, 0 9px 28px #00000014, 0 12px 48px 16px #0000000f;`,
-  boxShadowSmall: `0 3px 8px 3px #00000014, 1px 3px 8px #00000024`,
-
-  // dimensiony thingys
-  sidebarWidth: 300,
-  sidebarPadding: margin,
-  navHeight: 60,
-
-  font: {
-    size: {
-      input: 14,
-      body: '1.05rem'
-    }
-  },
-
-  // colours 
-  colors: {
-    black: '#2A282C',
-    white: '#fefeff',
-    trueWhite: '#FFF',
-    
-    main: '#B668FF',
-    mainLightest: '#b668ff17',
-    mainLighter: '#f1e2ff',
-    mainDarker: '#7A34BB',
-
-    secondary: '#E5FC59',
-    secondaryLighter: '#E5FC5960',
-    secondaryBrighter: '#61ad09',
-    secondaryDarker: '',
-
-    tercery: '#eb64b9',
-    terceryLighter: '',
-
-    danger: '#ff0140',
-
-    error: {
-      dark: '#993232',
-      main: '#D85656',
-      light: '#ECD5D5'
-    },
-    success: {
-      dark: '#327730',
-      main: '#7FB27E',
-      light: '#DDECDD'
-    },
-    warning: {
-      dark: '#D8A012',
-      main: '#E9CC82',
-      light: '#F8F1E1'
-    },
-    info: {
-      dark: '',
-      main: '',
-      light: ''
-    },
-
-    veryLightestGrey: 'rgba(5, 5, 5, 0.06)',
-    lightestGrey: '#d9d9d926',
-    grey: '#D9D9D9',
-    midGrey: '#BEB8C2',
-    darkerGrey: '#322f35db'
-  },
-};
-
 const THEME = {
   margin: margin,
+  page: {
+    maxWidth: 900
+  },
   sidebar: {
     width: 300,
     padding: margin
@@ -156,28 +85,32 @@ const LIGHT = {
 }
 
 const DARK = {
-  fg: '#fefeff',
-  bg: '#2A282C',
+  fg: '#ffffffd9',
+  bg: '#1c1b1d',
+  // bg: '#2A282C',
 
   main: {
     lightest: '#F9F3FF',
-    light: '#f1e2ff',
+    // light: '#f1e2ff',
+    light: '#3b254f',
     base: '#B668FF',
+    // base: '#552684',
     dark: '#9352D0',
     darkest: '#714699'    
   },
   secondary: {
     lightest: '#FAFFDD',
     light: '#F3FFA6',
-    base: '#E5FC59',
+    // base: '#E5FC59',
+    base: '#3b411b',
     dark: '#D2EB3A',
     darkest: '#ACC223'
   },
   grey: {
-    lightest: 'rgba(5, 5, 5, 0.06)',
-    light: '#d9d9d926',
-    main: '#D9D9D9',
-    dark: '#BEB8C2',
+    lightest: '#333037',
+    light: '#2A282C',
+    main: '#d9d9d947',
+    dark: '#dfdfe075',
     darkest: '#322f35db'
   },  
 
@@ -254,4 +187,4 @@ export const AppStyles = styled.div(props => {
   }
 })
 
-export default theme;
+export default THEME;

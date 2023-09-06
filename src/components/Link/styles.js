@@ -15,11 +15,13 @@ export const ButtonLink = styled.button(props => {
       padding: theme.margin,
       fontFamily: theme.font.family.base,
       fontSize: 14,
+      fontWeight: 400,
       height: '100%',
       borderRadius: theme.borderRadius.main,      
   
       '&:hover': {
         cursor: 'pointer',
+        color: theme.colors.fg,
         backgroundColor: theme.colors.secondary.base,
       }
     },

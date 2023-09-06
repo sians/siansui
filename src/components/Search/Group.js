@@ -4,8 +4,9 @@ import styled from 'styled-components';
 const Group = (props) => <components.Group {...props} />;
 
 const Label = styled.div(props => {
-  const { theme } = props;
-  return {
+  const { theme, isDark } = props;
+
+  const baseStyles = {
     backgroundColor: theme.colors.main.light,
     borderRadius: theme.borderRadius.small,
     padding: theme.margin / 2,
@@ -13,10 +14,20 @@ const Label = styled.div(props => {
     color: theme.colors.main.base,
     fontWeight: 'bold'
   }
+
+  const darkStyles = {
+    backgroundColor: theme.colors.grey.light,
+    color: theme.colors.fg
+  }
+
+  return {
+    ...baseStyles,
+    ...(isDark && darkStyles)
+  }
 })
-export const formatGroupLabel = (data) => {
+export const formatGroupLabel = (data, isDark) => {
   return (
-    <Label>
+    <Label isDark={isDark}>
       {data.label}
     </Label>
   )

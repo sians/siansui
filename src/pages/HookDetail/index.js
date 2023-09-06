@@ -3,9 +3,8 @@ import { useParams, useLocation } from 'react-router-dom';
 
 import { convertCase } from 'utils';
 
-import { Typography, Sidebar, FooterNav, Button, Widget } from 'components';
-
-import { Page, Content } from './styles';
+import SidebarPage from 'components/Pages/SidebarPage';
+import { Typography, FooterNav, Widget } from 'components';
 
 import ALL_PAGE_DATA from 'data/pageData';
 
@@ -23,66 +22,47 @@ const HookDetail = () => {
     document.getElementById("page")?.scroll(0,0)
   }, [params?.name]);
 
-  const handleFABClick = () => {
-    console.log('FLOAT A B')
-  }
-
-
   return (
-    <>
-      <Page id='page'>
-        <Sidebar />
-        <Content>
-          <div className='floating-action-btn'>
-            <Button 
-                variant='floatingAction'
-                iconName='bars'
-                onClick={() => handleFABClick()}
-              />
-          </div>
+    <SidebarPage>
+      {data && params.name && 
+        <>
+          <Typography.Heading 
+            text={data.title}
+            size={1}
+          />
 
-          {data && params.name && 
-            <>
-              <Typography.Heading 
-                text={data.title}
-                size={1}
-              />
+          {Object.keys(data.sections).map((sectionName, idx) => {
+            const section = data.sections[sectionName];
+            return (
+              // section TITLE
+              <section key={`${section.title}-section`}>
+                {section.title && 
+                  <Typography.Heading 
+                    text={section.title}
+                    size={3}
+                  />
+                }
 
-              {Object.keys(data.sections).map((sectionName, idx) => {
-                const section = data.sections[sectionName];
-                return (
-                  // section TITLE
-                  <section key={`${section.title}-section`}>
-                    {section.title && 
-                      <Typography.Heading 
-                        text={section.title}
-                        size={3}
-                      />
-                    }
-
-                    {section.widgets.map((widget, widgetIdx) => {
-                      return (
-                        <Widget 
-                          key={`${idx}-widg-${widgetIdx}`}
-                          widget={widget}
-                          widgetIdx={`${idx}-${widgetIdx}`}
-                        />  
-                      )
-                    })}
-                  </section>          
-                )
-              })}
+                {section.widgets.map((widget, widgetIdx) => {
+                  return (
+                    <Widget 
+                      key={`${idx}-widg-${widgetIdx}`}
+                      widget={widget}
+                      widgetIdx={`${idx}-${widgetIdx}`}
+                    />  
+                  )
+                })}
+              </section>          
+            )
+          })}
 
 
 
-            </>
-          }
+        </>
+      }
 
-          <FooterNav />
-        </Content>
-      </Page>
-
-    </>
+      <FooterNav />
+    </SidebarPage>
   )
 }
 
