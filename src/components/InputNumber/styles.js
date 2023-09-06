@@ -53,6 +53,8 @@ export const Input = styled.input(props => {
     padding: padding,
     width: width,
     height: height,
+    backgroundColor: theme.colors.bg,
+    color: theme.colors.fg,
     border: `${borderSize}px solid ${hasBorder ? theme.colors.main.base : theme.colors.main.light}`,
     borderRadius: theme.borderRadius.small,
     outline: isFocused && `${outlineSize}px solid ${theme.colors.main.light}`,
@@ -110,7 +112,7 @@ export const IconContainer = styled.div(props => {
 })
 
 export const Arrows = styled.div(props => {
-  const { theme, isHovered } = props;
+  const { theme, isHovered, isDark } = props;
   const { totalHeight, borderSize } = makeSharedStyles(theme);
 
   return {
@@ -130,7 +132,9 @@ export const Arrows = styled.div(props => {
       borderRadius: `0px ${theme.borderRadius.small}px ${theme.borderRadius.small}px 0px`,
       
       '&:hover': {
-        backgroundColor: theme.colors.main.lightest
+        backgroundColor: isDark 
+          ? theme.colors.main.light
+          : theme.colors.main.lightest
       }
     }
   }

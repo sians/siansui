@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
+import { useTheme } from 'styled-components';
 
 import useHover from 'hooks/useHover';
 import useFocus from 'hooks/useFocus';
+import useAppTheme from 'hooks/useAppTheme';
 
 import { Icon } from 'components';
 
@@ -30,10 +32,14 @@ const InputNumber = ({
   iconData,
   className,
 }) => {
+  const theme = useTheme();
+  const { themeState } = useAppTheme();
   const inputRef = useRef(null);
   const [hoverRef, isHovered] = useHover();
   const [arrowRef, isArrowHovered] = useHover();
   const [focusRef, isFocused, setFocus] = useFocus();
+
+  const isDark = useMemo(() => themeState?.themeName === 'dark', []);
 
   useEffect(() => {
     if (isAutofocus) {
@@ -125,6 +131,7 @@ const InputNumber = ({
         <Arrows 
           ref={arrowRef}
           isHovered={isHovered || isFocused || isArrowHovered}
+          isDark={isDark}
         >
           <div 
             className='arrow up'
@@ -133,6 +140,9 @@ const InputNumber = ({
             <Icon 
               name='chevron-up'
               size={6}
+              fill={{
+                base: theme.colors.fg
+              }}
             />
           </div>
 
@@ -143,6 +153,9 @@ const InputNumber = ({
             <Icon 
               name='chevron-down'
               size={6}
+              fill={{
+                base: theme.colors.fg
+              }}              
             />
           </div>
         </Arrows>

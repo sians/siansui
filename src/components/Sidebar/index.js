@@ -33,11 +33,10 @@ function reducer(state, action) {
   }
 }
 
-const Sidebar = ({ isClosing, isOpen  }) => {
+const Sidebar = () => {
   const theme = useTheme();
   const params = useParams();
   const location = useLocation();
-  // const { isSidebarOpen, isSidebarOpening } = sidebarState;
   
   const [expandedState, dispatch] = useReducer(reducer, initializeState(location?.pathname?.split('/')[1]));
   const pageName = useMemo(() => location?.pathname?.split('/')?.[1], [location?.pathname]);
@@ -72,58 +71,48 @@ const Sidebar = ({ isClosing, isOpen  }) => {
 
   return (
     <Container >
-      <Animate 
-        isOpen={isOpen}
-        isClosing={isClosing}
-        className='animate'
-      >
-        {isOpen && 
+      <ul>
+        {Object.keys(LINK_GROUPS[pageName]).map(groupName => {
+          return (
+            <ItemGroup 
+              key={`link-grp-${groupName}`}
+              className={`link-grp-${groupName}`}
+              isExpanded={expandedState[groupName]}
+              numItemsInGroup={LINK_GROUPS[pageName]?.[groupName].length}
+            >
+              <h4 onClick={() => toggleExpand(groupName)}>
+                {groupName}
 
-            <ul>
-              {Object.keys(LINK_GROUPS[pageName]).map(groupName => {
-                return (
-                  <ItemGroup 
-                    key={`link-grp-${groupName}`}
-                    className={`link-grp-${groupName}`}
-                    isExpanded={expandedState[groupName]}
-                    numItemsInGroup={LINK_GROUPS[pageName]?.[groupName].length}
-                  >
-                    <h4 onClick={() => toggleExpand(groupName)}>
-                      {groupName}
+                <Icon 
+                  name='chevron-down'
+                  fill={{base: theme.colors.grey.dark}}
+                  size={14}
+                  rotateBy={expandedState[groupName] ? 180 : 0}
+                />
+              </h4>
 
-                      <Icon 
-                        name='chevron-down'
-                        fill={{base: theme.colors.grey.dark}}
-                        size={14}
-                        rotateBy={expandedState[groupName] ? 180 : 0}
+              <ul>
+                {LINK_GROUPS[pageName]?.[groupName].map(item => {
+                  const formattedName = convertCase('camel', 'snake', item.text);
+                  return (
+                    <ListItem 
+                      key={`sb-link-${formattedName}`}
+                      isActive={params?.name === formattedName}
+                      
+                    >
+                      <Link 
+                        url={item.url}
+                        text={item.text}
+                        variant='sidebar'
                       />
-                    </h4>
-
-                    <ul>
-                      {LINK_GROUPS[pageName]?.[groupName].map(item => {
-                        const formattedName = convertCase('camel', 'snake', item.text);
-                        return (
-                          <ListItem 
-                            key={`sb-link-${formattedName}`}
-                            isActive={params?.name === formattedName}
-                            
-                          >
-                            <Link 
-                              url={item.url}
-                              text={item.text}
-                              variant='sidebar'
-                            />
-                          </ListItem>
-                        )
-                      })}
-                    </ul>
-                  </ItemGroup>
-                )
-              })}
-            </ul>
-          
-        }
-      </Animate>      
+                    </ListItem>
+                  )
+                })}
+              </ul>
+            </ItemGroup>
+          )
+        })}
+      </ul>
     </Container>     
   )
 }

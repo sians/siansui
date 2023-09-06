@@ -5,7 +5,7 @@ import { Button } from 'components';
 import { Container, Animate } from './styles';
 
 const FloatingMenu = () => {
-  const { themeState, toggleTheme, toggleSidebar } = useAppTheme();
+  const { themeState, toggleTheme } = useAppTheme();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -28,17 +28,12 @@ const FloatingMenu = () => {
   }, [isClosing])
 
   const handleThemeChange = () => toggleTheme();
-  const handleToggleSidebar = () => toggleSidebar();
 
   const menuItems = [
     {
       iconName: themeState?.themeName === 'light' ? 'sun' : 'moon',
       onClick: () => handleThemeChange(),
     },
-    {
-      iconName: 'compress',
-      onClick: () => handleToggleSidebar(),
-    },    
   ]
 
   return (
