@@ -11,6 +11,7 @@ import InputNumberExample from './InputNumberExample';
 import CheckboxExample from './CheckboxExample';
 import SelectExample from './SelectExample';
 import FormExample from './FormExample';
+import TabsExample from './TabsExample';
 
 export {
   SwitchExample,
@@ -25,5 +26,6 @@ export {
   InputNumberExample,
   CheckboxExample,
   SelectExample,
-  FormExample
+  FormExample,
+  TabsExample
 }

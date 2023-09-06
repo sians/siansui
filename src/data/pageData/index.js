@@ -27,6 +27,7 @@ import inputNumberData from './components/inputNumberData';
 import checkboxData from './components/checkboxData';
 import selectData from './components/selectData';
 import formData from './components/formData';
+import tabsData from './components/tabsData';
 
 const MAP = {
   hooks: {
@@ -57,7 +58,8 @@ const MAP = {
     input_number: inputNumberData,
     checkbox: checkboxData,
     select: selectData,
-    form: formData
+    form: formData,
+    tabs: tabsData,
   }
 }
 

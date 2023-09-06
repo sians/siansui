@@ -16,7 +16,6 @@ const sections = {
       {
         widgetType: 'text',
         data: [ 
-          "A Form component.",
           <FormExample />
         ]
       }

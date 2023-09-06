@@ -1,17 +1,34 @@
-import { Layout, Form } from 'components';
+import { Layout, Form, Tabs } from 'components';
+
+const TABS = [
+  {
+    label: 'Login',
+    children: <Form formId='login'/>
+  },
+  {
+    label: 'Signup',
+    children: <Form formId='signup'/>
+  },
+  {
+    label: 'Forgot Password',
+    children: <Form formId='forgotPassword'/>
+  },
+  {
+    label: 'Reset Password',
+    children: <Form formId='resetPassword'/>
+  },
+  {
+    label: 'Shipping',
+    children: <Form formId='shipping'/>
+  },
+]
 
 const FormExample = () => {
-  // TODO: put in a tab component the diff forms
 
   return (
     <Layout.Row>
       <Layout.Col size={12}>
-        Form Examples:
-        <Form formId='shipping'/>
-        {/* <Form formId='login'/>
-        <Form formId='signup'/>
-        <Form formId='forgotPassword'/>
-        <Form formId='resetPassword'/> */}
+        <Tabs tabs={TABS} />
       </Layout.Col>
     </Layout.Row>
   )

@@ -31,6 +31,7 @@ import Select from './Select';
 import Form from './Form';
 import Blur from './Blur';
 import FloatingMenu from './FloatingMenu';
+import Tabs from './Tabs';
 
 export {
   Nav,
@@ -65,5 +66,6 @@ export {
   Select,
   Form,
   Blur,
-  FloatingMenu
+  FloatingMenu,
+  Tabs
 }
