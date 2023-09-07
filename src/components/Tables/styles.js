@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 
-export const Container = styled.table(props => {
-  const { theme, fontFamily, maxWidth } = props;
+export const Container = styled.div(props => {
+  const { theme, isOverflow } = props;
+  return {
+    overflowX: 'scroll',
+    width: isOverflow && `calc(100vw - ${theme.margin*2}px)`
+    
+  }
+})
+
+export const Table = styled.table(props => {
+  const { theme, fontFamily, maxWidth, minWidth } = props;
   return {
     display: 'flex',
     fontFamily: fontFamily,
@@ -9,6 +18,7 @@ export const Container = styled.table(props => {
     fontSize: 14,
     width: '100%',
     maxWidth: maxWidth,
+    minWidth: minWidth,
     border: `1px solid ${theme.colors.grey.main}`,
   }
 });

@@ -30,6 +30,7 @@ const PropTable = ({ data }) => {
       data={data} 
       renderRow={renderRow}
       tableType='prop'
+      minWidth={500}
     />
   );
 }

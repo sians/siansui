@@ -25,7 +25,9 @@ const Row = ({
   justify,
   height,
   overflowY,
-  children
+  children,
+  className,
+  innerRef
 }) => {
   const { pt, pr, pb, pl } = padding;
   const { mt, mr, mb, ml } = margin;
@@ -48,6 +50,8 @@ const Row = ({
       height={height && finalHeight}
       width={width}
       overflowY={overflowY}
+      className={className}
+      ref={innerRef}
     >
       {children}
     </Styled>
@@ -66,6 +70,11 @@ Row.propTypes = {
     PropTypes.number,
   ]),
   overflowY: PropTypes.string,
+  className: PropTypes.string,
+  innerRef: PropTypes.oneOfType([
+    PropTypes.func, 
+    PropTypes.shape({ current: PropTypes.any })
+  ])  
 }
 
 Row.defaultProps = {

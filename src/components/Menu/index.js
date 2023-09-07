@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'components';
 import { Container, Item } from './styles';
 
-const Menu = ({ items, selected }) => {
+const Menu = ({ items, selected, handleToggleMenu }) => {
   return (  
     <Container>
       <ul>
@@ -17,8 +17,9 @@ const Menu = ({ items, selected }) => {
             >
               <Link 
                 text={text} 
-                variant='nostyle'
+                variant='navburger'
                 url={url}
+                onClick={handleToggleMenu}
               />
             </Item>
           )

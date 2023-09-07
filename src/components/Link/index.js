@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { ButtonLink, ALink } from './styles';
 
-const Link = ({ text, url, variant, isExternal, isMailto, isBold }) => {
+const Link = ({ text, url, variant, isExternal, isMailto, isBold, onClick }) => {
   const navigate = useNavigate();
 
   const handleClick = (event) => {
     event.preventDefault();
+    if (onClick) onClick();
     navigate(url);
   }
 

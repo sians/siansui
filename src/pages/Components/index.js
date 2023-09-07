@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
+import useMediaQuery from 'hooks/useMediaQuery';
 import { convertCase } from 'utils';
 
 import SidebarPage from 'components/Pages/SidebarPage';
@@ -11,6 +12,7 @@ import ALL_PAGE_DATA from 'data/pageData';
 import LINK_GROUPS from 'data/LINK_GROUPS';
 
 const Index = () => {
+  const { isMobile } = useMediaQuery();
   const theme = useTheme();
   const params = useParams();
   const navigate = useNavigate();
@@ -64,7 +66,7 @@ const Index = () => {
               <Layout.Grid 
                 elements={gridElements} 
                 gutterSize={16} 
-                colNum={3}
+                colNum={isMobile ? 2 : 3}
               />
 
             </Layout.Col>

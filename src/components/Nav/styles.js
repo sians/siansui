@@ -1,7 +1,7 @@
 import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div(props => {
-  const { theme, isDark } = props;
+  const { theme, isDark, isMobile } = props;
 
   const logoWidth = `calc(${theme.sidebar.width}px - ${theme.sidebar.padding * 2}px)`
 
@@ -18,7 +18,7 @@ export const Container = styled.div(props => {
 
     '.logo-container': {
       minWidth: logoWidth,
-      borderRight: `1px solid ${theme.colors.grey.main}`,
+      borderRight: !isMobile && `1px solid ${theme.colors.grey.main}`,
       margin: theme.margin,
       '&:hover': {
         cursor: 'pointer'
@@ -27,7 +27,7 @@ export const Container = styled.div(props => {
 
     '.main-container': {
       display: 'flex',
-      justifyContent: 'space-between',
+      justifyContent: isMobile ? 'flex-end' : 'space-between',
       alignItems: 'center',
       width: `calc(100% - ${theme.margin}px)`,
       paddingRight: theme.margin
@@ -57,6 +57,12 @@ export const MenuItem = styled.div(props => {
       borderTop: `${borderTop}px solid ${theme.colors.main.base}`,
       cursor: 'pointer'
     }
+  }
+})
+
+export const MobileBurger = styled.div(props => {
+  return {
+    cursor: 'pointer'
   }
 })
 

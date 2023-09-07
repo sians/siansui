@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
+import useMediaQuery from 'hooks/useMediaQuery';
 import { Layout, Typography, Button } from 'components';
 
 import FieldMap from './FieldMap';
@@ -37,6 +38,7 @@ export const FormRow = ({ fields, values, onChange, formId }) => {
 )};
 
 const Form = ({ formId }) => {
+  const { isMobile } = useMediaQuery();
   const theme = useTheme();
   const formObj = FormMap[formId];  
   const [formValues, setFormValues] = useState({});
@@ -135,7 +137,7 @@ const Form = ({ formId }) => {
   }
 
   return (
-    <StyledForm>
+    <StyledForm isMobile={isMobile}>
       {formObj && 
         <>
           <Typography.Heading size={2} margin={{mb: theme.margin}}>

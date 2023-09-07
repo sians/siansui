@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { useTheme } from 'styled-components';
 
-import { Layout } from 'components';
+import useMediaQuery from 'hooks/useMediaQuery';
 
-import { Label, Active, RowBar } from './styles';
+import { Content, LabelContainer, LabelRow, Label, Active, RowBar } from './styles';
 
 const Tabs = ({ 
   tabs, 
@@ -13,15 +13,31 @@ const Tabs = ({
   showLabelBar
 }) => {
   const theme = useTheme();
+  const { viewportWidth } = useMediaQuery();
   const labelMarginRight = theme.margin*2;
 
   const labelRefs = useRef([]);
   labelRefs.current = new Array(tabs.length).fill(null);
 
+  const [labelRowWidth, setLabelRowWidth] = useState(0);
+  const isOverflow = useMemo(() => {
+    return viewportWidth < labelRowWidth
+  }, [viewportWidth, labelRowWidth])
+
   const [activeIdx, setActiveIdx] = useState(defaultActiveIdx);
-  const [activeWidth, setActiveWidth] = useState(0);
+  const [activeWidth, setActiveWidth] = useState(0); // active underline
   const [leftOffset, setLeftOffset] = useState(0);
   const handleChangeTab = (idx) => setActiveIdx(idx);
+
+
+  useEffect(() => {  
+    if (labelRefs.current.length > 0) {
+      const width = labelRefs.current.reduce((acc, v) => {
+        return acc + v.offsetWidth + labelMarginRight;
+      }, 0);
+      setLabelRowWidth(width);
+    }
+  }, [labelMarginRight])
 
   useEffect(() => {
     const activeLabelRef = labelRefs.current[activeIdx];
@@ -32,37 +48,49 @@ const Tabs = ({
       setLeftOffset(left);
       setActiveWidth(activeLabelRef.offsetWidth);
     }
-  }, [activeIdx]);
-  
+  }, [activeIdx, labelMarginRight]);
 
   return (
     <div>
-      <Layout.Row justify={justifyLabels}>
-        {tabs && tabs.map((tabObj, idx) => {
-          const isActive = idx === activeIdx;
-          return (
-            <Label 
-              ref={elem => labelRefs.current[idx] = elem}
-              isActive={isActive}
-              marginRight={labelMarginRight}
-              onClick={() => handleChangeTab(idx)}
-            >
-              {tabObj.label}
-            </Label>
-          );
-        })}
-
-        <RowBar isShowBar={showLabelBar}>
+      <LabelContainer 
+        justify={justifyLabels} 
+        isOverflow={isOverflow}
+      >
+        <LabelRow 
+          isOverflow={isOverflow}
+          width={labelRowWidth}
+        >
+          {tabs && tabs.map((tabObj, idx) => {
+            const isActive = idx === activeIdx;
+            return (
+              <Label 
+                key={`tab-l-${idx}`}
+                ref={elem => labelRefs.current[idx] = elem}
+                isActive={isActive}
+                marginRight={labelMarginRight}
+                onClick={() => handleChangeTab(idx)}
+              >
+                {tabObj.label}
+              </Label>
+            );
+          })}
+        </LabelRow>
+        <RowBar 
+          isShowBar={showLabelBar}
+          isOverflow={isOverflow}
+          width={labelRowWidth}
+          labelMargin={labelMarginRight}
+        >
           <Active 
             activeWidth={activeWidth}
             leftOffset={leftOffset}
           />
         </RowBar>
-      </Layout.Row>
+      </LabelContainer>
 
-      <div>
+      <Content isOverflow={isOverflow}>
         {tabs[activeIdx]?.children}
-      </div>
+      </Content>
     </div>
   );
 }

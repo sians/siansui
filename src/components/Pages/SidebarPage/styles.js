@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Page = styled.div(props => {
   const { theme } = props;
@@ -12,16 +12,15 @@ export const Page = styled.div(props => {
 })
 
 export const Content = styled.article(props => {
-  const { theme } = props;
+  const { theme, isMobile } = props;
 
   const margin = theme.margin;
-  const width = `calc(100vw - ${theme.sidebar.width}px - ${margin * 5}px)`
+  const sidebarWidth = isMobile ? 0 : theme.sidebar.width;
   
   return {
-    paddingLeft: theme.sidebar.width,
+    paddingLeft: sidebarWidth,
     margin: `0px ${margin * 2}px`,
     maxWidth: theme.page.maxWidth,
-    width: width,
 
     'section': {
       margin: `${margin * 3}px 0px`

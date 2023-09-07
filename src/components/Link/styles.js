@@ -1,27 +1,51 @@
 import styled from 'styled-components';
 
-export const ButtonLink = styled.button(props => {
-  const { theme, variant, isBold } = props;
+const baseStyles = (theme, isBold) => ({
+  color: theme.colors.main.base,
+  fontFamily: theme.font.family.base,
+  fontSize: theme.font.size.body,
+  outline: 'none',
+  border: 'none',
+  fontWeight: isBold ? 'bold' : 400,
+  transition: 'all 400ms',
+  '&:hover, &:focus': {
+    cursor: 'pointer'
+  }
+});
 
+const textOnlyStyle = (theme) => ({
+  textDecoration: 'none',
+  color: theme.colors.fg,
+  background: 'none',
+  outline: 'none',
+  border: 'none'
+});
+
+const mainBackgroundStyle = (theme, btBottomPadding) => ({
+  background: `
+    linear-gradient(to right, ${theme.colors.bg}, ${theme.colors.bg}),
+    linear-gradient(to right, ${theme.colors.secondary.base}, ${theme.colors.secondary.base})`,
+  backgroundSize: '100% 0.6em, 0 0.6em',
+  backgroundPosition: '100% 100%, 0 100%',
+  backgroundRepeat: 'no-repeat',
+  paddingBottom: `${btBottomPadding}px`,
+  '&:hover, &:focus': {
+    backgroundSize: "0 0.6em, 100% 0.6em",
+  }
+});
+
+export const ButtonLink = styled.button(({ theme, variant, isBold }) => {
+  const btBottomPadding = 3;
   const variants = {
     sidebar: {
-      textDecoration: 'none',
-      color: theme.colors.fg,
-      background: 'none',
-      outline: 'none',
-      border: 'none',
+      ...textOnlyStyle(theme),
       width: '100%',
       textAlign: 'left',
       padding: theme.margin,
-      fontFamily: theme.font.family.base,
       fontSize: 14,
-      fontWeight: 400,
       height: '100%',
-      borderRadius: theme.borderRadius.main,      
-  
+      borderRadius: theme.borderRadius.main,
       '&:hover': {
-        cursor: 'pointer',
-        color: theme.colors.fg,
         backgroundColor: theme.colors.secondary.base,
       }
     },
@@ -30,77 +54,34 @@ export const ButtonLink = styled.button(props => {
       padding: 0
     },
     nostyle: {
-      textDecoration: 'none',
-      color: theme.colors.fg,
-      background: 'none',
-      outline: 'none',
-      border: 'none',
+      ...textOnlyStyle(theme),
       fontSize: 'inherit',
-      fontWeight: 'normal',
-      '&:hover': {
-        cursor: 'pointer',
-        color: theme.colors.fg,
-      }      
+      fontWeight: 'normal'
+    },
+    navburger: {
+      ...textOnlyStyle(theme),
+      height: '100%',
+      width: '100%',
+      fontSize: 'inherit',
+      fontWeight: 'normal'
     }
-  }
-  
-  const btBottomPadding = 3;
-  const mainStyles = {
-    color: theme.colors.main.base,
-    fontFamily: theme.font.family.base,
-    fontSize: theme.font.size.body,
-    outline: 'none',
-    border: 'none',
-    fontWeight: isBold ? 'bold' : 400,
-
-    background: `
-      linear-gradient(to right, ${theme.colors.bg}, ${theme.colors.bg}),
-      linear-gradient(to right, ${theme.colors.secondary.base}, ${theme.colors.secondary.base})`,
-    backgroundSize: '100% 0.6em, 0 0.6em',
-    backgroundPosition: '100% 100%, 0 100%',
-    backgroundRepeat: 'no-repeat',
-    paddingBottom: `${btBottomPadding}px`,
-    transition: 'all 400ms',
-  
-    '&:hover, &:focus': {
-      backgroundSize: "0 0.6em, 100% 0.6em",
-      color: theme.colors.main.base,
-      cursor: 'pointer'
-    }
-  }
+  };
 
   return {
-    ...mainStyles,
+    ...baseStyles(theme, isBold),
+    ...mainBackgroundStyle(theme, btBottomPadding),
     ...(variant && variants[variant]),
-  }
-})
+  };
+});
 
-export const ALink = styled.a(props => {
-  const { theme, isBold } = props;
-  
+export const ALink = styled.a(({ theme, isBold }) => {
   const btBottomPadding = 3;
-  
+
   return {
-    color: theme.colors.main.base,
+    ...baseStyles(theme, isBold),
+    ...mainBackgroundStyle(theme, btBottomPadding),
     position: 'inline-block',
     padding: `0px ${theme.margin / 3}px`,
-    fontSize: theme.font.size.body,
-    fontWeight: isBold ? 'bold' : 400,
-    textDecoration: 'none',
-    background: `
-      linear-gradient(to right, ${theme.colors.bg}, ${theme.colors.bg}),
-      linear-gradient(to right, ${theme.colors.secondary.base}, ${theme.colors.secondary.base})`,
-    backgroundSize: '100% 0.6em, 0 0.6em',
-    backgroundPosition: '100% 100%, 0 100%',
-    backgroundRepeat: 'no-repeat',
-    paddingBottom: `${btBottomPadding}px`,
-    transition: 'all 400ms',
-  
-    '&:hover, &:focus': {
-      backgroundSize: "0 0.6em, 100% 0.6em",
-      color: theme.colors.main.base,
-      cursor: 'pointer'
-    }
-
-  }
-})
+    textDecoration: 'none'
+  };
+});

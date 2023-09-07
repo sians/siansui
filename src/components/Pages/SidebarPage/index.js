@@ -1,15 +1,17 @@
+import useMediaQuery from 'hooks/useMediaQuery';
+
 import { Sidebar, FloatingMenu } from 'components';
 
 import { Page, Content } from './styles';
 
 const SidebarPage = ({ children }) => {
+  const { isMobile } = useMediaQuery();
   return (
     <>
       <Page id='page'>
-        <Sidebar
-        />
+        {!isMobile && <Sidebar/>}
 
-        <Content>
+        <Content isMobile={isMobile}>
           {children}
         </Content>  
       </Page>

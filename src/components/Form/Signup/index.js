@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+import useMediaQuery from 'hooks/useMediaQuery';
 import React, { useState } from 'react';
 
 import { FormRow } from '..';
@@ -5,13 +7,23 @@ import { Icon, Link, Typography } from 'components';
 
 const ICON_OPACITY = 0.7;
 
-const inputOrder = [
-  ['firstName', 'lastName'], 
-  'email', 
-  'password', 
-  'confirmPassword',
-  'terms',
-];
+const inputOrders = {
+  desktop: [
+    ['firstName', 'lastName'], 
+    'email', 
+    'password', 
+    'confirmPassword',
+    'terms',
+    ],
+  mobile: [
+    'firstName',
+    'lastName', 
+    'email', 
+    'password', 
+    'confirmPassword',
+    'terms',
+  ],  
+};
 
 const TogglePasswordIcon = ({ isShown, toggleVisibility }) => (
   <Icon
@@ -22,6 +34,11 @@ const TogglePasswordIcon = ({ isShown, toggleVisibility }) => (
 );
 
 const Signup = ({ values, onChange, formId, errors, onBlur }) => {
+  const { isMobile } = useMediaQuery();
+  const inputOrder = useMemo(() => {
+    return inputOrders[isMobile ? 'mobile' : 'desktop'];
+  }, [isMobile])
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 

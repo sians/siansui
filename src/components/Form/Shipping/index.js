@@ -1,15 +1,33 @@
+import { useMemo } from 'react';
+import useMediaQuery from 'hooks/useMediaQuery';
 import { FormRow } from '..';
 
-const inputOrder = [
-  ['firstName', 'lastName'], 
-  'address', 
-  'addressLineTwo', 
-  'city',
-  ['country', 'state', 'zip'],
-  'phone'
-];
+const inputOrders = {
+  desktop: [
+    ['firstName', 'lastName'], 
+    'address', 
+    'addressLineTwo', 
+    'city',
+    ['country', 'state', 'zip'],
+    'phone'
+  ],
+  mobile: [
+    'firstName', 
+    'lastName', 
+    'address', 
+    'addressLineTwo', 
+    'city',
+    'country', 
+    ['state', 'zip'],
+    'phone'
+  ],  
+};
 
 const Shipping = ({ values, onChange, formId }) => {
+  const { isMobile } = useMediaQuery();
+  const inputOrder = useMemo(() => {
+    return inputOrders[isMobile ? 'mobile' : 'desktop'];
+  }, [isMobile])
   const inputData = {
     firstName: {
       formInputType: 'input',
