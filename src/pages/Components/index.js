@@ -6,7 +6,7 @@ import useMediaQuery from 'hooks/useMediaQuery';
 import { convertCase } from 'utils';
 
 import SidebarPage from 'components/Pages/SidebarPage';
-import { Layout, Typography, Card } from 'components';
+import { Layout, Typography, Card, Accordion } from 'components';
 
 import ALL_PAGE_DATA from 'data/pageData';
 import LINK_GROUPS from 'data/LINK_GROUPS';
@@ -40,7 +40,29 @@ const Index = () => {
           }}
         />
       )                    
-  })};  
+  })};
+
+  const makeGrid = (gridElements) => {
+    return <Layout.Col size={12} padding={{pt: theme.margin, pb: theme.margin}}>
+          <Layout.Grid 
+          elements={gridElements} 
+          gutterSize={16} 
+          colNum={isMobile ? 2 : 3}
+        />    
+      </Layout.Col>
+  }
+
+  const makeAccordionData = () => {
+    const data =  Object.keys(LINK_GROUPS.components).map((key, idx) => {
+      const gridElements = makeGrideElements(key);
+      return {
+        id: `${idx+1}`,
+        label: key,
+        children: makeGrid(gridElements)
+      }
+    })
+    return data;
+  }
 
   return (
     <SidebarPage>
@@ -49,7 +71,15 @@ const Index = () => {
           size={1}
         />
       <Layout.Row>
-        {Object.keys(LINK_GROUPS.components).map((groupName) => {
+        {isMobile && (
+          <Layout.Col size={12}>
+            <Accordion 
+              data={makeAccordionData()}
+            />
+          </Layout.Col>
+        )}
+
+        {!isMobile && Object.keys(LINK_GROUPS.components).map((groupName) => {
           const gridElements = makeGrideElements(groupName);
           return (
             <Layout.Col 
@@ -63,11 +93,7 @@ const Index = () => {
                 </Typography.Heading>
               </Layout.Row>
 
-              <Layout.Grid 
-                elements={gridElements} 
-                gutterSize={16} 
-                colNum={isMobile ? 2 : 3}
-              />
+              {makeGrid(gridElements)}
 
             </Layout.Col>
           )
