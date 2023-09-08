@@ -32,6 +32,7 @@ import Form from './Form';
 import Blur from './Blur';
 import FloatingMenu from './FloatingMenu';
 import Tabs from './Tabs';
+import Accordion from './Accordion';
 
 export {
   Nav,
@@ -67,5 +68,6 @@ export {
   Form,
   Blur,
   FloatingMenu,
-  Tabs
+  Tabs,
+  Accordion
 }

@@ -28,6 +28,7 @@ import checkboxData from './components/checkboxData';
 import selectData from './components/selectData';
 import formData from './components/formData';
 import tabsData from './components/tabsData';
+import accordionData from './components/accordionData';
 
 const MAP = {
   hooks: {
@@ -60,6 +61,7 @@ const MAP = {
     select: selectData,
     form: formData,
     tabs: tabsData,
+    accordion: accordionData,
   }
 }
 

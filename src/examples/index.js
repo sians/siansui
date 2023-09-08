@@ -12,6 +12,7 @@ import CheckboxExample from './CheckboxExample';
 import SelectExample from './SelectExample';
 import FormExample from './FormExample';
 import TabsExample from './TabsExample';
+import AccordionExample from './AccordionExample';
 
 export {
   SwitchExample,
@@ -27,5 +28,6 @@ export {
   CheckboxExample,
   SelectExample,
   FormExample,
-  TabsExample
+  TabsExample,
+  AccordionExample
 }

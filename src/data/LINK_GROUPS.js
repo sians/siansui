@@ -7,6 +7,7 @@ const LINK_GROUPS = {
       { text: 'Col', url: '/components/col' },  
       { text: 'Grid', url: '/components/grid' },  
       { text: 'Tabs', url: '/components/tabs' },  
+      { text: 'Accordion', url: '/components/accordion' },  
     ],
     Typography: [
       { text: 'Heading', url: '/components/heading' },
