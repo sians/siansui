@@ -174,7 +174,7 @@ const PAGE_DATA = {
   title: "useFocus",
   sections: sections,
   cardData: {
-    hookName: 'useFocus',
+    title: 'useFocus',
     description: 'The useFocus hook allows components to programmatically gain or lose focus in a React functional component.'
   }
 }

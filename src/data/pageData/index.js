@@ -32,9 +32,9 @@ import accordionData from './components/accordionData';
 
 const MAP = {
   hooks: {
-    useFocus: useFocusData,
-    useHover: useHoverData,
-    useKeyPress: useKeyPressData
+    use_focus: useFocusData,
+    use_hover: useHoverData,
+    use_key_press: useKeyPressData
   },
   components: {
     row: rowData,

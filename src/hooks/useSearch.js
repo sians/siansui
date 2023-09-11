@@ -12,13 +12,13 @@ const useSearch = (pageData, query) => {
   };
   const makeResultArray = (category, matchesAry) => {
     return matchesAry.map(string => {
-      const { title, hookName, description } = pageData[category]?.[string]?.cardData;
-      const snakeTitle = convertCase('pascal', 'snake', title || hookName);
+      const { title, description } = pageData[category]?.[string]?.cardData;
+      const snakeTitle = convertCase('pascal', 'snake', title);
       return {
         category: category,
-        title: title || hookName,
-        value: title || hookName,
-        label: title || hookName,
+        title: title,
+        value: title,
+        label: title,
         description: description,
         url: `/${category}/${snakeTitle}`
       }

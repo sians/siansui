@@ -140,7 +140,7 @@ const PAGE_DATA = {
   title: "useHover",
   sections: sections,
   cardData: {
-    hookName: 'useHover',
+    title: 'useHover',
     description: 'Detects when a user hovers over a specific element in a React component.'
   }
 }

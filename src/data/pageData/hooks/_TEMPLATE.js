@@ -66,7 +66,7 @@ const PAGE_DATA = {
   title: "useFocus",
   sections: sections,
   cardData: {
-    hookName: 'useTimeout',
+    title: 'useTimeout',
     description: 'Triggers a function after a specified delay in a React component.'
   }   
 

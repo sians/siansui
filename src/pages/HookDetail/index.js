@@ -14,7 +14,7 @@ const HookDetail = () => {
   const data = useMemo(() => {
     if (location?.pathname) {
       const [,pageType, name] = location.pathname.split('/');
-      return ALL_PAGE_DATA[pageType]?.[convertCase('snake', 'camel', name)]
+      return ALL_PAGE_DATA[pageType][name]
     }
   }, [location?.pathname])
 

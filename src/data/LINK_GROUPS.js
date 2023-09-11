@@ -45,10 +45,10 @@ const LINK_GROUPS = {
       { text: 'useFocus', url: '/hooks/use_focus' },
       { text: 'useHover', url: '/hooks/use_hover' },
       { text: 'useKeyPress', url: '/hooks/use_key_press' },
-      { text: 'useTimeout', url: '/hooks/use_timeout' },
+      // { text: 'useTimeout', url: '/hooks/use_timeout' },
     ],
     Auth: [
-      { text: 'useAuth', url: '/hooks/use_auth' },
+      // { text: 'useAuth', url: '/hooks/use_auth' },
     ],
   }
   // ...

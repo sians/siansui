@@ -12,37 +12,42 @@ import { Layout, Typography, Card, Accordion } from 'components';
 import ALL_PAGE_DATA from 'data/pageData';
 import LINK_GROUPS from 'data/LINK_GROUPS';
 
-const Index = () => {
+const Index = ({ pageName }) => {
   const { isMobile } = useMediaQuery();
   const { themeState } = useAppTheme();
   const theme = useTheme();
   const params = useParams();
   const navigate = useNavigate();
 
+  const pageGroups = useMemo(() => LINK_GROUPS[pageName], [pageName]);
+  const pageData = useMemo(() => ALL_PAGE_DATA[pageName], [pageName]);
+
   useEffect(() => {
     document.getElementById("page").scroll(0,0)
   }, [params?.name]);
 
-  const handleCardClick = (componentName) => {
-    navigate(`/components/${componentName}`);
+  const handleCardClick = (name) => {
+    navigate(`/${pageName}/${name}`);
   }
   
 
   const makeElements = (data) => {
     return data && data.map(elem => {
-      const { title, description } = elem.cardData;
-      const isGrid = themeState.isGridLayout;
-      return (
-        <Card 
-          key={`card-${title}`}
-          onClick={() => handleCardClick(elem.snakeComponentName)}
-          cardType={`component`}
-          layoutType={isGrid ? 'grid' : 'row'}
-          title={title}
-          data={{ description: description }}
-          className={isGrid ? '' : 'rw-card'}
-        />
-      )
+      if (elem?.cardData) {
+        const { title, description } = elem?.cardData;
+        const isGrid = themeState.isGridLayout;
+        return (
+          <Card 
+            key={`card-${title}`}
+            onClick={() => handleCardClick(elem.snakeName)}
+            cardType={`component`}
+            layoutType={isGrid ? 'grid' : 'row'}
+            title={title}
+            data={{ description: description }}
+            className={isGrid ? '' : 'rw-card'}
+          />
+        )
+      }
     })
   }
 
@@ -61,11 +66,11 @@ const Index = () => {
   }  
 
   const makeContent = (groupName) => {
-    const data = LINK_GROUPS.components[groupName].map(key => {
-      const snakeComponentName = convertCase('camel', 'snake', key.text);
+    const data = pageGroups[groupName].map(key => {      
+      const snakeName = convertCase('camel', 'snake', key.text);
       return {
-        ...ALL_PAGE_DATA.components[snakeComponentName],
-        snakeComponentName: snakeComponentName
+        ...pageData[snakeName],
+        snakeName: snakeName
       };
     })
 
@@ -77,7 +82,7 @@ const Index = () => {
   }  
 
   const accordionData = useMemo(() => {
-    const data =  Object.keys(LINK_GROUPS.components).map((key, idx) => {
+    const data =  Object.keys(pageGroups).map((key, idx) => {
       return {
         id: `${idx+1}`,
         label: key,
@@ -86,12 +91,12 @@ const Index = () => {
     })
 
     return data;
-  }, [themeState?.isGridLayout])
+  }, [themeState?.isGridLayout, pageGroups])
 
   return (
     <SidebarPage>
       <Typography.Heading 
-          text='Components Overview'
+          text={`${pageName.charAt(0).toUpperCase() + pageName.slice(1)} Overview`}
           size={1}
         />
       <Layout.Row>
@@ -107,7 +112,7 @@ const Index = () => {
           </Layout.Col>
         )}
 
-        {!isMobile && Object.keys(LINK_GROUPS.components).map((groupName) => {
+        {!isMobile && Object.keys(pageGroups).map((groupName) => {
           return (
             <Layout.Col 
               size={12} 
@@ -116,7 +121,7 @@ const Index = () => {
             >
               <Layout.Row padding={{pt: theme.margin, pb: (theme.margin/2)}}>
                 <Typography.Heading size={4}>
-                  {groupName} <Typography.Small>({LINK_GROUPS.components[groupName].length})</Typography.Small>
+                  {groupName} <Typography.Small>({pageGroups[groupName].length})</Typography.Small>
                 </Typography.Heading>
               </Layout.Row>
 

@@ -122,7 +122,7 @@ const PAGE_DATA = {
   title: "useKeyPress",
   sections: sections,
   cardData: {
-    hookName: 'useKeyPress',
+    title: 'useKeyPress',
     description: 'Detects when a user presses a specific key on the keyboard.'
   }
 }
