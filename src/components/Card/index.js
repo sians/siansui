@@ -3,7 +3,7 @@ import ComponentCard from './ComponentCard'
 
 import useAppTheme from 'hooks/useAppTheme';
 
-import { Typography } from 'components';
+import { Typography, Layout } from 'components';
 import { Container } from './styles';
 
 const CARD_MAP  = {
@@ -15,7 +15,9 @@ const Card = ({
   cardType, 
   title, 
   data, 
-  onClick
+  onClick,
+  layoutType,
+  className
 }) => {
   const { themeState } = useAppTheme();
   return cardType && (
@@ -23,13 +25,34 @@ const Card = ({
       isClickable={!!onClick}
       onClick={!!onClick && onClick}
       isDark={themeState.themeName === 'dark'}
+      layoutType={layoutType}
+      className={className}
     >
-      <Typography.Heading size={6}>
-        {title}
-      </Typography.Heading>
-      <Typography.Small textAlign='center'>
-        {CARD_MAP[cardType](data)}
-      </Typography.Small>
+      {layoutType === 'grid' && 
+        <>
+          <Typography.Heading size={6}>
+            {title}
+          </Typography.Heading>
+          <Typography.Small textAlign='center'>
+            {CARD_MAP[cardType](data)}
+          </Typography.Small>
+        </>
+      }
+
+      {layoutType === 'row' && 
+        <Layout.Row>
+          <Layout.Col size={3}>
+            <Typography.Heading size={6}>
+              {title}
+            </Typography.Heading>
+          </Layout.Col>
+          <Layout.Col size={9}>
+            <Typography.Small>
+              {CARD_MAP[cardType](data)}
+            </Typography.Small>
+          </Layout.Col>          
+        </Layout.Row>
+      }
     </Container>
   )
 }

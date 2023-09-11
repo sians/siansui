@@ -43,7 +43,9 @@ const CheckboxExample = () => {
       name: 'terms',
       value: terms,
       onChange: () => handleTermsClick(),
-      label: `I accept the ${<Link text='Terms of Use' variant='small'/>} & ${<Link text='Privacy Policy' variant='small'/>}`
+      label: (
+        <Typography.Small>I accept the <Link text='Terms of Use' variant='small'/> & <Link text='Privacy Policy' variant='small'/></Typography.Small>
+      )
     }
   }, [terms])
 

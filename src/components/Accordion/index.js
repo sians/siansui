@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useEffect, useReducer, useState } from 'react';
 
+import useAppTheme from 'hooks/useAppTheme';
+
 import Item from './Item';
 import { Container } from './styles';
 
@@ -8,7 +10,7 @@ const initializeState = (data) => {
   return Object.keys(data).reduce((acc, curr) => {
     return {
       ...acc, 
-      [curr]: false
+      [data[curr].id]: false
     }
   }, {});
 };
@@ -24,14 +26,16 @@ function reducer(state, action) {
         ...state, 
         [action.id]: !state[action.id]
       };
-    // case 'closeAll': 
-    //   const closeState = { ...state }
-    //   Object.keys(state).forEach(k => closeState[k] = false)
-    //   return closeState;
-    // case 'expandAll': 
-    //   const openState = { ...state }
-    //   Object.keys(state).forEach(k => openState[k] = true)
-    //   return openState;
+    case 'closeAll': 
+      const closeState = { ...state }
+      Object.keys(state).forEach(k => closeState[k] = false)
+      return closeState;
+    case 'expandAll': 
+      const openState = { ...state }
+      Object.keys(state).forEach(k => {
+        return openState[k] = true
+      })
+      return openState;
     default:
       throw new Error();
   }
@@ -42,6 +46,7 @@ const Accordion = ({
   showChevron,
   labelSize,
 }) => {
+  const { themeState } = useAppTheme();
   const [expandedState, dispatch] = useReducer(
     reducer, 
     initializeState(data)
@@ -54,8 +59,8 @@ const Accordion = ({
   const toggleExpand = id => {
     dispatch({type: 'toggle', id});
   };
-  // const closeAll = () => dispatch({type: 'closeAll'});
-  // const expandeAll = () => dispatch({type: 'expandAll'});
+  const closeAll = () => dispatch({type: 'closeAll'});
+  const expandAll = () => dispatch({type: 'expandAll'});
   useEffect(() => {
     const initArray = [];
     data.forEach(item => {
@@ -66,9 +71,16 @@ const Accordion = ({
   }, [data])
 
   useEffect(() => {
-    console.log(initArray)
     initArray.forEach(id => initExpanded(id));
   }, [initArray])
+
+  useEffect(() => {
+    if (themeState?.isDefaultExpanded) {
+      expandAll();
+    } else {
+      closeAll();
+    }
+  }, [themeState?.isDefaultExpanded])
 
   return (
     <>

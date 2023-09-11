@@ -12,13 +12,14 @@ const makeDarkStyles = (theme) => {
 }
 
 export const Container = styled.div(props => {
-  const { theme, isClickable, isDark } = props;
+  const { theme, isClickable, isDark, layoutType } = props;
+  const isGrid = layoutType === 'grid';
 
-  const minHeight = 110;
+  const minHeight = isGrid ? 110 : theme.margin*1.5;
   const baseStyles = {
     border: `1px solid ${theme.colors.grey.main}`,
     borderRadius: theme.borderRadius.main,
-    padding: theme.margin,
+    padding: isGrid ? theme.margin : `${theme.margin/2}px ${theme.margin}px`,
     minHeight: minHeight,
     display: 'flex',
     flexDirection: 'column',

@@ -31,6 +31,7 @@ const mainBackgroundStyle = (theme, btBottomPadding) => ({
   paddingBottom: `${btBottomPadding}px`,
   '&:hover, &:focus': {
     backgroundSize: "0 0.6em, 100% 0.6em",
+    cursor: 'pointer'
   }
 });
 
@@ -43,6 +44,7 @@ export const ButtonLink = styled.button(({ theme, variant, isBold }) => {
       textAlign: 'left',
       padding: theme.margin,
       fontSize: 14,
+      fontWeight: 400,
       height: '100%',
       borderRadius: theme.borderRadius.main,
       '&:hover': {

@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
 import useMediaQuery from 'hooks/useMediaQuery';
+import useAppTheme from 'hooks/useAppTheme';
 import { convertCase } from 'utils';
 
 import SidebarPage from 'components/Pages/SidebarPage';
@@ -13,6 +14,7 @@ import LINK_GROUPS from 'data/LINK_GROUPS';
 
 const Index = () => {
   const { isMobile } = useMediaQuery();
+  const { themeState } = useAppTheme();
   const theme = useTheme();
   const params = useParams();
   const navigate = useNavigate();
@@ -25,44 +27,66 @@ const Index = () => {
     navigate(`/components/${componentName}`);
   }
   
-  const makeGrideElements = (groupName) => { 
-    return LINK_GROUPS.components[groupName].map(key => {
-      const snakeComponentName = convertCase('camel', 'snake', key.text);
-      const pageData = ALL_PAGE_DATA.components[snakeComponentName];
-      
-      return pageData && (
-        <Card 
-          onClick={() => handleCardClick(snakeComponentName)}
-          cardType='component' 
-          title={pageData?.cardData?.title}
-          data={{
-            description: pageData?.cardData?.description
-          }}
-        />
-      )                    
-  })};
 
-  const makeGrid = (gridElements) => {
-    return <Layout.Col size={12} padding={{pt: theme.margin, pb: theme.margin}}>
-          <Layout.Grid 
-          elements={gridElements} 
-          gutterSize={16} 
-          colNum={isMobile ? 2 : 3}
-        />    
-      </Layout.Col>
+  const makeElements = (data) => {
+    return data && data.map(elem => {
+      const { title, description } = elem.cardData;
+      const isGrid = themeState.isGridLayout;
+      return (
+        <Card 
+          key={`card-${title}`}
+          onClick={() => handleCardClick(elem.snakeComponentName)}
+          cardType={`component`}
+          layoutType={isGrid ? 'grid' : 'row'}
+          title={title}
+          data={{ description: description }}
+          className={isGrid ? '' : 'rw-card'}
+        />
+      )
+    })
   }
 
-  const makeAccordionData = () => {
+  const makeGrid = (gridElements) => { 
+    return <Layout.Col 
+      size={12} 
+      padding={{pt: theme.margin, pb: theme.margin}}
+      className='group-content' 
+    >
+      <Layout.Grid 
+        elements={gridElements} 
+        gutterSize={16} 
+        colNum={isMobile ? 2 : 3}
+      />
+    </Layout.Col>
+  }  
+
+  const makeContent = (groupName) => {
+    const data = LINK_GROUPS.components[groupName].map(key => {
+      const snakeComponentName = convertCase('camel', 'snake', key.text);
+      return {
+        ...ALL_PAGE_DATA.components[snakeComponentName],
+        snakeComponentName: snakeComponentName
+      };
+    })
+
+    if (themeState.isGridLayout) {
+      return makeGrid(makeElements(data));
+    } else {
+      return makeElements(data);
+    }
+  }  
+
+  const accordionData = useMemo(() => {
     const data =  Object.keys(LINK_GROUPS.components).map((key, idx) => {
-      const gridElements = makeGrideElements(key);
       return {
         id: `${idx+1}`,
         label: key,
-        children: makeGrid(gridElements)
+        children: makeContent(key)
       }
     })
+
     return data;
-  }
+  }, [themeState?.isGridLayout])
 
   return (
     <SidebarPage>
@@ -72,28 +96,31 @@ const Index = () => {
         />
       <Layout.Row>
         {isMobile && (
-          <Layout.Col size={12}>
+          <Layout.Col 
+            size={12}
+            padding={{pt: theme.margin, pb: theme.margin}}
+            className='group-content'
+          >
             <Accordion 
-              data={makeAccordionData()}
+              data={accordionData}
             />
           </Layout.Col>
         )}
 
         {!isMobile && Object.keys(LINK_GROUPS.components).map((groupName) => {
-          const gridElements = makeGrideElements(groupName);
           return (
             <Layout.Col 
               size={12} 
               key={`grp-${groupName}`}
-              className='group'
+              className='group-content'
             >
               <Layout.Row padding={{pt: theme.margin, pb: (theme.margin/2)}}>
                 <Typography.Heading size={4}>
-                  {groupName}
+                  {groupName} <Typography.Small>({LINK_GROUPS.components[groupName].length})</Typography.Small>
                 </Typography.Heading>
               </Layout.Row>
 
-              {makeGrid(gridElements)}
+              {makeContent(groupName)}
 
             </Layout.Col>
           )

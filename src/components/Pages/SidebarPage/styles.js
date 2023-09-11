@@ -7,7 +7,17 @@ export const Page = styled.div(props => {
     width: '100vw',
     overflowY: 'scroll',
     position: 'relative',
-    paddingTop: theme.margin * 3
+    paddingTop: theme.margin * 3,
+
+    '.group-content': {
+      '.rw-card': {
+        marginTop: theme.margin,
+        maxHeight: 27,
+        '&:last-of-type': {
+          marginBottom: theme.margin,
+        }
+      }
+    }
   }
 })
 

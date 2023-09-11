@@ -12,6 +12,8 @@ const THEME_NAME = 'dark';
 const INITIAL_STATE = {
   themeName: THEME_NAME,
   theme: setThemeType(THEME_NAME),
+  isGridLayout: true,
+  isDefaultExpanded: false
 };
 
 export const useInstantiatedAppTheme = () => {
@@ -28,9 +30,29 @@ export const useInstantiatedAppTheme = () => {
     })
   }
 
+  const toggleLayout = () => {
+    setThemeState(prev => {
+      return {
+        ...prev,
+        isGridLayout: !prev.isGridLayout
+      }
+    });
+  }
+
+  const toggleDefaultExpanded = () => {
+    setThemeState(prev => {
+      return {
+        ...prev,
+        isDefaultExpanded: !prev.isDefaultExpanded
+      }
+    });
+  }  
+
   return {
     themeState,
     toggleTheme,
+    toggleLayout,
+    toggleDefaultExpanded
   };
 }
 
