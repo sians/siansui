@@ -33,6 +33,7 @@ import Blur from './Blur';
 import FloatingMenu from './FloatingMenu';
 import Tabs from './Tabs';
 import Accordion from './Accordion';
+import Tooltip from './Tooltip';
 
 export {
   Nav,
@@ -69,5 +70,6 @@ export {
   Blur,
   FloatingMenu,
   Tabs,
-  Accordion
+  Accordion,
+  Tooltip
 }
