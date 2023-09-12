@@ -91,7 +91,7 @@ const Index = ({ pageName }) => {
     })
 
     return data;
-  }, [themeState?.isGridLayout, pageGroups])
+  }, [themeState?.isGridLayout, pageGroups, isMobile])
 
   return (
     <SidebarPage>
