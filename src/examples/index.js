@@ -13,6 +13,7 @@ import SelectExample from './SelectExample';
 import FormExample from './FormExample';
 import TabsExample from './TabsExample';
 import AccordionExample from './AccordionExample';
+import DirectoryExplorerExample from './DirectoryExplorerExample';
 
 export {
   SwitchExample,
@@ -29,5 +30,6 @@ export {
   SelectExample,
   FormExample,
   TabsExample,
-  AccordionExample
+  AccordionExample,
+  DirectoryExplorerExample
 }

@@ -4,16 +4,16 @@ const LINK_GROUPS = {
   components: {
     Layout: [
       { text: 'Row', url: '/components/row' },
-      { text: 'Col', url: '/components/col' },  
-      { text: 'Grid', url: '/components/grid' },  
-      { text: 'Tabs', url: '/components/tabs' },  
-      { text: 'Accordion', url: '/components/accordion' },  
+      { text: 'Col', url: '/components/col' },
+      { text: 'Grid', url: '/components/grid' },
+      { text: 'Tabs', url: '/components/tabs' },
+      { text: 'Accordion', url: '/components/accordion' },
     ],
     Typography: [
       { text: 'Heading', url: '/components/heading' },
-      { text: 'Body', url: '/components/body' },  
+      { text: 'Body', url: '/components/body' },
       { text: 'Small', url: '/components/small' },
-      { text: 'Code', url: '/components/code' },  
+      { text: 'Code', url: '/components/code' },
       { text: 'Link', url: '/components/link' },  
     ],
     Forms: [
@@ -38,6 +38,7 @@ const LINK_GROUPS = {
       { text: 'Chip', url: '/components/chip' },
       { text: 'Avatar', url: '/components/avatar' },
       { text: 'AvatarGroup', url: '/components/avatar_group' },
+      { text: 'DirectoryExplorer', url: '/components/directory_explorer' },
     ],  
   },
   hooks: {

@@ -29,6 +29,7 @@ import selectData from './components/selectData';
 import formData from './components/formData';
 import tabsData from './components/tabsData';
 import accordionData from './components/accordionData';
+import directoryExplorerData from './components/directoryExplorerData';
 
 const MAP = {
   hooks: {
@@ -62,6 +63,7 @@ const MAP = {
     form: formData,
     tabs: tabsData,
     accordion: accordionData,
+    directory_explorer: directoryExplorerData
   }
 }
 

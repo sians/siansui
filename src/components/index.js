@@ -34,6 +34,7 @@ import FloatingMenu from './FloatingMenu';
 import Tabs from './Tabs';
 import Accordion from './Accordion';
 import Tooltip from './Tooltip';
+import DirectoryExplorer from './DirectoryExplorer';
 
 export {
   Nav,
@@ -71,5 +72,6 @@ export {
   FloatingMenu,
   Tabs,
   Accordion,
-  Tooltip
+  Tooltip,
+  DirectoryExplorer
 }

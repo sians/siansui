@@ -1,20 +1,6 @@
+import { DirectoryExplorerExample } from 'examples';
 const codeSnippets = {
   1: `
-const Row = styled.div(props => {
-  const { padding, theme, align, justify, height, overflowY } = props;
-  const rowPadding = padding || 0;
-  return {
-    display: 'flex',
-    flexDirection: 'row',
-    padding: rowPadding,
-    width: \`calc(100% - \${rowPadding * 2}px)\`,
-    alignItems: align,
-    justifyContent: justify,
-    height: height,
-    overflowY: overflowY,
-    flexWrap: 'wrap'
-  }
-})
   `,
 }
 
@@ -24,7 +10,8 @@ const sections = {
       {
         widgetType: 'text',
         data: [ 
-          "A row layout component."
+          "A DirectoryExplorer component.",
+          <DirectoryExplorerExample />
         ]
       }
     ]
@@ -79,11 +66,11 @@ const sections = {
 }
 
 const PAGE_DATA = {
-  title: "Row",
+  title: "DirectoryExplorer",
   sections: sections,
   cardData: {
-    title: 'Row',
-    description: 'A flexible Row component.'
+    title: 'DirectoryExplorer',
+    description: 'A flexible DirectoryExplorer component.'
   }   
 
 }
