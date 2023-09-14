@@ -9,6 +9,10 @@ const LINK_GROUPS = {
       { text: 'Tabs', url: '/components/tabs' },
       { text: 'Accordion', url: '/components/accordion' },
     ],
+    Navigation: [
+      { text: 'DirectoryExplorer', url: '/components/directory_explorer' },
+      { text: 'Breadcrumbs', url: '/components/breadcrumbs' },
+    ],
     Typography: [
       { text: 'Heading', url: '/components/heading' },
       { text: 'Body', url: '/components/body' },
@@ -38,7 +42,6 @@ const LINK_GROUPS = {
       { text: 'Chip', url: '/components/chip' },
       { text: 'Avatar', url: '/components/avatar' },
       { text: 'AvatarGroup', url: '/components/avatar_group' },
-      { text: 'DirectoryExplorer', url: '/components/directory_explorer' },
     ],  
   },
   hooks: {

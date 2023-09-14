@@ -30,6 +30,7 @@ import formData from './components/formData';
 import tabsData from './components/tabsData';
 import accordionData from './components/accordionData';
 import directoryExplorerData from './components/directoryExplorerData';
+import breadcrumbsData from './components/breadcrumbsData';
 
 const MAP = {
   hooks: {
@@ -63,7 +64,8 @@ const MAP = {
     form: formData,
     tabs: tabsData,
     accordion: accordionData,
-    directory_explorer: directoryExplorerData
+    directory_explorer: directoryExplorerData,
+    breadcrumbs: breadcrumbsData,
   }
 }
 

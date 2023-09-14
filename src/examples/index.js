@@ -14,6 +14,7 @@ import FormExample from './FormExample';
 import TabsExample from './TabsExample';
 import AccordionExample from './AccordionExample';
 import DirectoryExplorerExample from './DirectoryExplorerExample';
+import BreadcrumbsExample from './BreadcrumbsExample';
 
 export {
   SwitchExample,
@@ -31,5 +32,6 @@ export {
   FormExample,
   TabsExample,
   AccordionExample,
-  DirectoryExplorerExample
+  DirectoryExplorerExample,
+  BreadcrumbsExample
 }
