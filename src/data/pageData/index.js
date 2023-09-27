@@ -31,6 +31,7 @@ import tabsData from './components/tabsData';
 import accordionData from './components/accordionData';
 import directoryExplorerData from './components/directoryExplorerData';
 import breadcrumbsData from './components/breadcrumbsData';
+import carouselData from './components/carouselData';
 
 const MAP = {
   hooks: {
@@ -66,6 +67,7 @@ const MAP = {
     accordion: accordionData,
     directory_explorer: directoryExplorerData,
     breadcrumbs: breadcrumbsData,
+    carousel: carouselData
   }
 }
 

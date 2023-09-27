@@ -35,6 +35,7 @@ const LINK_GROUPS = {
     General: [
       { text: 'Icon', url: '/components/icon' },
       { text: 'Alert', url: '/components/alert' },
+      { text: 'Carousel', url: '/components/carousel'},
       // { text: 'Card', url: '/components/card' },
       // { text: 'ProgressBar', url: '/components/progress_bar' },
       { text: 'Badge', url: '/components/badge' },

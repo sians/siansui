@@ -15,6 +15,7 @@ import TabsExample from './TabsExample';
 import AccordionExample from './AccordionExample';
 import DirectoryExplorerExample from './DirectoryExplorerExample';
 import BreadcrumbsExample from './BreadcrumbsExample';
+import CarouselExample from './CarouselExample';
 
 export {
   SwitchExample,
@@ -33,5 +34,6 @@ export {
   TabsExample,
   AccordionExample,
   DirectoryExplorerExample,
-  BreadcrumbsExample
+  BreadcrumbsExample,
+  CarouselExample
 }

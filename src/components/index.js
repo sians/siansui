@@ -36,6 +36,7 @@ import Accordion from './Accordion';
 import Tooltip from './Tooltip';
 import DirectoryExplorer from './DirectoryExplorer';
 import Breadcrumbs from './Breadcrumbs';
+import Carousel from './Carousel';
 
 export {
   Nav,
@@ -75,5 +76,6 @@ export {
   Accordion,
   Tooltip,
   DirectoryExplorer,
-  Breadcrumbs
+  Breadcrumbs,
+  Carousel
 }
