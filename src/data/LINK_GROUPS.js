@@ -12,6 +12,7 @@ const LINK_GROUPS = {
     Navigation: [
       { text: 'DirectoryExplorer', url: '/components/directory_explorer' },
       { text: 'Breadcrumbs', url: '/components/breadcrumbs' },
+      { text: 'Pagination', url: '/components/pagination' },
     ],
     Typography: [
       { text: 'Heading', url: '/components/heading' },

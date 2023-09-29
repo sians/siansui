@@ -16,6 +16,7 @@ import AccordionExample from './AccordionExample';
 import DirectoryExplorerExample from './DirectoryExplorerExample';
 import BreadcrumbsExample from './BreadcrumbsExample';
 import CarouselExample from './CarouselExample';
+import PaginationExample from './PaginationExample';
 
 export {
   SwitchExample,
@@ -35,5 +36,6 @@ export {
   AccordionExample,
   DirectoryExplorerExample,
   BreadcrumbsExample,
-  CarouselExample
+  CarouselExample,
+  PaginationExample
 }

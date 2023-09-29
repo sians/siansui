@@ -37,6 +37,7 @@ import Tooltip from './Tooltip';
 import DirectoryExplorer from './DirectoryExplorer';
 import Breadcrumbs from './Breadcrumbs';
 import Carousel from './Carousel';
+import Pagination from './Pagination';
 
 export {
   Nav,
@@ -77,5 +78,6 @@ export {
   Tooltip,
   DirectoryExplorer,
   Breadcrumbs,
-  Carousel
+  Carousel,
+  Pagination
 }
