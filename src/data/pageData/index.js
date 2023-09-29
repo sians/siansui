@@ -33,6 +33,7 @@ import directoryExplorerData from './components/directoryExplorerData';
 import breadcrumbsData from './components/breadcrumbsData';
 import carouselData from './components/carouselData';
 import paginationData from './components/paginationData';
+import calendarData from './components/calendarData';
 
 const MAP = {
   hooks: {
@@ -70,6 +71,7 @@ const MAP = {
     breadcrumbs: breadcrumbsData,
     carousel: carouselData,
     pagination: paginationData,
+    calendar: calendarData,
   }
 }
 

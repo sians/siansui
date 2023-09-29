@@ -17,6 +17,7 @@ import DirectoryExplorerExample from './DirectoryExplorerExample';
 import BreadcrumbsExample from './BreadcrumbsExample';
 import CarouselExample from './CarouselExample';
 import PaginationExample from './PaginationExample';
+import CalendarExample from './CalendarExample';
 
 export {
   SwitchExample,
@@ -37,5 +38,6 @@ export {
   DirectoryExplorerExample,
   BreadcrumbsExample,
   CarouselExample,
-  PaginationExample
+  PaginationExample,
+  CalendarExample
 }

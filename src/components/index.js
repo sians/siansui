@@ -38,6 +38,7 @@ import DirectoryExplorer from './DirectoryExplorer';
 import Breadcrumbs from './Breadcrumbs';
 import Carousel from './Carousel';
 import Pagination from './Pagination';
+import Calendar from './Calendar';
 
 export {
   Nav,
@@ -79,5 +80,6 @@ export {
   DirectoryExplorer,
   Breadcrumbs,
   Carousel,
-  Pagination
+  Pagination,
+  Calendar
 }
