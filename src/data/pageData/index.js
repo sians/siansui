@@ -34,6 +34,7 @@ import breadcrumbsData from './components/breadcrumbsData';
 import carouselData from './components/carouselData';
 import paginationData from './components/paginationData';
 import calendarData from './components/calendarData';
+import rateData from './components/rateData';
 
 const MAP = {
   hooks: {
@@ -72,6 +73,7 @@ const MAP = {
     carousel: carouselData,
     pagination: paginationData,
     calendar: calendarData,
+    rate: rateData,
   }
 }
 

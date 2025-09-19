@@ -121,7 +121,10 @@ Icon.propTypes = {
     'toggle-on',
     'user',
     'exclamation',
-    'info'
+    'info',
+    'star',
+    'star-o',
+    'star-half-full',
   ]),
   size: PropTypes.number,
   action: PropTypes.func,

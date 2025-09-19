@@ -18,6 +18,7 @@ import BreadcrumbsExample from './BreadcrumbsExample';
 import CarouselExample from './CarouselExample';
 import PaginationExample from './PaginationExample';
 import CalendarExample from './CalendarExample';
+import RateExample from './RateExample';
 
 export {
   SwitchExample,
@@ -39,5 +40,6 @@ export {
   BreadcrumbsExample,
   CarouselExample,
   PaginationExample,
-  CalendarExample
+  CalendarExample,
+  RateExample
 }

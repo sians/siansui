@@ -29,6 +29,7 @@ const LINK_GROUPS = {
       { text: 'Radio', url: '/components/radio' },
       { text: 'Checkbox', url: '/components/checkbox' },
       { text: 'Select', url: '/components/select' },
+      { text: 'Rate', url: '/components/rate' },
       // { text: 'Search', url: '/components/search' },
       // { text: 'Button', url: '/components/button' },
       { text: 'Slider', url: '/components/slider' },

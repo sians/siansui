@@ -34,7 +34,8 @@ const RadioExample = () => {
     <div>
       {radioGroups.map((groupData, idx) => {
         return (
-          <RadioGroup key={`radio-grp-${idx}`} {...groupData} />
+          <>
+          </>
         )
       })}
     </div>

@@ -39,6 +39,7 @@ import Breadcrumbs from './Breadcrumbs';
 import Carousel from './Carousel';
 import Pagination from './Pagination';
 import Calendar from './Calendar';
+import Rate from './Rate';
 
 export {
   Nav,
@@ -81,5 +82,6 @@ export {
   Breadcrumbs,
   Carousel,
   Pagination,
-  Calendar
+  Calendar,
+  Rate
 }
